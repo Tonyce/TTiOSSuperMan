@@ -1,0 +1,397 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BE4B93981B54ADA0008CAA67 /* SelfCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4B93971B54ADA0008CAA67 /* SelfCenterViewController.swift */; };
+		BE4B939A1B557453008CAA67 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4B93991B557453008CAA67 /* MeViewController.swift */; };
+		BE768EEE1B4D2BF20032B5CE /* MyCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE768EED1B4D2BF20032B5CE /* MyCustomView.swift */; };
+		BE768EF21B4D768C0032B5CE /* GoogleIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE768EF11B4D768C0032B5CE /* GoogleIcon.swift */; };
+		BE768EF41B4D77A30032B5CE /* googleicon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BE768EF31B4D77A30032B5CE /* googleicon.ttf */; };
+		BE768EF61B4D96510032B5CE /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE768EF51B4D96510032B5CE /* FriendsViewController.swift */; };
+		BE768EF81B4D96F00032B5CE /* DiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE768EF71B4D96F00032B5CE /* DiaryViewController.swift */; };
+		BEB5655A1B4EA35E0096B1FE /* OpenDiaryAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB565591B4EA35E0096B1FE /* OpenDiaryAnimation.swift */; };
+		BEB5655C1B4ECD130096B1FE /* AddDiaryAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB5655B1B4ECD130096B1FE /* AddDiaryAnimation.swift */; };
+		BEB5655E1B4ED8F90096B1FE /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB5655D1B4ED8F90096B1FE /* SettingViewController.swift */; };
+		BEBDCDAB1B53E1CC0097FB1F /* meCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEBDCDAA1B53E1CC0097FB1F /* meCell.xib */; };
+		BEBDCDAD1B53E24C0097FB1F /* meTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBDCDAC1B53E24C0097FB1F /* meTableViewCell.swift */; };
+		BEBDCDAF1B53F0770097FB1F /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBDCDAE1B53F0770097FB1F /* InfoViewController.swift */; };
+		BEBDCDB11B540B3E0097FB1F /* NewSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBDCDB01B540B3E0097FB1F /* NewSettingViewController.swift */; };
+		BEEE07641B4CCEDC0015E752 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEE07631B4CCEDC0015E752 /* AppDelegate.swift */; };
+		BEEE07661B4CCEDC0015E752 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEE07651B4CCEDC0015E752 /* ViewController.swift */; };
+		BEEE07691B4CCEDC0015E752 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEEE07671B4CCEDC0015E752 /* Main.storyboard */; };
+		BEEE076B1B4CCEDC0015E752 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEEE076A1B4CCEDC0015E752 /* Assets.xcassets */; };
+		BEEE076E1B4CCEDC0015E752 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEEE076C1B4CCEDC0015E752 /* LaunchScreen.storyboard */; };
+		BEEE07771B4CD0E00015E752 /* DiaryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEE07761B4CD0E00015E752 /* DiaryEntry.swift */; };
+		BEEE07791B4CF1930015E752 /* DiaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEE07781B4CF1930015E752 /* DiaryTableViewCell.swift */; };
+		BEEE077C1B4CF67E0015E752 /* MyAddBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEE077B1B4CF67E0015E752 /* MyAddBtn.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		BE3A1F5B1B52DACA00569CB8 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
+		BE4B93971B54ADA0008CAA67 /* SelfCenterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfCenterViewController.swift; sourceTree = "<group>"; };
+		BE4B93991B557453008CAA67 /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
+		BE768EED1B4D2BF20032B5CE /* MyCustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCustomView.swift; sourceTree = "<group>"; };
+		BE768EF11B4D768C0032B5CE /* GoogleIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GoogleIcon.swift; path = GoogleSource/GoogleIcon.swift; sourceTree = "<group>"; };
+		BE768EF31B4D77A30032B5CE /* googleicon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = googleicon.ttf; path = GoogleSource/googleicon.ttf; sourceTree = "<group>"; };
+		BE768EF51B4D96510032B5CE /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
+		BE768EF71B4D96F00032B5CE /* DiaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryViewController.swift; sourceTree = "<group>"; };
+		BEB565591B4EA35E0096B1FE /* OpenDiaryAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenDiaryAnimation.swift; sourceTree = "<group>"; };
+		BEB5655B1B4ECD130096B1FE /* AddDiaryAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDiaryAnimation.swift; sourceTree = "<group>"; };
+		BEB5655D1B4ED8F90096B1FE /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingViewController.swift; path = superman/SettingViewController.swift; sourceTree = "<group>"; };
+		BEBDCDAA1B53E1CC0097FB1F /* meCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = meCell.xib; path = superman/meCell.xib; sourceTree = "<group>"; };
+		BEBDCDAC1B53E24C0097FB1F /* meTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = meTableViewCell.swift; path = superman/meTableViewCell.swift; sourceTree = "<group>"; };
+		BEBDCDAE1B53F0770097FB1F /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		BEBDCDB01B540B3E0097FB1F /* NewSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewSettingViewController.swift; path = superman/NewSettingViewController.swift; sourceTree = "<group>"; };
+		BEEE07601B4CCEDC0015E752 /* superman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = superman.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BEEE07631B4CCEDC0015E752 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BEEE07651B4CCEDC0015E752 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BEEE07681B4CCEDC0015E752 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BEEE076A1B4CCEDC0015E752 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BEEE076D1B4CCEDC0015E752 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BEEE076F1B4CCEDC0015E752 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BEEE07761B4CD0E00015E752 /* DiaryEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryEntry.swift; sourceTree = "<group>"; };
+		BEEE07781B4CF1930015E752 /* DiaryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryTableViewCell.swift; sourceTree = "<group>"; };
+		BEEE077B1B4CF67E0015E752 /* MyAddBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAddBtn.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BEEE075D1B4CCEDC0015E752 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BE4B93961B54AC06008CAA67 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				BEB5655D1B4ED8F90096B1FE /* SettingViewController.swift */,
+				BEBDCDAC1B53E24C0097FB1F /* meTableViewCell.swift */,
+				BEBDCDB01B540B3E0097FB1F /* NewSettingViewController.swift */,
+				BEBDCDAA1B53E1CC0097FB1F /* meCell.xib */,
+				BE4B93971B54ADA0008CAA67 /* SelfCenterViewController.swift */,
+				BE4B93991B557453008CAA67 /* MeViewController.swift */,
+			);
+			name = Setting;
+			sourceTree = "<group>";
+		};
+		BEB565581B4EA1FC0096B1FE /* animations */ = {
+			isa = PBXGroup;
+			children = (
+				BEB565591B4EA35E0096B1FE /* OpenDiaryAnimation.swift */,
+				BEB5655B1B4ECD130096B1FE /* AddDiaryAnimation.swift */,
+			);
+			name = animations;
+			sourceTree = "<group>";
+		};
+		BEEE07571B4CCEDC0015E752 = {
+			isa = PBXGroup;
+			children = (
+				BE4B93961B54AC06008CAA67 /* Setting */,
+				BEB565581B4EA1FC0096B1FE /* animations */,
+				BEEE077A1B4CF65A0015E752 /* UILib */,
+				BEEE07751B4CD06A0015E752 /* diaryEntry */,
+				BEEE07621B4CCEDC0015E752 /* superman */,
+				BEEE07611B4CCEDC0015E752 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BEEE07611B4CCEDC0015E752 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BEEE07601B4CCEDC0015E752 /* superman.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BEEE07621B4CCEDC0015E752 /* superman */ = {
+			isa = PBXGroup;
+			children = (
+				BEEE07631B4CCEDC0015E752 /* AppDelegate.swift */,
+				BEEE07651B4CCEDC0015E752 /* ViewController.swift */,
+				BEEE07671B4CCEDC0015E752 /* Main.storyboard */,
+				BEBDCDAE1B53F0770097FB1F /* InfoViewController.swift */,
+				BE768EF71B4D96F00032B5CE /* DiaryViewController.swift */,
+				BE768EF51B4D96510032B5CE /* FriendsViewController.swift */,
+				BEEE076A1B4CCEDC0015E752 /* Assets.xcassets */,
+				BEEE076C1B4CCEDC0015E752 /* LaunchScreen.storyboard */,
+				BEEE076F1B4CCEDC0015E752 /* Info.plist */,
+				BEEE07781B4CF1930015E752 /* DiaryTableViewCell.swift */,
+				BE3A1F5B1B52DACA00569CB8 /* MyPlayground.playground */,
+			);
+			path = superman;
+			sourceTree = "<group>";
+		};
+		BEEE07751B4CD06A0015E752 /* diaryEntry */ = {
+			isa = PBXGroup;
+			children = (
+				BEEE07761B4CD0E00015E752 /* DiaryEntry.swift */,
+			);
+			name = diaryEntry;
+			sourceTree = "<group>";
+		};
+		BEEE077A1B4CF65A0015E752 /* UILib */ = {
+			isa = PBXGroup;
+			children = (
+				BE768EF31B4D77A30032B5CE /* googleicon.ttf */,
+				BE768EF11B4D768C0032B5CE /* GoogleIcon.swift */,
+				BEEE077B1B4CF67E0015E752 /* MyAddBtn.swift */,
+				BE768EED1B4D2BF20032B5CE /* MyCustomView.swift */,
+			);
+			name = UILib;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BEEE075F1B4CCEDC0015E752 /* superman */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BEEE07721B4CCEDC0015E752 /* Build configuration list for PBXNativeTarget "superman" */;
+			buildPhases = (
+				BEEE075C1B4CCEDC0015E752 /* Sources */,
+				BEEE075D1B4CCEDC0015E752 /* Frameworks */,
+				BEEE075E1B4CCEDC0015E752 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = superman;
+			productName = superman;
+			productReference = BEEE07601B4CCEDC0015E752 /* superman.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BEEE07581B4CCEDC0015E752 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = D_ttang;
+				TargetAttributes = {
+					BEEE075F1B4CCEDC0015E752 = {
+						CreatedOnToolsVersion = 7.0;
+					};
+				};
+			};
+			buildConfigurationList = BEEE075B1B4CCEDC0015E752 /* Build configuration list for PBXProject "superman" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BEEE07571B4CCEDC0015E752;
+			productRefGroup = BEEE07611B4CCEDC0015E752 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BEEE075F1B4CCEDC0015E752 /* superman */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BEEE075E1B4CCEDC0015E752 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE768EF41B4D77A30032B5CE /* googleicon.ttf in Resources */,
+				BEEE076E1B4CCEDC0015E752 /* LaunchScreen.storyboard in Resources */,
+				BEEE076B1B4CCEDC0015E752 /* Assets.xcassets in Resources */,
+				BEBDCDAB1B53E1CC0097FB1F /* meCell.xib in Resources */,
+				BEEE07691B4CCEDC0015E752 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BEEE075C1B4CCEDC0015E752 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE4B939A1B557453008CAA67 /* MeViewController.swift in Sources */,
+				BE768EF61B4D96510032B5CE /* FriendsViewController.swift in Sources */,
+				BE768EF81B4D96F00032B5CE /* DiaryViewController.swift in Sources */,
+				BEB5655C1B4ECD130096B1FE /* AddDiaryAnimation.swift in Sources */,
+				BE4B93981B54ADA0008CAA67 /* SelfCenterViewController.swift in Sources */,
+				BEEE077C1B4CF67E0015E752 /* MyAddBtn.swift in Sources */,
+				BE768EEE1B4D2BF20032B5CE /* MyCustomView.swift in Sources */,
+				BEBDCDAD1B53E24C0097FB1F /* meTableViewCell.swift in Sources */,
+				BEB5655A1B4EA35E0096B1FE /* OpenDiaryAnimation.swift in Sources */,
+				BEEE07661B4CCEDC0015E752 /* ViewController.swift in Sources */,
+				BEBDCDB11B540B3E0097FB1F /* NewSettingViewController.swift in Sources */,
+				BEEE07771B4CD0E00015E752 /* DiaryEntry.swift in Sources */,
+				BEEE07641B4CCEDC0015E752 /* AppDelegate.swift in Sources */,
+				BEBDCDAF1B53F0770097FB1F /* InfoViewController.swift in Sources */,
+				BEEE07791B4CF1930015E752 /* DiaryTableViewCell.swift in Sources */,
+				BE768EF21B4D768C0032B5CE /* GoogleIcon.swift in Sources */,
+				BEB5655E1B4ED8F90096B1FE /* SettingViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		BEEE07671B4CCEDC0015E752 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEEE07681B4CCEDC0015E752 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BEEE076C1B4CCEDC0015E752 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEEE076D1B4CCEDC0015E752 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BEEE07701B4CCEDC0015E752 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: zefeng chen (P672U2633X)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		BEEE07711B4CCEDC0015E752 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: zefeng chen (P672U2633X)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BEEE07731B4CCEDC0015E752 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = superman/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.iweekapi.superman;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		BEEE07741B4CCEDC0015E752 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = superman/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.iweekapi.superman;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BEEE075B1B4CCEDC0015E752 /* Build configuration list for PBXProject "superman" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BEEE07701B4CCEDC0015E752 /* Debug */,
+				BEEE07711B4CCEDC0015E752 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BEEE07721B4CCEDC0015E752 /* Build configuration list for PBXNativeTarget "superman" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BEEE07731B4CCEDC0015E752 /* Debug */,
+				BEEE07741B4CCEDC0015E752 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BEEE07581B4CCEDC0015E752 /* Project object */;
+}
