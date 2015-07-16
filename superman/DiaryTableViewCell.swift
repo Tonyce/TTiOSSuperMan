@@ -19,6 +19,7 @@ class DiaryTableViewCell: UITableViewCell {
         labelField.layer.cornerRadius = CGRectGetHeight(self.labelField.frame) / 2
         labelField.layer.masksToBounds = true
 //        labelField.layer.backgroundColor = UIColor.redColor().CGColor
+        labelField.backgroundColor = UIColor.clearColor()
         
     }
 

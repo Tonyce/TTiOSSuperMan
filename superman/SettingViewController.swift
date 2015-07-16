@@ -109,8 +109,6 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
             meCell = self.tableView.dequeueReusableCellWithIdentifier("meCell") as! meTableViewCell
             meCell.selfImage.image = selfConfig?.image
             meCell.wordTextView.text = selfConfig?.word
-//            selfConfig = SelfConfig(image: meCell.selfImage.image!, word: meCell.wordTextView.text)
-            // print(meCell.wordTextView.text)
             meCell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
             return meCell
         }else {
@@ -129,21 +127,3 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
         
     }
 }
-
-
-/*
-navigationController?.navigationBar.barStyle = UIBarStyle.Black
-navigationController?.navigationBar.barTintColor = UIColor.redColor()
-// navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.orangeColor()]
-//        let font = UIFont(name: "SourceSansPro-Regular", size: 22)
-//        if let font = font {
-//            UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName : font, NSForegroundColorAttributeName : UIColor.whiteColor()]
-//        }
-
-// navigationController?.navigationItem.setHidesBackButton(true, animated: false)
-//        let backButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: self, action: nil)
-//        backButton.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Chalkduster", size: 20)!], forState: UIControlState.Normal)
-navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Done, target: self, action: nil)
-//        navigationController?.navigationItem.hidesBackButton = true
-// Do any additional setup after loading the view.
-*/

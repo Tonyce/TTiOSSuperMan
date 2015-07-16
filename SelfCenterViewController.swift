@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SelfCenterViewController: UIViewController {
+class SelfCenterViewController: UIViewController , UIImagePickerControllerDelegate, UINavigationControllerDelegate{
 
     @IBOutlet weak var saveBtn: UIButton!
     @IBOutlet weak var selfScrollViewContainer: UIScrollView!
@@ -24,20 +24,18 @@ class SelfCenterViewController: UIViewController {
         super.viewDidLoad()
 
         
-        selfImage.layer.cornerRadius = CGRectGetHeight(selfImage.frame) / 2
-        selfImage.layer.masksToBounds = true
+//        selfImage.layer.cornerRadius = CGRectGetHeight(selfImage.frame) / 2
+//        selfImage.layer.masksToBounds = true
         
         let frame: CGRect = self.navigationController!.navigationBar.frame
         alphaView = UIView(frame: CGRectMake(0, 0, frame.size.width, frame.size.height + 20))
-//        [[UIView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height+20)];
         alphaView.backgroundColor = UIColor.redColor()
         alphaView.alpha = 0.3
         
         
-        self.view.insertSubview(alphaView, belowSubview: self.navigationController!.navigationBar)
-        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
-        self.navigationController!.navigationBar.shadowImage = UIImage()
-//        self.navigationController!.navigationBar.layer.masksToBounds = true
+//        self.view.insertSubview(alphaView, belowSubview: self.navigationController!.navigationBar)
+//        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+//        self.navigationController!.navigationBar.shadowImage = UIImage()
         
         
         // Do any additional setup after loading the view.
@@ -54,15 +52,7 @@ class SelfCenterViewController: UIViewController {
         textView.text = selfConfig.word
     }
     
-    override func viewWillAppear(animated: Bool) {
-//        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
-//        self.navigationController!.navigationBar.shadowImage = UIImage()
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-//        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
-//        self.navigationController!.navigationBar.barTintColor = UIColor.redColor()
-    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -70,25 +60,63 @@ class SelfCenterViewController: UIViewController {
     }
     
     @IBAction func resignKbAction(sender: AnyObject) {
-//        let keyWindow = UIApplication.sharedApplication().keyWindow
-//        let firstResponder = keyWindow.
-//        UIView *firstResponder = [keyWindow performSelector:@selector(firstResponder)];
-//        [firstResponder resignFirstResponder];
-//        textView.resignFirstResponder()
         self.view.endEditing(true)
     }
     
-//    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-//        self.view.endEditing(true)
-//    }
+    @IBAction func showSelectPhoto(sender: AnyObject) {
+        print("selfImage tap")
+        if (UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary)){
+            let imagePicker = UIImagePickerController()
+            imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+            imagePicker.delegate = self
+            imagePicker.allowsEditing = true
+    //        picker.mediaTypes = [kUTTypeImage]
+            presentViewController(imagePicker, animated: true, completion: nil)
+        }else {
+            let alert = UIAlertController(title: "No camera", message: "Please allow this app the use of your camera in settings or buy a device that has a camera.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
 
-    /*
-    // MARK: - Navigation
-    */
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    }
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        dismissViewControllerAnimated(true , completion: nil)
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+//        let selectImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+//        //        let scaleImage = scaleFromImage(selectImage, scaleToSize: CGSize(width: self.view.frame.width , height: self.view.frame.height))
+//        let image = selectImage.scaleToSize(view.frame.width)
+        
+        _ = info[UIImagePickerControllerMediaType] as! String
+        var originalImage:UIImage?, editedImage:UIImage?, imageToSave:UIImage?
+//        let compResult:CFComparisonResult = CFStringCompare(mediaType as NSString!, kUTTypeImage, CFStringCompareFlags.CompareCaseInsensitive)
+//        if ( compResult == CFComparisonResult.CompareEqualTo ) {
+        
+            editedImage = info[UIImagePickerControllerEditedImage] as? UIImage
+            originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage
+            
+            if ( editedImage != nil ) {
+                imageToSave = editedImage
+            } else {
+                imageToSave = originalImage
+            }
+//            imgView.image = imageToSave
+//            imgView.reloadInputViews()
+//        }
+        
+        selfImage.image = imageToSave
+//        let handlePhotoView = storyboard!.instantiateViewControllerWithIdentifier("HandleImageView") as! HandleImageViewController
+//        handlePhotoView.image = image
+       
+//        UIImagePickerController?.pushViewController(handlePhotoView, animated: false)
+//        let handlePhotoView = navigationController?.topViewController
+//        presentViewController(handlePhotoView, animated: true, completion: nil)
+        dismissViewControllerAnimated(true , completion: nil)
+    }
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
         if segue.identifier == "saveSelfConfig" {
             // selfImage.image = UIImage(named: "me")
             let image: UIImage = selfImage.image!
@@ -98,23 +126,7 @@ class SelfCenterViewController: UIViewController {
     }
 }
 
-//extension SelfCenterViewController: UINavigationControllerDelegate {
-//    func navigationController(navigationController: UINavigationController, willShowViewController viewController: UIViewController, animated: Bool) {
-//        print(viewController)
-//        if viewController == self {
-//            print("...")
-////             self.navigationController?.navigationBar.translucent = true
-//            //        navigationController?.navigationBar.alpha = 0.0
-//            //        navigationController?.navigationBar.barTintColor = UIColor.clearColor()
-//            
-//            self.navigationController!.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
-//            self.navigationController!.navigationBar.shadowImage = UIImage()
-//        }
-//    }
-//}
-
 extension SelfCenterViewController: UIScrollViewDelegate {
-    
     func scrollViewDidScroll(scrollView: UIScrollView) {
         print(scrollView.contentOffset.y)
         let offset = scrollView.contentOffset.y
@@ -122,3 +134,11 @@ extension SelfCenterViewController: UIScrollViewDelegate {
         alphaView.alpha = alpha
     }
 }
+
+
+//        let selectPhotoView = storyboard!.instantiateViewControllerWithIdentifier("selectPhotoWay") as! SelectPhotoWayViewController
+//        //        print("taped")
+//        presentViewController(selectPhotoView, animated: true, completion: nil)
+
+
+

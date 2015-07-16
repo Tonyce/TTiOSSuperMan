@@ -47,8 +47,12 @@ class ViewController: UIViewController {
         diaryTable.tableHeaderView = UIView(frame: CGRectMake(self.topView.frame.origin.x, self.topView.frame.origin.x, self.topView.frame.size.width, self.topView.frame.size.height + 20))
         diaryTable.tableHeaderView?.backgroundColor = UIColor.whiteColor()
         
+        let littleLabel = UILabel(frame: CGRectMake(15, self.topView.frame.size.height - 20 , 100, 20))
+        littleLabel.text = "嘻嘻哈哈~"
+        diaryTable.tableHeaderView?.addSubview(littleLabel)
 
-        shadowTopView()
+        statusView.backgroundColor = UIColor.MKColor.LightBlue
+        // shadowTopView()
         initAddBtn()
         animateTable()
         initSettingBtn()
@@ -138,7 +142,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         let diaryEntry = diarys[indexPath.row]
         cell.labelField.text = diaryEntry.time
         cell.circleIdentifyLabel.font = UIFont(name: GoogleIconName, size: 12.0)
-        cell.circleIdentifyLabel.textColor = UIColor.orangeColor()
+        cell.circleIdentifyLabel.textColor = UIColor.MKColor.LightBlue
         cell.circleIdentifyLabel.text = GoogleIcon.eacd
         
         let cellBackView = UIView(frame: cell.frame)
@@ -192,8 +196,7 @@ extension ViewController: UIScrollViewDelegate {
             let headerSizevariation:CGFloat  = ((self.topView.bounds.size.height * (1.0 + headerScaleFactor)) - self.topView.bounds.size.height)/2.0
             topViewTransform = CATransform3DTranslate(topViewTransform, 0, headerSizevariation, 0)
             let statusViewTransform = CATransform3DScale(CATransform3DIdentity, 1.0 + headerScaleFactor, 1.0 + statusScaleFactor, 0)
-            // statusViewTransform = CATransform3DTranslate(statusViewTransform, 0, headerSizevariation, 0)
-            // Scale btn cannot be click
+           
 
             self.topView.layer.transform = topViewTransform
             self.addDiaryBtn.layer.transform = topViewTransform
