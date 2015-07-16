@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE1594A91B56B63E0029FF4A /* SelfConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1594A81B56B63E0029FF4A /* SelfConfig.swift */; };
 		BE4B93981B54ADA0008CAA67 /* SelfCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4B93971B54ADA0008CAA67 /* SelfCenterViewController.swift */; };
-		BE4B939A1B557453008CAA67 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4B93991B557453008CAA67 /* MeViewController.swift */; };
 		BE768EEE1B4D2BF20032B5CE /* MyCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE768EED1B4D2BF20032B5CE /* MyCustomView.swift */; };
 		BE768EF21B4D768C0032B5CE /* GoogleIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE768EF11B4D768C0032B5CE /* GoogleIcon.swift */; };
 		BE768EF41B4D77A30032B5CE /* googleicon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BE768EF31B4D77A30032B5CE /* googleicon.ttf */; };
@@ -32,9 +32,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BE1594A81B56B63E0029FF4A /* SelfConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfConfig.swift; sourceTree = "<group>"; };
 		BE3A1F5B1B52DACA00569CB8 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 		BE4B93971B54ADA0008CAA67 /* SelfCenterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfCenterViewController.swift; sourceTree = "<group>"; };
-		BE4B93991B557453008CAA67 /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		BE768EED1B4D2BF20032B5CE /* MyCustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCustomView.swift; sourceTree = "<group>"; };
 		BE768EF11B4D768C0032B5CE /* GoogleIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GoogleIcon.swift; path = GoogleSource/GoogleIcon.swift; sourceTree = "<group>"; };
 		BE768EF31B4D77A30032B5CE /* googleicon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = googleicon.ttf; path = GoogleSource/googleicon.ttf; sourceTree = "<group>"; };
@@ -70,6 +70,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BE1594A71B56B6290029FF4A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BE1594A81B56B63E0029FF4A /* SelfConfig.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		BE4B93961B54AC06008CAA67 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
@@ -78,7 +86,6 @@
 				BEBDCDB01B540B3E0097FB1F /* NewSettingViewController.swift */,
 				BEBDCDAA1B53E1CC0097FB1F /* meCell.xib */,
 				BE4B93971B54ADA0008CAA67 /* SelfCenterViewController.swift */,
-				BE4B93991B557453008CAA67 /* MeViewController.swift */,
 			);
 			name = Setting;
 			sourceTree = "<group>";
@@ -95,6 +102,7 @@
 		BEEE07571B4CCEDC0015E752 = {
 			isa = PBXGroup;
 			children = (
+				BE1594A71B56B6290029FF4A /* Model */,
 				BE4B93961B54AC06008CAA67 /* Setting */,
 				BEB565581B4EA1FC0096B1FE /* animations */,
 				BEEE077A1B4CF65A0015E752 /* UILib */,
@@ -221,9 +229,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE4B939A1B557453008CAA67 /* MeViewController.swift in Sources */,
 				BE768EF61B4D96510032B5CE /* FriendsViewController.swift in Sources */,
 				BE768EF81B4D96F00032B5CE /* DiaryViewController.swift in Sources */,
+				BE1594A91B56B63E0029FF4A /* SelfConfig.swift in Sources */,
 				BEB5655C1B4ECD130096B1FE /* AddDiaryAnimation.swift in Sources */,
 				BE4B93981B54ADA0008CAA67 /* SelfCenterViewController.swift in Sources */,
 				BEEE077C1B4CF67E0015E752 /* MyAddBtn.swift in Sources */,

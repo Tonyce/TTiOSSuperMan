@@ -30,9 +30,7 @@ class SettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.navigationBar.barStyle = UIBarStyle.Black
-        navigationController?.navigationBar.barTintColor = UIColor.redColor()
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Done, target: self, action: nil)
+
 
         // Do any additional setup after loading the view.
         
@@ -46,6 +44,14 @@ class SettingViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
+        self.navigationController!.navigationBar.setBackgroundImage(nil , forBarMetrics: UIBarMetrics.Default)
+        self.navigationController!.navigationBar.shadowImage = nil
+        
+        navigationController?.navigationBar.barStyle = UIBarStyle.Black
+        navigationController?.navigationBar.barTintColor = UIColor.redColor()
+        
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Done, target: self, action: nil)
+        
         if let selectedIndexPath = self.tableView.indexPathForSelectedRow {
             self.tableView.deselectRowAtIndexPath(selectedIndexPath, animated: true)
         }
