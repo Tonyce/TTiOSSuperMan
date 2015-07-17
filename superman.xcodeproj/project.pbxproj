@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		BE1594A91B56B63E0029FF4A /* SelfConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1594A81B56B63E0029FF4A /* SelfConfig.swift */; };
+		BE26DEC81B5816C30018528B /* ColorViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE26DEC71B5816C30018528B /* ColorViewCell.swift */; };
 		BE3342F41B578F8A003F06BC /* MKColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3342F31B578F8A003F06BC /* MKColor.swift */; };
-		BE3342F61B57B05A003F06BC /* SelectPhotoWayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3342F51B57B05A003F06BC /* SelectPhotoWayViewController.swift */; };
+		BE3342F61B57B05A003F06BC /* SelectColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3342F51B57B05A003F06BC /* SelectColorViewController.swift */; };
 		BE4B93981B54ADA0008CAA67 /* SelfCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4B93971B54ADA0008CAA67 /* SelfCenterViewController.swift */; };
 		BE4F64D21B57D17F008251E7 /* HandleImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4F64D11B57D17F008251E7 /* HandleImageViewController.swift */; };
 		BE4F64D41B57D1E9008251E7 /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4F64D31B57D1E9008251E7 /* ImageExtension.swift */; };
@@ -38,8 +39,9 @@
 
 /* Begin PBXFileReference section */
 		BE1594A81B56B63E0029FF4A /* SelfConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfConfig.swift; sourceTree = "<group>"; };
+		BE26DEC71B5816C30018528B /* ColorViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorViewCell.swift; sourceTree = "<group>"; };
 		BE3342F31B578F8A003F06BC /* MKColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MKColor.swift; path = "../../../Desktop/MaterialKit-master/Source/MKColor.swift"; sourceTree = "<group>"; };
-		BE3342F51B57B05A003F06BC /* SelectPhotoWayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectPhotoWayViewController.swift; sourceTree = "<group>"; };
+		BE3342F51B57B05A003F06BC /* SelectColorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectColorViewController.swift; sourceTree = "<group>"; };
 		BE3A1F5B1B52DACA00569CB8 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 		BE4B93971B54ADA0008CAA67 /* SelfCenterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfCenterViewController.swift; sourceTree = "<group>"; };
 		BE4F64D11B57D17F008251E7 /* HandleImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HandleImageViewController.swift; sourceTree = "<group>"; };
@@ -96,9 +98,10 @@
 				BEBDCDB01B540B3E0097FB1F /* NewSettingViewController.swift */,
 				BEBDCDAA1B53E1CC0097FB1F /* meCell.xib */,
 				BE4B93971B54ADA0008CAA67 /* SelfCenterViewController.swift */,
-				BE3342F51B57B05A003F06BC /* SelectPhotoWayViewController.swift */,
+				BE3342F51B57B05A003F06BC /* SelectColorViewController.swift */,
 				BE8CC8391B57B5A300408241 /* SelectAlertViewController.swift */,
 				BE4F64D11B57D17F008251E7 /* HandleImageViewController.swift */,
+				BE26DEC71B5816C30018528B /* ColorViewCell.swift */,
 			);
 			name = Setting;
 			sourceTree = "<group>";
@@ -254,9 +257,10 @@
 				BEEE077C1B4CF67E0015E752 /* MyAddBtn.swift in Sources */,
 				BE768EEE1B4D2BF20032B5CE /* MyCustomView.swift in Sources */,
 				BE4F64D41B57D1E9008251E7 /* ImageExtension.swift in Sources */,
-				BE3342F61B57B05A003F06BC /* SelectPhotoWayViewController.swift in Sources */,
+				BE3342F61B57B05A003F06BC /* SelectColorViewController.swift in Sources */,
 				BEBDCDAD1B53E24C0097FB1F /* meTableViewCell.swift in Sources */,
 				BE4F64D21B57D17F008251E7 /* HandleImageViewController.swift in Sources */,
+				BE26DEC81B5816C30018528B /* ColorViewCell.swift in Sources */,
 				BEB5655A1B4EA35E0096B1FE /* OpenDiaryAnimation.swift in Sources */,
 				BEEE07661B4CCEDC0015E752 /* ViewController.swift in Sources */,
 				BEBDCDB11B540B3E0097FB1F /* NewSettingViewController.swift in Sources */,

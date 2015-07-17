@@ -87,7 +87,7 @@ class ViewController: UIViewController {
     }
     
     func initSettingBtn(){
-        settingBtn.setTitle(GoogleIcon.e962, forState: UIControlState.Normal)
+        settingBtn.setTitle(GoogleIcon.e6c5, forState: UIControlState.Normal)
         settingBtn.tintColor = UIColor.whiteColor()
         settingBtn.layer.cornerRadius = CGRectGetHeight(settingBtn.frame) / 2
         

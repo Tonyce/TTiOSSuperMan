@@ -13,6 +13,18 @@ class meTableViewCell: UITableViewCell {
     @IBOutlet weak var selfImage: UIImageView!
     @IBOutlet weak var wordTextView: UITextView!
     
+    var selfConfig: SelfConfig! {
+        didSet {
+            configureCell()
+        }
+    }
+    // MARK: - Utility methods
+    private func configureCell() {
+        self.selfImage.image = selfConfig?.image
+        self.wordTextView.text = selfConfig?.word
+        self.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

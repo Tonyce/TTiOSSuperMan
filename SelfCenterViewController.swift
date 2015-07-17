@@ -24,18 +24,13 @@ class SelfCenterViewController: UIViewController , UIImagePickerControllerDelega
         super.viewDidLoad()
 
         
-//        selfImage.layer.cornerRadius = CGRectGetHeight(selfImage.frame) / 2
-//        selfImage.layer.masksToBounds = true
+        selfImage.layer.cornerRadius = CGRectGetHeight(selfImage.frame) / 2
+        selfImage.layer.masksToBounds = true
         
         let frame: CGRect = self.navigationController!.navigationBar.frame
         alphaView = UIView(frame: CGRectMake(0, 0, frame.size.width, frame.size.height + 20))
         alphaView.backgroundColor = UIColor.redColor()
         alphaView.alpha = 0.3
-        
-        
-//        self.view.insertSubview(alphaView, belowSubview: self.navigationController!.navigationBar)
-//        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
-//        self.navigationController!.navigationBar.shadowImage = UIImage()
         
         
         // Do any additional setup after loading the view.
@@ -64,7 +59,6 @@ class SelfCenterViewController: UIViewController , UIImagePickerControllerDelega
     }
     
     @IBAction func showSelectPhoto(sender: AnyObject) {
-        print("selfImage tap")
         if (UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary)){
             let imagePicker = UIImagePickerController()
             imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
@@ -85,40 +79,24 @@ class SelfCenterViewController: UIViewController , UIImagePickerControllerDelega
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-//        let selectImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-//        //        let scaleImage = scaleFromImage(selectImage, scaleToSize: CGSize(width: self.view.frame.width , height: self.view.frame.height))
-//        let image = selectImage.scaleToSize(view.frame.width)
         
-        _ = info[UIImagePickerControllerMediaType] as! String
-        var originalImage:UIImage?, editedImage:UIImage?, imageToSave:UIImage?
-//        let compResult:CFComparisonResult = CFStringCompare(mediaType as NSString!, kUTTypeImage, CFStringCompareFlags.CompareCaseInsensitive)
-//        if ( compResult == CFComparisonResult.CompareEqualTo ) {
+        var  editedImage:UIImage?, imageToSave:UIImage?
         
-            editedImage = info[UIImagePickerControllerEditedImage] as? UIImage
-            originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage
-            
-            if ( editedImage != nil ) {
-                imageToSave = editedImage
-            } else {
-                imageToSave = originalImage
-            }
-//            imgView.image = imageToSave
-//            imgView.reloadInputViews()
-//        }
+        editedImage = info[UIImagePickerControllerEditedImage] as? UIImage
+        let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        
+        if ( editedImage != nil ) {
+            imageToSave = editedImage
+        } else {
+            imageToSave = originalImage
+        }
         
         selfImage.image = imageToSave
-//        let handlePhotoView = storyboard!.instantiateViewControllerWithIdentifier("HandleImageView") as! HandleImageViewController
-//        handlePhotoView.image = image
-       
-//        UIImagePickerController?.pushViewController(handlePhotoView, animated: false)
-//        let handlePhotoView = navigationController?.topViewController
-//        presentViewController(handlePhotoView, animated: true, completion: nil)
         dismissViewControllerAnimated(true , completion: nil)
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "saveSelfConfig" {
-            // selfImage.image = UIImage(named: "me")
             let image: UIImage = selfImage.image!
             let word: String = textView.text
             selfConfig = SelfConfig(image: image, word: word)
@@ -128,7 +106,6 @@ class SelfCenterViewController: UIViewController , UIImagePickerControllerDelega
 
 extension SelfCenterViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        print(scrollView.contentOffset.y)
         let offset = scrollView.contentOffset.y
         let alpha = offset / 100
         alphaView.alpha = alpha
@@ -139,6 +116,10 @@ extension SelfCenterViewController: UIScrollViewDelegate {
 //        let selectPhotoView = storyboard!.instantiateViewControllerWithIdentifier("selectPhotoWay") as! SelectPhotoWayViewController
 //        //        print("taped")
 //        presentViewController(selectPhotoView, animated: true, completion: nil)
+
+//        self.view.insertSubview(alphaView, belowSubview: self.navigationController!.navigationBar)
+//        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+//        self.navigationController!.navigationBar.shadowImage = UIImage()
 
 
 

@@ -16,46 +16,43 @@ class SettingViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var model = [
-        "other":["c", "b"],
-        "z": ["z"],
-        "tt": ["tt"],
-        "me": ["me"]
+        ["me"],["color"], ["c", "b"], ["z"], ["tt"]
     ]
+    
     var keys = ["me"]
     var meValue = ["me"]
     
     var selfConfig: SelfConfig?
-    var meCell: meTableViewCell!
+    var topViewColor: UIColor = UIColor.MKColor.Blue
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-
-
         // Do any additional setup after loading the view.
         
         closeBtn.setTitle(GoogleIcon.ebd0, forState: UIControlState.Normal)
         closeBtn.tintColor = UIColor.whiteColor()
         closeBtn.layer.cornerRadius = CGRectGetHeight(closeBtn.frame) / 2
         
-        keys = [String](model.keys).sort(<)
-        
-        
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        self.navigationController!.navigationBar.setBackgroundImage(nil , forBarMetrics: UIBarMetrics.Default)
-        self.navigationController!.navigationBar.shadowImage = nil
-        
-        navigationController?.navigationBar.barStyle = UIBarStyle.Black
-        navigationController?.navigationBar.barTintColor = UIColor.redColor()
-        
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Done, target: self, action: nil)
+//        keys = [String](model.keys).sort(<)
+//        print(keys)
         
         if let selectedIndexPath = self.tableView.indexPathForSelectedRow {
             self.tableView.deselectRowAtIndexPath(selectedIndexPath, animated: true)
         }
+        
     }
+    
+//    override func viewWillAppear(animated: Bool) {
+//        self.navigationController!.navigationBar.setBackgroundImage(nil , forBarMetrics: UIBarMetrics.Default)
+//        self.navigationController!.navigationBar.shadowImage = nil
+//        
+//        navigationController?.navigationBar.barStyle = UIBarStyle.Black
+//        navigationController?.navigationBar.barTintColor = topViewColor
+//        
+//        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Done, target: self, action: nil)
+//        
+//        
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -66,16 +63,24 @@ class SettingViewController: UIViewController {
         if let sourceViewController = sender.sourceViewController as? SelfCenterViewController,
             selfConfig = sourceViewController.selfConfig {
                 self.selfConfig = selfConfig
-                meCell.wordTextView.text = self.selfConfig?.word!
-                meCell.selfImage.image = self.selfConfig?.image
         }
+    }
+    
+    @IBAction func unwindSetColor(sender: UIStoryboardSegue) {
+        
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "dismissSetting" {
             let mainView = segue.destinationViewController as! ViewController
             mainView.selfConfig = self.selfConfig
-        }else {
+        }else if segue.identifier == "colorSetSegue"{
+            let setColorView = segue.destinationViewController as! SelectColorViewController
+
+                setColorView.delegate = self
+
+            setColorView.selectColor = UIColor.MKColor.Red
+        }else{
             let selfCenterView = segue.destinationViewController as! SelfCenterViewController
             selfCenterView.selfConfig = self.selfConfig
         }
@@ -86,18 +91,25 @@ class SettingViewController: UIViewController {
 
 extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return model.keys.count
+        return model.count
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let key = keys[section]
-        var keyArray = model[key as String]
-        return (keyArray?.count)!
+        var keyArray: Array = model[section] as Array
+//        let key = keys[section]
+        
+//        switch section {
+//        case 0:
+//            keyArray = model["me"]
+//        case 1:
+//            keyArray = model["subject"]
+//        default:
+//            keyArray = model[key as String]
+//        }
+        return keyArray.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let key = keys[indexPath.section]
-        var keyArray:Array = model[key as String]!
         
         var cell = tableView.dequeueReusableCellWithIdentifier("cell")
         
@@ -106,13 +118,19 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
         }
         
         if indexPath.section == 0 {
-            meCell = self.tableView.dequeueReusableCellWithIdentifier("meCell") as! meTableViewCell
-            meCell.selfImage.image = selfConfig?.image
-            meCell.wordTextView.text = selfConfig?.word
-            meCell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+            let meCell = self.tableView.dequeueReusableCellWithIdentifier("meCell") as! meTableViewCell
+            meCell.selfConfig = self.selfConfig
             return meCell
+            
+        }else if indexPath.section == 1 {
+            let systemColorCell = self.tableView.dequeueReusableCellWithIdentifier("colorSetCell")! as UITableViewCell
+            systemColorCell.textLabel?.text = model[indexPath.section][indexPath.row]
+            systemColorCell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+            return systemColorCell
+            
         }else {
-            cell?.textLabel?.text = keyArray[indexPath.row]
+            
+            cell?.textLabel?.text = model[indexPath.section][indexPath.row]
             cell?.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
             return cell!
         }
@@ -124,6 +142,12 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
         }else {
             return 50
         }
-        
+    }
+}
+
+extension SettingViewController: SelectColorViewControllerDelegate {
+    func colorPicker(picker: SelectColorViewController, didPickColor color: UIColor) {
+        navigationController?.navigationBar.barTintColor = color
+        navigationController?.popViewControllerAnimated(true)
     }
 }
