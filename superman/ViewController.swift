@@ -17,12 +17,16 @@ class ViewController: UIViewController {
     @IBOutlet weak var selfWord: UITextView!
     @IBOutlet weak var diaryTable: UITableView!
     @IBOutlet weak var addDiaryBtn: MyAddButton!
-    @IBOutlet weak var topView: MyCustomView!
+    @IBOutlet weak var topView: UIView!
+    
+    var topViewInitFrame: CGRect!
+    var topViewColor: UIColor = UIColor.MKColor.LightBlue
     
     var selectIndexPath: NSIndexPath?
     
     var selfConfig: SelfConfig?
-
+    var colorEntry: [String: AnyObject]!
+    
     let openDiaryTransition = OpenDiaryAnimation()
     let addDiaryAnimation = AddDiaryAnimation()
     let openSettingAnimation = OpenSettingAnimation()
@@ -32,6 +36,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        colorEntry = ["color": topViewColor, "name": "默认颜色"]
+
+        topViewInitFrame = topView.frame
         // initSelfConfig
         selfConfig = SelfConfig(image: UIImage(named: "defaultImage")!, word: "路漫漫其修远兮\n吾将上下而求索")
         
@@ -44,14 +51,17 @@ class ViewController: UIViewController {
         diaryTable.delegate = self
         diaryTable.dataSource = self
         
-        diaryTable.tableHeaderView = UIView(frame: CGRectMake(self.topView.frame.origin.x, self.topView.frame.origin.x, self.topView.frame.size.width, self.topView.frame.size.height + 20))
+        diaryTable.tableHeaderView = UIView(frame: CGRectMake(self.topView.frame.origin.x, self.topView.frame.origin.x, self.topView.frame.size.width, self.topView.frame.size.height + 50))
         diaryTable.tableHeaderView?.backgroundColor = UIColor.whiteColor()
         
-        let littleLabel = UILabel(frame: CGRectMake(15, self.topView.frame.size.height - 20 , 100, 20))
+        let littleLabel = UILabel(frame: CGRectMake(15, self.topView.frame.size.height + 15 , 100, 20))
         littleLabel.text = "嘻嘻哈哈~"
+        littleLabel.textColor = UIColor.grayColor()
+        littleLabel.font = UIFont.systemFontOfSize(12)
+        
         diaryTable.tableHeaderView?.addSubview(littleLabel)
 
-        statusView.backgroundColor = UIColor.MKColor.LightBlue
+        statusView.backgroundColor = topViewColor
         // shadowTopView()
         initAddBtn()
         animateTable()
@@ -67,6 +77,13 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         self.addDiaryBtn.center.x = self.addDiaryInitFrame.origin.x + 300
+        
+        colorEntry = SystemConfig.sharedInstance.systemColorEntry
+        
+        topView.backgroundColor = colorEntry["color"] as? UIColor
+
+        statusView.backgroundColor = colorEntry["color"] as? UIColor
+        
         UIView.animateWithDuration(0.5, animations: {
                 self.addDiaryBtn.frame = self.addDiaryInitFrame
             }, completion: nil)
@@ -105,10 +122,16 @@ class ViewController: UIViewController {
     }
     
     func shadowTopView(){
-        topView.layer.shadowOpacity = 0.5
-        topView.layer.shadowOffset  = CGSize(width: 1, height: 0.5)
+        topView.layer.shadowOpacity = 0.7
+        topView.layer.shadowOffset  = CGSize(width: 1, height: 1)
         topView.layer.shadowColor   = UIColor.grayColor().CGColor
         //topView.layer.shadowRadius  = 10.0
+    }
+    
+    func clearTopViewShadow(){
+        topView.layer.shadowOpacity = 0
+        topView.layer.shadowOffset  = CGSizeZero
+        topView.layer.shadowColor   = UIColor.clearColor().CGColor
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -203,6 +226,13 @@ extension ViewController: UIScrollViewDelegate {
             self.statusView.layer.transform = statusViewTransform
 
         } else { // UP
+            
+            if offset > 10 {
+                shadowTopView()
+            }else {
+                clearTopViewShadow()
+            }
+            
             let headerScaleFactor:CGFloat = -(offset) / self.topView.bounds.size.height
             let headerSizevariation:CGFloat  = ((self.topView.bounds.size.height * (1.0 + headerScaleFactor)) - self.topView.bounds.size.height)/2.0
             topViewTransform = CATransform3DTranslate(topViewTransform, 0, headerSizevariation, 0)
@@ -248,6 +278,7 @@ extension ViewController {
             openSettingAnimation.fromFrame = self.settingBtn.frame
             openSettingAnimation.fromFrameCenter = self.settingBtn.center
             settingView.selfConfig = self.selfConfig
+            settingView.colorEntry = self.colorEntry
             settingView.transitioningDelegate = openSettingAnimation
         }
         
@@ -258,6 +289,7 @@ extension ViewController {
             openSettingAnimation.fromFrame = self.selfImage.frame
             openSettingAnimation.fromFrameCenter = self.selfImage.center
             settingView.selfConfig = self.selfConfig
+            settingView.colorEntry = self.colorEntry
             nav.transitioningDelegate = openSettingAnimation
         }
         

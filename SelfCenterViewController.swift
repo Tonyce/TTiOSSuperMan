@@ -86,6 +86,7 @@ class SelfCenterViewController: UIViewController , UIImagePickerControllerDelega
         let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         
         if ( editedImage != nil ) {
+            editedImage = editedImage?.scaleToSize(200)
             imageToSave = editedImage
         } else {
             imageToSave = originalImage

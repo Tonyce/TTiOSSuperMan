@@ -9,7 +9,8 @@
 import UIKit
 
 protocol SelectColorViewControllerDelegate: class {
-    func colorPicker(picker: SelectColorViewController, didPickColor color: UIColor)
+//    func colorPicker(picker: SelectColorViewController, didPickColor color: UIColor)
+    func colorPicker(picker: SelectColorViewController, didPickColorEntry colorEntry: [String: AnyObject])
 }
 
 class SelectColorViewController: UIViewController {
@@ -17,6 +18,7 @@ class SelectColorViewController: UIViewController {
     weak var delegate: SelectColorViewControllerDelegate?
     
     var selectColor: UIColor?
+    var selectColorEntry: [String: AnyObject]?
     
     let colorArr: [[String: AnyObject]] = [
         ["color": UIColor.MKColor.LightBlue, "name": "默认颜色"],
@@ -31,9 +33,9 @@ class SelectColorViewController: UIViewController {
         ["color": UIColor.MKColor.Orange, "name": "红褐色"],
         ["color": UIColor.MKColor.Purple, "name": "葡萄紫"],
         
+        
 //        ["color": UIColor.MKColor.Red, "name": ""],
 //        ["color": UIColor.MKColor.Pink, "name": ""],
-//        
 //        ["color": UIColor.MKColor.Yellow, "name": "黄"],
 //        ["color": UIColor.MKColor.BlueGrey, "name": "石墨黑"],
 //        ["color": UIColor.MKColor.Brown, "name": "棕色"],
@@ -73,18 +75,28 @@ extension SelectColorViewController: UITableViewDataSource, UITableViewDelegate 
         
         cell.colorEntry = colorEntry
         
-        if let selectColor = selectColor {
-            if selectColor == colorEntry["color"] as! UIColor {
-                cell.selected = true
-            }
+//        if let selectColor = selectColorEntry {
+//            if selectColor == colorEntry["color"] as! UIColor {
+//                cell.colorCircleLabel.text = GoogleIcon.eacd
+//                cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+//            }
+//        }
+        
+        if selectColorEntry != nil {
+            cell.colorCircleLabel.text = GoogleIcon.eacd
+            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
         }
+        
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if let delegate = delegate {
-            let color = colorArr[indexPath.row]["color"] as! UIColor
-            delegate.colorPicker(self, didPickColor: color)
+//            let color = colorArr[indexPath.row]["color"] as! UIColor
+//            delegate.colorPicker(self, didPickColor: color)
+            let colorEntry = colorArr[indexPath.row]
+            SystemConfig.sharedInstance.systemColorEntry = colorEntry
+            delegate.colorPicker(self, didPickColorEntry: colorEntry)
         }
     }
 }
