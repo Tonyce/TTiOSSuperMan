@@ -22,6 +22,7 @@
 		BE8517001B58FE2800C65D5D /* SettingViewColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8516FF1B58FE2800C65D5D /* SettingViewColorCell.swift */; };
 		BE8CC83A1B57B5A300408241 /* SelectAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8CC8391B57B5A300408241 /* SelectAlertViewController.swift */; };
 		BEA659CF1B5A500D004298AE /* SystemConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA659CE1B5A500D004298AE /* SystemConfig.swift */; };
+		BEA659D11B5AAF6F004298AE /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA659D01B5AAF6F004298AE /* Colors.swift */; };
 		BEB5655A1B4EA35E0096B1FE /* OpenDiaryAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB565591B4EA35E0096B1FE /* OpenDiaryAnimation.swift */; };
 		BEB5655C1B4ECD130096B1FE /* AddDiaryAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB5655B1B4ECD130096B1FE /* AddDiaryAnimation.swift */; };
 		BEB5655E1B4ED8F90096B1FE /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB5655D1B4ED8F90096B1FE /* SettingViewController.swift */; };
@@ -55,6 +56,7 @@
 		BE8516FF1B58FE2800C65D5D /* SettingViewColorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewColorCell.swift; sourceTree = "<group>"; };
 		BE8CC8391B57B5A300408241 /* SelectAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectAlertViewController.swift; sourceTree = "<group>"; };
 		BEA659CE1B5A500D004298AE /* SystemConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemConfig.swift; sourceTree = "<group>"; };
+		BEA659D01B5AAF6F004298AE /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		BEB565591B4EA35E0096B1FE /* OpenDiaryAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenDiaryAnimation.swift; sourceTree = "<group>"; };
 		BEB5655B1B4ECD130096B1FE /* AddDiaryAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDiaryAnimation.swift; sourceTree = "<group>"; };
 		BEB5655D1B4ED8F90096B1FE /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingViewController.swift; path = superman/SettingViewController.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 			children = (
 				BE1594A81B56B63E0029FF4A /* SelfConfig.swift */,
 				BEA659CE1B5A500D004298AE /* SystemConfig.swift */,
+				BEA659D01B5AAF6F004298AE /* Colors.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 				BEBDCDB11B540B3E0097FB1F /* NewSettingViewController.swift in Sources */,
 				BEEE07771B4CD0E00015E752 /* DiaryEntry.swift in Sources */,
 				BEEE07641B4CCEDC0015E752 /* AppDelegate.swift in Sources */,
+				BEA659D11B5AAF6F004298AE /* Colors.swift in Sources */,
 				BEBDCDAF1B53F0770097FB1F /* InfoViewController.swift in Sources */,
 				BEEE07791B4CF1930015E752 /* DiaryTableViewCell.swift in Sources */,
 				BE768EF21B4D768C0032B5CE /* GoogleIcon.swift in Sources */,

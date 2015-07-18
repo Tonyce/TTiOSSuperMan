@@ -9,7 +9,6 @@
 import UIKit
 
 protocol SelectColorViewControllerDelegate: class {
-//    func colorPicker(picker: SelectColorViewController, didPickColor color: UIColor)
     func colorPicker(picker: SelectColorViewController, didPickColorEntry colorEntry: [String: AnyObject])
 }
 
@@ -19,34 +18,10 @@ class SelectColorViewController: UIViewController {
     
     var systemColorEntry:[String: AnyObject] = SystemConfig.sharedInstance.systemColorEntry!
     
-    let colorArr: [[String: AnyObject]] = [
-        ["color": UIColor.MKColor.LightBlue, "name": "默认颜色"],
-        ["color": UIColor.MKColor.Red, "name": "番茄红"],
-        ["color": UIColor.MKColor.DeepOrange, "name": "橘红"],
-        ["color": UIColor.MKColor.Amber, "name": "香蕉黄"],
-        ["color": UIColor.MKColor.Grey, "name": "石墨黑"],
-        ["color": UIColor.MKColor.Indigo, "name": "蓝莓色"],
-        ["color": UIColor.MKColor.Teal, "name": "罗勒绿"],
-        ["color": UIColor.MKColor.LightBlue, "name": "孔雀蓝"],
-        ["color": UIColor.MKColor.LightGreen, "name": "鼠尾草绿"],
-        ["color": UIColor.MKColor.Orange, "name": "红褐色"],
-        ["color": UIColor.MKColor.Purple, "name": "葡萄紫"],
-        
-        
-//        ["color": UIColor.MKColor.Red, "name": ""],
-//        ["color": UIColor.MKColor.Pink, "name": ""],
-//        ["color": UIColor.MKColor.Yellow, "name": "黄"],
-//        ["color": UIColor.MKColor.BlueGrey, "name": "石墨黑"],
-//        ["color": UIColor.MKColor.Brown, "name": "棕色"],
-//        ["color": UIColor.MKColor.Green, "name": "绿"],
-//        ["color": UIColor.MKColor.Cyan, "name": "孔雀蓝"],
-//        ["color": UIColor.MKColor.DeepPurple, "name": "鼠尾草绿"],
-//        ["color": UIColor.MKColor.Lime, "name": "孔雀蓝"],
-    ]
-
+    let colorArr = Colors.colorArr
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
 
@@ -66,10 +41,9 @@ extension SelectColorViewController: UITableViewDataSource, UITableViewDelegate 
         return colorArr.count
     }
     
+
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-
         let colorEntry = colorArr[indexPath.row]
-
         let cell = tableView.dequeueReusableCellWithIdentifier("colorCell", forIndexPath: indexPath) as! ColorViewCell
         
         cell.colorEntry = colorEntry
@@ -79,20 +53,6 @@ extension SelectColorViewController: UITableViewDataSource, UITableViewDelegate 
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark
         }
         
-//        if let selectColor = systemColorEntry["color"] {
-//        
-////            if colorEntry == selectColorEntry as! [String : AnyObject] {
-//            if selectColor as! NSObject == colorEntry["color"] as! UIColor {
-//                cell.colorCircleLabel.text = GoogleIcon.eacd
-//                cell.accessoryType = UITableViewCellAccessoryType.Checkmark
-//            }
-//        }
-        
-//        if colorEntry == systemColorEntry {
-//            cell.colorCircleLabel.text = GoogleIcon.eacd
-//            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
-//        }
-        
         return cell
     }
     
@@ -100,7 +60,20 @@ extension SelectColorViewController: UITableViewDataSource, UITableViewDelegate 
         if let delegate = delegate {
             let colorEntry = colorArr[indexPath.row]
             SystemConfig.sharedInstance.systemColorEntry = colorEntry
+            
+            SystemConfig.sharedInstance.saveSystemConfig("systemColor", value: indexPath.row)
             delegate.colorPicker(self, didPickColorEntry: colorEntry)
         }
     }
 }
+
+
+//        ["color": UIColor.MKColor.Red, "name": ""],
+//        ["color": UIColor.MKColor.Pink, "name": ""],
+//        ["color": UIColor.MKColor.Yellow, "name": "黄"],
+//        ["color": UIColor.MKColor.BlueGrey, "name": "石墨黑"],
+//        ["color": UIColor.MKColor.Brown, "name": "棕色"],
+//        ["color": UIColor.MKColor.Green, "name": "绿"],
+//        ["color": UIColor.MKColor.Cyan, "name": "孔雀蓝"],
+//        ["color": UIColor.MKColor.DeepPurple, "name": "鼠尾草绿"],
+//        ["color": UIColor.MKColor.Lime, "name": "孔雀蓝"],

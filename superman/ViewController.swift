@@ -78,7 +78,15 @@ class ViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         self.addDiaryBtn.center.x = self.addDiaryInitFrame.origin.x + 300
         
-        colorEntry = SystemConfig.sharedInstance.systemColorEntry
+        let savedColorEntry:[String: AnyObject] = SystemConfig.sharedInstance.systemColorEntry!
+        
+//        if let colorData = dataForKey(key) {
+//            color = NSKeyedUnarchiver.unarchiveObjectWithData(colorData) as? UIColor
+//        }
+        
+//        savedColorEntry["color"] =  NSKeyedUnarchiver.unarchiveObjectWithData(savedColorEntry["color"] as! NSData)
+        
+        colorEntry = savedColorEntry
         
         topView.backgroundColor = colorEntry["color"] as? UIColor
 
@@ -296,3 +304,22 @@ extension ViewController {
     }
 }
 
+extension NSUserDefaults {
+    
+    func colorForKey(key: String) -> UIColor? {
+        var color: UIColor?
+        if let colorData = dataForKey(key) {
+            color = NSKeyedUnarchiver.unarchiveObjectWithData(colorData) as? UIColor
+        }
+        return color
+    }
+    
+    func setColor(color: UIColor?, forKey key: String) {
+        var colorData: NSData?
+        if let color = color {
+            colorData = NSKeyedArchiver.archivedDataWithRootObject(color)
+        }
+        setObject(colorData, forKey: key)
+    }
+    
+}

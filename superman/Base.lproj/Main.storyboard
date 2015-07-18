@@ -188,6 +188,9 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" name="googleicon" family="googleicon" pointSize="20"/>
                                         <state key="normal" title="friend"/>
+                                        <connections>
+                                            <segue destination="8a7-6C-uUw" kind="show" id="i8a-Wr-8Gm"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <animations/>
@@ -274,7 +277,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-472" y="-527"/>
+            <point key="canvasLocation" x="-603" y="-518"/>
         </scene>
         <!--设置-->
         <scene sceneID="dp3-0w-mvH">
@@ -294,7 +297,7 @@
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="meCell" rowHeight="90" id="Q0j-u2-Pe5" customClass="meTableViewCell" customModule="superman" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="113.5" width="328" height="90"/>
+                                        <rect key="frame" x="0.0" y="49.5" width="328" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Q0j-u2-Pe5" id="SMZ-gB-hW9">
                                             <rect key="frame" x="0.0" y="0.0" width="328" height="89.5"/>
@@ -336,7 +339,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="PIk-Pi-Jm4">
-                                        <rect key="frame" x="0.0" y="203.5" width="328" height="44"/>
+                                        <rect key="frame" x="0.0" y="139.5" width="328" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PIk-Pi-Jm4" id="r9Z-ei-MEM">
                                             <rect key="frame" x="0.0" y="0.0" width="328" height="43.5"/>
@@ -346,7 +349,7 @@
                                         <animations/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="colorSetCell" id="ihe-a1-duO" customClass="SettingViewColorCell" customModule="superman" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="247.5" width="328" height="44"/>
+                                        <rect key="frame" x="0.0" y="183.5" width="328" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ihe-a1-duO" id="ix9-I3-YBl">
                                             <rect key="frame" x="0.0" y="0.0" width="328" height="43.5"/>
@@ -449,6 +452,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="closeBtn" destination="fre-da-hv3" id="mbV-UI-LCX"/>
                         <outlet property="tableView" destination="k8D-2m-pNR" id="LHd-gy-AJZ"/>
@@ -457,7 +461,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d6L-Sv-xsL" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="zm6-w1-vgI" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="427" y="-527"/>
+            <point key="canvasLocation" x="208" y="-518"/>
         </scene>
         <!--我-->
         <scene sceneID="xjN-gZ-vHa">
@@ -471,11 +475,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KJK-Wl-cCi">
-                                <rect key="frame" x="-4" y="137" width="328" height="419"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KJK-Wl-cCi">
+                                <rect key="frame" x="-4" y="0.0" width="328" height="568"/>
                                 <subviews>
                                     <imageView autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="me" translatesAutoresizingMaskIntoConstraints="NO" id="nww-ES-eaI">
-                                        <rect key="frame" x="114" y="80" width="100" height="100"/>
+                                        <rect key="frame" x="114" y="40" width="100" height="100"/>
                                         <animations/>
                                         <gestureRecognizers/>
                                         <constraints>
@@ -487,7 +491,7 @@
                                         </connections>
                                     </imageView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="路漫漫其修远兮" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="fa9-Dg-ANY">
-                                        <rect key="frame" x="-11" y="195" width="350" height="60"/>
+                                        <rect key="frame" x="-11" y="155" width="350" height="60"/>
                                         <animations/>
                                         <color key="backgroundColor" red="0.46743521851665448" green="1" blue="0.54095204552773257" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -505,7 +509,7 @@
                                     <constraint firstItem="fa9-Dg-ANY" firstAttribute="top" secondItem="nww-ES-eaI" secondAttribute="bottom" constant="15" id="3PE-H4-vpn"/>
                                     <constraint firstItem="fa9-Dg-ANY" firstAttribute="centerX" secondItem="KJK-Wl-cCi" secondAttribute="centerX" id="9oN-SU-0mw"/>
                                     <constraint firstItem="fa9-Dg-ANY" firstAttribute="top" secondItem="KJK-Wl-cCi" secondAttribute="top" constant="100" id="ILB-l4-ARG"/>
-                                    <constraint firstItem="nww-ES-eaI" firstAttribute="top" secondItem="KJK-Wl-cCi" secondAttribute="top" constant="80" id="Mlm-yL-SSp"/>
+                                    <constraint firstItem="nww-ES-eaI" firstAttribute="top" secondItem="KJK-Wl-cCi" secondAttribute="top" constant="40" id="Mlm-yL-SSp"/>
                                     <constraint firstItem="nww-ES-eaI" firstAttribute="centerX" secondItem="KJK-Wl-cCi" secondAttribute="centerX" id="Qpb-sb-khB"/>
                                 </constraints>
                                 <variation key="default">
@@ -524,7 +528,7 @@
                         <constraints>
                             <constraint firstItem="KJK-Wl-cCi" firstAttribute="leading" secondItem="eAW-m1-zKD" secondAttribute="leadingMargin" constant="-20" id="0AT-KH-wzl"/>
                             <constraint firstAttribute="trailingMargin" secondItem="KJK-Wl-cCi" secondAttribute="trailing" constant="-20" id="7eg-OA-Rgm"/>
-                            <constraint firstItem="KJK-Wl-cCi" firstAttribute="top" secondItem="eAW-m1-zKD" secondAttribute="topMargin" constant="-60" id="gWl-mg-oCQ"/>
+                            <constraint firstItem="KJK-Wl-cCi" firstAttribute="top" secondItem="eAW-m1-zKD" secondAttribute="topMargin" id="gWl-mg-oCQ"/>
                             <constraint firstItem="Z9g-co-iZh" firstAttribute="top" secondItem="KJK-Wl-cCi" secondAttribute="bottom" id="heb-Wd-kfn"/>
                         </constraints>
                     </view>
@@ -543,6 +547,7 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="saveBtn" destination="mIH-cd-EGf" id="eNe-RQ-j5u"/>
                         <outlet property="selfImage" destination="nww-ES-eaI" id="3TP-GD-5vv"/>
@@ -563,7 +568,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="845" y="-1443"/>
+            <point key="canvasLocation" x="674" y="-1404"/>
         </scene>
         <!--Select Color View Controller-->
         <scene sceneID="j0c-vv-GJc">
@@ -577,13 +582,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="dhn-S8-Vqb">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="dhn-S8-Vqb">
                                 <rect key="frame" x="-4" y="4" width="328" height="520"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="colorCell" id="eHN-I3-kos" customClass="ColorViewCell" customModule="superman" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="86" width="328" height="44"/>
+                                        <rect key="frame" x="0.0" y="22" width="328" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eHN-I3-kos" id="Vn9-0x-UE6">
                                             <rect key="frame" x="0.0" y="0.0" width="328" height="44"/>
@@ -634,10 +639,11 @@
                             </mask>
                         </variation>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SB8-dK-ysT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="935" y="-783"/>
+            <point key="canvasLocation" x="751" y="-569"/>
         </scene>
         <!--Friends View Controller-->
         <scene sceneID="7C9-XC-teC">
@@ -648,7 +654,7 @@
                         <viewControllerLayoutGuide type="bottom" id="pLg-6A-NCd"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="yhe-Uf-78Q">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="friend" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfN-hC-BlU">
@@ -670,10 +676,11 @@
                         <animations/>
                         <color key="backgroundColor" red="1" green="0.5174386326" blue="0.08847921534" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VmB-sK-aac" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="312" y="216"/>
+            <point key="canvasLocation" x="-603" y="-1168"/>
         </scene>
         <!--Diary View Controller-->
         <scene sceneID="Wt1-Yv-hid">
@@ -787,13 +794,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Udc-Bx-ZJb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-472" y="240"/>
+            <point key="canvasLocation" x="-603" y="181"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="UW7-hy-Drb">
             <objects>
                 <navigationController storyboardIdentifier="Setting" automaticallyAdjustsScrollViewInsets="NO" id="CMC-mm-doW" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="QBC-II-hbT">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -817,7 +825,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mc5-QQ-icL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-32" y="-527"/>
+            <point key="canvasLocation" x="-200" y="-518"/>
         </scene>
     </scenes>
     <resources>
