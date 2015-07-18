@@ -24,7 +24,6 @@ class ViewController: UIViewController {
     
     var selectIndexPath: NSIndexPath?
     
-    var selfConfig: SelfConfig?
     var colorEntry: [String: AnyObject]!
     
     let openDiaryTransition = OpenDiaryAnimation()
@@ -39,7 +38,7 @@ class ViewController: UIViewController {
         topViewInitFrame = topView.frame
         // initSelfConfig
         // selfConfig = SelfConfig(image: UIImage(named: "defaultImage")!, word: "路漫漫其修远兮\n吾将上下而求索")
-        selfConfig = SelfConfig.sharedInstance
+
         
         // initTable
         let entry1 = DiaryEntry(time: "11.02", content:"name: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", photo: photo1, rating: 4")
@@ -79,11 +78,24 @@ class ViewController: UIViewController {
         
         let savedColorEntry:[String: AnyObject] = SystemConfig.sharedInstance.systemColorEntry!
         
+        let selfConfig = SelfConfig.sharedInstance
+        
+        
+        
         colorEntry = savedColorEntry
         
         topView.backgroundColor = colorEntry["color"] as? UIColor
 
         statusView.backgroundColor = colorEntry["color"] as? UIColor
+        
+        selfImage.image = selfConfig.image
+        selfWord.text = selfConfig.word
+        
+//        if selfConfig.isDefault == true {
+//            selfWord.textColor = UIColor.grayColor()
+//        }else {
+//            selfWord.textColor = UIColor.whiteColor()
+//        }
         
         UIView.animateWithDuration(0.5, animations: {
                 self.addDiaryBtn.frame = self.addDiaryInitFrame
@@ -117,9 +129,6 @@ class ViewController: UIViewController {
         selfImage.layer.masksToBounds = true
         selfWord.backgroundColor = UIColor.clearColor()
         selfWord.text = "路漫漫其修远兮\n吾将上下而求索"
-        
-        selfImage.image = selfConfig?.image
-        selfWord.text = selfConfig?.word
     }
     
     func shadowTopView(){
@@ -140,12 +149,12 @@ class ViewController: UIViewController {
     }
     
     @IBAction func unwindSetSelfConfig(sender: UIStoryboardSegue){
-        if let sourceViewController = sender.sourceViewController as? SettingViewController,
-            selfConfig = sourceViewController.selfConfig {
-                self.selfConfig = selfConfig
-                selfImage.image = self.selfConfig?.image
-                selfWord.text = self.selfConfig?.word
-        }
+        // if let sourceViewController = sender.sourceViewController as? SettingViewController,
+        //    selfConfig = sourceViewController.selfConfig {
+        //        self.selfConfig = selfConfig
+        //        selfImage.image = self.selfConfig?.image
+        //        selfWord.text = self.selfConfig?.word
+        // }
     }
 
 }
@@ -278,7 +287,7 @@ extension ViewController {
             let settingView = segue.destinationViewController as! SettingViewController
             openSettingAnimation.fromFrame = self.settingBtn.frame
             openSettingAnimation.fromFrameCenter = self.settingBtn.center
-            settingView.selfConfig = self.selfConfig
+//            settingView.selfConfig = self.selfConfig
             settingView.colorEntry = self.colorEntry
             settingView.transitioningDelegate = openSettingAnimation
         }
@@ -286,7 +295,7 @@ extension ViewController {
         if segue.identifier == "imageSettingSegue" {
             let nav = segue.destinationViewController as! UINavigationController
 
-            let settingView = nav.topViewController as! SettingViewController
+//            let settingView = nav.topViewController as! SettingViewController
             openSettingAnimation.fromFrame = self.selfImage.frame
             openSettingAnimation.fromFrameCenter = self.selfImage.center
 //            settingView.selfConfig = self.selfConfig

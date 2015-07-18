@@ -160,7 +160,7 @@
                                             <constraint firstAttribute="height" constant="60" id="a0W-wN-PDn"/>
                                         </constraints>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="wyM-je-H0A" appends="YES" id="nP9-b0-der"/>
@@ -311,15 +311,15 @@
                                                         <constraint firstAttribute="height" constant="70" id="ovH-KU-ws5"/>
                                                     </constraints>
                                                 </imageView>
-                                                <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" editable="NO" text="lu" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="me6-Du-wKv">
-                                                    <rect key="frame" x="101" y="14" width="200" height="60"/>
+                                                <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" editable="NO" text="哈哈哈" translatesAutoresizingMaskIntoConstraints="NO" id="ZXQ-Tg-sO4">
+                                                    <rect key="frame" x="101" y="15" width="170" height="60"/>
                                                     <animations/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="60" id="HhM-pL-GSI"/>
-                                                        <constraint firstAttribute="width" constant="200" id="bxM-Ao-AQd"/>
+                                                        <constraint firstAttribute="height" constant="60" id="QqO-pY-54C"/>
+                                                        <constraint firstAttribute="width" constant="170" id="kjs-tS-Ubf"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                             </subviews>
@@ -327,14 +327,14 @@
                                             <constraints>
                                                 <constraint firstItem="1kO-FF-I6A" firstAttribute="centerY" secondItem="SMZ-gB-hW9" secondAttribute="centerY" id="1Cx-JE-Ne5"/>
                                                 <constraint firstItem="1kO-FF-I6A" firstAttribute="leading" secondItem="SMZ-gB-hW9" secondAttribute="leadingMargin" constant="15" id="6CI-ni-pdy"/>
-                                                <constraint firstItem="me6-Du-wKv" firstAttribute="centerY" secondItem="SMZ-gB-hW9" secondAttribute="centerY" id="7zm-6J-fUc"/>
-                                                <constraint firstItem="me6-Du-wKv" firstAttribute="leading" secondItem="1kO-FF-I6A" secondAttribute="trailing" constant="8" id="FwL-v2-ACG"/>
+                                                <constraint firstItem="ZXQ-Tg-sO4" firstAttribute="centerY" secondItem="SMZ-gB-hW9" secondAttribute="centerY" id="PYN-LR-8l9"/>
+                                                <constraint firstItem="ZXQ-Tg-sO4" firstAttribute="leading" secondItem="1kO-FF-I6A" secondAttribute="trailing" constant="8" id="jzM-2w-m7O"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
                                         <connections>
                                             <outlet property="selfImage" destination="1kO-FF-I6A" id="NVR-ND-dcU"/>
-                                            <outlet property="wordTextView" destination="me6-Du-wKv" id="Mhi-vR-1Fn"/>
+                                            <outlet property="wordView" destination="ZXQ-Tg-sO4" id="8l8-4f-4Fz"/>
                                             <segue destination="u8n-rb-9Pb" kind="show" identifier="selfSetSegue" id="wRB-id-8w8"/>
                                         </connections>
                                     </tableViewCell>

@@ -57,6 +57,7 @@ class SettingViewController: UIViewController {
 //                self.selfConfig = selfConfig
                 SelfConfig.sharedInstance.image = selfConfig.image
                 SelfConfig.sharedInstance.word  = selfConfig.word
+                SelfConfig.sharedInstance.isDefault = false
                 
                 SelfConfig.sharedInstance.saveSelfConfigs(SelfConfig.sharedInstance)
                 self.tableView.reloadData()
@@ -65,8 +66,8 @@ class SettingViewController: UIViewController {
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "dismissSetting" {
-            let mainView = segue.destinationViewController as! ViewController
-            mainView.selfConfig = self.selfConfig
+            // let mainView = segue.destinationViewController as! ViewController
+            // mainView.selfConfig = self.selfConfig
             SystemConfig.sharedInstance.systemColorEntry = self.colorEntry
             
         }else if segue.identifier == "colorSetSegue"{
