@@ -17,8 +17,7 @@ class SelectColorViewController: UIViewController {
     
     weak var delegate: SelectColorViewControllerDelegate?
     
-    var selectColor: UIColor?
-    var selectColorEntry: [String: AnyObject]?
+    var systemColorEntry:[String: AnyObject] = SystemConfig.sharedInstance.systemColorEntry!
     
     let colorArr: [[String: AnyObject]] = [
         ["color": UIColor.MKColor.LightBlue, "name": "默认颜色"],
@@ -75,25 +74,30 @@ extension SelectColorViewController: UITableViewDataSource, UITableViewDelegate 
         
         cell.colorEntry = colorEntry
         
-//        if let selectColor = selectColorEntry {
-//            if selectColor == colorEntry["color"] as! UIColor {
+        if colorEntry as NSObject == systemColorEntry {
+            cell.colorCircleLabel.text = GoogleIcon.eacd
+            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+        }
+        
+//        if let selectColor = systemColorEntry["color"] {
+//        
+////            if colorEntry == selectColorEntry as! [String : AnyObject] {
+//            if selectColor as! NSObject == colorEntry["color"] as! UIColor {
 //                cell.colorCircleLabel.text = GoogleIcon.eacd
 //                cell.accessoryType = UITableViewCellAccessoryType.Checkmark
 //            }
 //        }
         
-        if selectColorEntry != nil {
-            cell.colorCircleLabel.text = GoogleIcon.eacd
-            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
-        }
+//        if colorEntry == systemColorEntry {
+//            cell.colorCircleLabel.text = GoogleIcon.eacd
+//            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+//        }
         
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if let delegate = delegate {
-//            let color = colorArr[indexPath.row]["color"] as! UIColor
-//            delegate.colorPicker(self, didPickColor: color)
             let colorEntry = colorArr[indexPath.row]
             SystemConfig.sharedInstance.systemColorEntry = colorEntry
             delegate.colorPicker(self, didPickColorEntry: colorEntry)

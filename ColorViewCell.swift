@@ -14,6 +14,7 @@ class ColorViewCell: UITableViewCell {
     @IBOutlet weak var colorNameLabel: UILabel!
     
 //    var colorEntry: [String: AnyObject]!
+    var systemColorEntry = SystemConfig.sharedInstance.systemColorEntry
     
     // MARK: - Properties
     var colorEntry: [String: AnyObject]! {

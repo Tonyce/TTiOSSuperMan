@@ -13,3 +13,8 @@ var model = [
 
 model["a"]
 var keys: Array = [String](model.keys)
+
+var a = ["a": "b"]
+var b = ["b": "a"]
+
+a == b

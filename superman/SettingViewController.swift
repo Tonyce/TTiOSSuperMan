@@ -67,7 +67,7 @@ class SettingViewController: UIViewController {
         }else if segue.identifier == "colorSetSegue"{
             let setColorView = segue.destinationViewController as! SelectColorViewController
             setColorView.delegate = self
-            setColorView.selectColor = navigationController?.navigationBar.barTintColor
+//            setColorView.selectColorEntry = SystemConfig.sharedInstance.systemColorEntry
             
         }else{
             let selfCenterView = segue.destinationViewController as! SelfCenterViewController
@@ -101,8 +101,7 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
             
         }else if indexPath.section == 1 {
             let systemColorCell = self.tableView.dequeueReusableCellWithIdentifier("colorSetCell") as! SettingViewColorCell
-            systemColorCell.colorEntry = colorEntry
-//            systemColorCell.textLabel?.text = model[indexPath.section][indexPath.row]
+            systemColorCell.colorEntry = SystemConfig.sharedInstance.systemColorEntry
             systemColorCell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
             return systemColorCell
             
@@ -125,12 +124,6 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension SettingViewController: SelectColorViewControllerDelegate {
     func colorPicker(picker: SelectColorViewController, didPickColorEntry colorEntry: [String: AnyObject]) {
-        
-//        SystemConfig.sharedInstance.systemColorEntry = colorEntry
-        
-//        navigationController?.navigationBar.barTintColor = colorEntry["color"] as? UIColor
-//        self.colorEntry = colorEntry
-//        topViewColor = colorEntry["color"] as! UIColor
         self.tableView.reloadData()
         navigationController?.popViewControllerAnimated(true)
     }
