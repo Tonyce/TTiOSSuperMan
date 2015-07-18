@@ -35,12 +35,11 @@ class ViewController: UIViewController {
     var diarys = [DiaryEntry]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        colorEntry = ["color": topViewColor, "name": "默认颜色"]
 
         topViewInitFrame = topView.frame
         // initSelfConfig
-        selfConfig = SelfConfig(image: UIImage(named: "defaultImage")!, word: "路漫漫其修远兮\n吾将上下而求索")
+        // selfConfig = SelfConfig(image: UIImage(named: "defaultImage")!, word: "路漫漫其修远兮\n吾将上下而求索")
+        selfConfig = SelfConfig.sharedInstance
         
         // initTable
         let entry1 = DiaryEntry(time: "11.02", content:"name: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", photo: photo1, rating: 4")
@@ -79,12 +78,6 @@ class ViewController: UIViewController {
         self.addDiaryBtn.center.x = self.addDiaryInitFrame.origin.x + 300
         
         let savedColorEntry:[String: AnyObject] = SystemConfig.sharedInstance.systemColorEntry!
-        
-//        if let colorData = dataForKey(key) {
-//            color = NSKeyedUnarchiver.unarchiveObjectWithData(colorData) as? UIColor
-//        }
-        
-//        savedColorEntry["color"] =  NSKeyedUnarchiver.unarchiveObjectWithData(savedColorEntry["color"] as! NSData)
         
         colorEntry = savedColorEntry
         
@@ -296,8 +289,8 @@ extension ViewController {
             let settingView = nav.topViewController as! SettingViewController
             openSettingAnimation.fromFrame = self.selfImage.frame
             openSettingAnimation.fromFrameCenter = self.selfImage.center
-            settingView.selfConfig = self.selfConfig
-            settingView.colorEntry = self.colorEntry
+//            settingView.selfConfig = self.selfConfig
+//            settingView.colorEntry = self.colorEntry
             nav.transitioningDelegate = openSettingAnimation
         }
         

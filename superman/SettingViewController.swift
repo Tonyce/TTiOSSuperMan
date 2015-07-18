@@ -41,6 +41,7 @@ class SettingViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         
+        selfConfig = SelfConfig.sharedInstance
         colorEntry = SystemConfig.sharedInstance.systemColorEntry
 
         navigationController?.navigationBar.barTintColor = colorEntry["color"] as? UIColor
@@ -53,7 +54,11 @@ class SettingViewController: UIViewController {
     @IBAction func unwindSet(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.sourceViewController as? SelfCenterViewController,
             selfConfig = sourceViewController.selfConfig {
-                self.selfConfig = selfConfig
+//                self.selfConfig = selfConfig
+                SelfConfig.sharedInstance.image = selfConfig.image
+                SelfConfig.sharedInstance.word  = selfConfig.word
+                
+                SelfConfig.sharedInstance.saveSelfConfigs(SelfConfig.sharedInstance)
                 self.tableView.reloadData()
         }
     }
@@ -106,7 +111,6 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
             return systemColorCell
             
         }else {
-            
             cell?.textLabel?.text = model[indexPath.section][indexPath.row]
             cell?.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
             return cell!
