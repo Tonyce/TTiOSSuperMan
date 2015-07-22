@@ -11,6 +11,7 @@ import UIKit
 class DiaryViewController: UIViewController {
 
     
+    @IBOutlet weak var scrollViewContainer: UIScrollView!
     @IBOutlet weak var closeBtn: UIButton!
     @IBOutlet weak var doneBtn: UIButton!
     @IBOutlet weak var topView: UIView!
@@ -18,6 +19,13 @@ class DiaryViewController: UIViewController {
     @IBOutlet weak var editBtn: UIButton!
     
     @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var selectColorBtn: UIButton!
+    
+    @IBOutlet weak var textViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var topViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var editBtnTop: NSLayoutConstraint!
+    
+    var keyboardRect = CGRectZero
     var wordTextView: UITextView!
     var contentSuperView: UIScrollView!
     let contentSuperViewDefaultContentInset = UIEdgeInsets(top: 120, left: 0, bottom: 0, right: 0)
@@ -26,7 +34,9 @@ class DiaryViewController: UIViewController {
     
     var isDiaryEditing = false
     var isFromAdd = false
+    var topViewColorEntry = Colors.colorArr[0]
     
+    var diaryEntry: DiaryEntry?
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent
@@ -35,6 +45,8 @@ class DiaryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        scrollViewContainer.contentSize = CGSize(width: view.bounds.width, height:  view.bounds.height + 10 )
+        
         initCloseBtn()
         initDoneBtn()
         initEditBtn()
@@ -51,7 +63,6 @@ class DiaryViewController: UIViewController {
         
 
         // self.view.insertSubview(contentSuperView, belowSubview: topView)
-        self.markLabel.center.y = 60
         
         
         // MARK: Keyboard handle
@@ -71,6 +82,17 @@ class DiaryViewController: UIViewController {
     
     deinit{
         NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        markLabel.text = "发生的，经历的..."
+        
+        if let diaryEntry = self.diaryEntry {
+            topView.backgroundColor = diaryEntry.color! as UIColor
+        }else {
+            topView.backgroundColor = topViewColorEntry["color"] as? UIColor
+        }
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -112,12 +134,25 @@ class DiaryViewController: UIViewController {
         }
     }
     
-    @IBAction func closeAction(sender: UIButton){
-        if isDiaryEditing {
+    @IBAction func saveAction(sender: UIButton){
+//        if isDiaryEditing {
             saveDiary()
-        }else {
-            dismissViewControllerAnimated(true, completion: nil)
-        }
+//        }else {
+//            let mainView = storyboard?.instantiateViewControllerWithIdentifier("mainView") as! ViewController
+//
+//            if let selectedIndexPath = mainView.diaryTable.indexPathForSelectedRow {
+//                // Update an existing meal.
+//                mainView.diarys[selectedIndexPath.row] = diaryEntry!
+//                mainView.diaryTable.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
+//            }else {
+//                // Add a new meal.
+//                let newIndexPath = NSIndexPath(forRow: mainView.diarys.count, inSection: 0)
+//                mainView.diarys.append(diaryEntry!)
+//                mainView.diaryTable.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
+//            }
+//            
+//            dismissViewControllerAnimated(true, completion: nil)
+//        }
     }
 
     @IBAction func editAction(sender: UIButton) {
@@ -129,10 +164,12 @@ class DiaryViewController: UIViewController {
                 self.editBtn.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI) / 4)
                 self.editBtn.alpha = 0.0
                 self.doneBtn.alpha = 1.0
-//                self.topView.bounds.size.height = 60
-//                self.topView.center.y = 30
-//                self.editBtn.center.y = 60
-//                self.markLabel.center.y = 40
+                
+                
+                self.markLabel.text = "2015-07-25 周六"
+                self.editBtnTop.constant -= 15
+                self.topViewHeight.constant = 70
+                self.view.layoutIfNeeded()
             }, completion: {
                 _ in
                 self.textView.userInteractionEnabled = true
@@ -143,7 +180,7 @@ class DiaryViewController: UIViewController {
     @IBAction func doneAction(sender: UIButton) {
         saveDiary()
     }
-    
+ 
     func saveDiary(){
         
         self.textView.resignFirstResponder()
@@ -154,34 +191,43 @@ class DiaryViewController: UIViewController {
                 self.editBtn.alpha = 1.0
                 self.doneBtn.alpha = 0.0
                 
-                self.topView.bounds.size.height = 80
-                self.topView.center.y = 40
-                self.editBtn.center.y = 80
-                self.markLabel.center.y = 60
+                self.editBtnTop.constant += 15
+                self.topViewHeight.constant = 80
+                self.view.layoutIfNeeded()
             }, completion: {
                 _ in
                 self.isDiaryEditing = false
         })
     }
-   
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "setDiaryColorSegue" {
+            let setColorView = segue.destinationViewController as! SelectColorViewController
+            setColorView.delegate = self
+            setColorView.nowColorEntry = topViewColorEntry
+        }
+    }
 
 }
 
 extension DiaryViewController: UITextViewDelegate {
     func textViewDidBeginEditing(textView: UITextView) {
-//            print(textView.contentSize)
-//                contentSuperView.scrollRectToVisible(wordTextView.frame, animated: true)
+
     }
     
     func textViewDidChange(textView: UITextView) {
-//        print(wordTextView.contentSize.height)
-//        wordTextView.frame.size.height = wordTextView.contentSize.height
-//
-//        contentSuperView.contentSize = wordTextView.bounds.size
-//        contentSuperView.scrollRectToVisible( CGRectMake(wordTextView.frame.origin.x, wordTextView.frame.origin.y + wordTextView.frame.size.height, wordTextView.frame.size.width, 10), animated: true)
-        
-//        contentSuperView.setContentOffset(CGPointMake(0.0, wordTextView.frame.origin.y - keyBoardRect.height), animated: true)
-        
+        // let textHeight = CGFloat(textViewHeight)
+        if textView.contentSize.height > textViewHeight.constant {
+            textViewHeight.constant = textView.contentSize.height
+            scrollViewContainer.contentSize.height = view.bounds.height + textView.contentSize.height
+            
+//            if keyboardRect.height + textView.contentSize.height > view.bounds.height - 40 {
+//                self.scrollViewContainer.setContentOffset(CGPointMake(0, textView.contentSize.height - keyboardRect.height), animated: true)
+//            }
+
+            self.view.layoutIfNeeded()
+        }
+
     }
 }
 
@@ -189,34 +235,62 @@ extension DiaryViewController {
     func handleKeyboardDidShow (notification: NSNotification){
         
         /* Get the frame of the keyboard */
-        let keyboardRectAsObject =
-        notification.userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
+        let keyboardRectAsObject = notification.userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
         
         /* Place it in a CGRect */
-        var keyboardRect = CGRectZero
+        
         
         keyboardRectAsObject.getValue(&keyboardRect)
         
-        let contentInsets = UIEdgeInsetsMake(defaultContentInset.top, defaultContentInset.left,keyboardRect.height, defaultContentInset.right)
-        textView.contentInset = contentInsets
-//        contentSuperView.contentInset =  contentInsets
+//        self.scrollView setContentOffset:CGPointMake(0, kbSize.height) animated:YES
+//        self.scrollViewContainer.setContentOffset(CGPointMake(0, keyboardRect.height), animated: true)
         
+//        let contentInsets = UIEdgeInsetsMake(defaultContentInset.top, defaultContentInset.left,keyboardRect.height, defaultContentInset.right)
+//        textView.contentInset = contentInsets
+        
+    }
+    
+    func handleKeyboardWillHide(notification: NSNotification){
+        
+        keyboardRect = CGRectZero
+        
+        textView.contentInset = defaultContentInset
+    }
+    
+}
+
+extension DiaryViewController : SelectColorViewControllerDelegate {
+    func colorPicker(picker: SelectColorViewController, didPickColorEntry colorEntry: [String : AnyObject], colorIndex index: Int) {
+        topViewColorEntry = colorEntry
+        // topView.backgroundColor = colorEntry["color"] as? UIColor
+        diaryEntry?.color = colorEntry["color"] as? UIColor
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+}
+
+
+//            print(textView.contentSize)
+//                contentSuperView.scrollRectToVisible(wordTextView.frame, animated: true)
+
+//        print(wordTextView.contentSize.height)
+//        wordTextView.frame.size.height = wordTextView.contentSize.height
+//
+//        contentSuperView.contentSize = wordTextView.bounds.size
+//        contentSuperView.scrollRectToVisible( CGRectMake(wordTextView.frame.origin.x, wordTextView.frame.origin.y + wordTextView.frame.size.height, wordTextView.frame.size.width, 10), animated: true)
+
+//        contentSuperView.setContentOffset(CGPointMake(0.0, wordTextView.frame.origin.y - keyBoardRect.height), animated: true)
+
+
+//        contentSuperView.contentInset =  contentInsets
+
 //        keyBoardRect = keyboardRect
 //        var aRect:CGRect  = self.view.frame
 //        aRect.size.height -= (keyboardRect.height + aRect.origin.y)
-        
+
 //        let point = CGPointMake(wordTextView.frame.origin.x, wordTextView.frame.origin.y + 180)
-        
+
 //        if !CGRectContainsPoint(aRect, point)  {
 //            print("no contains")
 //             contentSuperView.setContentOffset(CGPointMake(0.0, wordTextView.frame.origin.y - keyboardRect.height), animated: true)
 //            contentSuperView.scrollRectToVisible(CGRectMake(wordTextView.frame.origin.x, wordTextView.frame.origin.y + 180, wordTextView.frame.size.width, wordTextView.frame.size.height), animated: true)
 //        }
-        
-    }
-    
-    func handleKeyboardWillHide(notification: NSNotification){
-        textView.contentInset = defaultContentInset
-    }
-    
-}

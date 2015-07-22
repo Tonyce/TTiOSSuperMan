@@ -27,8 +27,6 @@
 		BEB5655C1B4ECD130096B1FE /* AddDiaryAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB5655B1B4ECD130096B1FE /* AddDiaryAnimation.swift */; };
 		BEB5655E1B4ED8F90096B1FE /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB5655D1B4ED8F90096B1FE /* SettingViewController.swift */; };
 		BEBDCDAD1B53E24C0097FB1F /* meTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBDCDAC1B53E24C0097FB1F /* meTableViewCell.swift */; };
-		BEBDCDAF1B53F0770097FB1F /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBDCDAE1B53F0770097FB1F /* InfoViewController.swift */; };
-		BEBDCDB11B540B3E0097FB1F /* NewSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBDCDB01B540B3E0097FB1F /* NewSettingViewController.swift */; };
 		BEEE07641B4CCEDC0015E752 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEE07631B4CCEDC0015E752 /* AppDelegate.swift */; };
 		BEEE07661B4CCEDC0015E752 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEE07651B4CCEDC0015E752 /* ViewController.swift */; };
 		BEEE07691B4CCEDC0015E752 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEEE07671B4CCEDC0015E752 /* Main.storyboard */; };
@@ -52,7 +50,7 @@
 		BE768EF11B4D768C0032B5CE /* GoogleIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GoogleIcon.swift; path = GoogleSource/GoogleIcon.swift; sourceTree = "<group>"; };
 		BE768EF31B4D77A30032B5CE /* googleicon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = googleicon.ttf; path = GoogleSource/googleicon.ttf; sourceTree = "<group>"; };
 		BE768EF51B4D96510032B5CE /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
-		BE768EF71B4D96F00032B5CE /* DiaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryViewController.swift; sourceTree = "<group>"; };
+		BE768EF71B4D96F00032B5CE /* DiaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiaryViewController.swift; path = superman/DiaryViewController.swift; sourceTree = "<group>"; };
 		BE8516FF1B58FE2800C65D5D /* SettingViewColorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewColorCell.swift; sourceTree = "<group>"; };
 		BE8CC8391B57B5A300408241 /* SelectAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectAlertViewController.swift; sourceTree = "<group>"; };
 		BEA659CE1B5A500D004298AE /* SystemConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemConfig.swift; sourceTree = "<group>"; };
@@ -61,8 +59,6 @@
 		BEB5655B1B4ECD130096B1FE /* AddDiaryAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDiaryAnimation.swift; sourceTree = "<group>"; };
 		BEB5655D1B4ED8F90096B1FE /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingViewController.swift; path = superman/SettingViewController.swift; sourceTree = "<group>"; };
 		BEBDCDAC1B53E24C0097FB1F /* meTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = meTableViewCell.swift; path = superman/meTableViewCell.swift; sourceTree = "<group>"; };
-		BEBDCDAE1B53F0770097FB1F /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
-		BEBDCDB01B540B3E0097FB1F /* NewSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewSettingViewController.swift; path = superman/NewSettingViewController.swift; sourceTree = "<group>"; };
 		BEEE07601B4CCEDC0015E752 /* superman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = superman.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEEE07631B4CCEDC0015E752 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BEEE07651B4CCEDC0015E752 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -101,7 +97,6 @@
 			children = (
 				BEB5655D1B4ED8F90096B1FE /* SettingViewController.swift */,
 				BEBDCDAC1B53E24C0097FB1F /* meTableViewCell.swift */,
-				BEBDCDB01B540B3E0097FB1F /* NewSettingViewController.swift */,
 				BE4B93971B54ADA0008CAA67 /* SelfCenterViewController.swift */,
 				BE3342F51B57B05A003F06BC /* SelectColorViewController.swift */,
 				BE8CC8391B57B5A300408241 /* SelectAlertViewController.swift */,
@@ -145,16 +140,14 @@
 		BEEE07621B4CCEDC0015E752 /* superman */ = {
 			isa = PBXGroup;
 			children = (
+				BEEE07781B4CF1930015E752 /* DiaryTableViewCell.swift */,
 				BEEE07631B4CCEDC0015E752 /* AppDelegate.swift */,
 				BEEE07651B4CCEDC0015E752 /* ViewController.swift */,
 				BEEE07671B4CCEDC0015E752 /* Main.storyboard */,
-				BEBDCDAE1B53F0770097FB1F /* InfoViewController.swift */,
-				BE768EF71B4D96F00032B5CE /* DiaryViewController.swift */,
 				BE768EF51B4D96510032B5CE /* FriendsViewController.swift */,
 				BEEE076A1B4CCEDC0015E752 /* Assets.xcassets */,
 				BEEE076C1B4CCEDC0015E752 /* LaunchScreen.storyboard */,
 				BEEE076F1B4CCEDC0015E752 /* Info.plist */,
-				BEEE07781B4CF1930015E752 /* DiaryTableViewCell.swift */,
 				BE3A1F5B1B52DACA00569CB8 /* MyPlayground.playground */,
 			);
 			path = superman;
@@ -163,6 +156,7 @@
 		BEEE07751B4CD06A0015E752 /* diaryEntry */ = {
 			isa = PBXGroup;
 			children = (
+				BE768EF71B4D96F00032B5CE /* DiaryViewController.swift */,
 				BEEE07761B4CD0E00015E752 /* DiaryEntry.swift */,
 			);
 			name = diaryEntry;
@@ -270,11 +264,9 @@
 				BE26DEC81B5816C30018528B /* ColorViewCell.swift in Sources */,
 				BEB5655A1B4EA35E0096B1FE /* OpenDiaryAnimation.swift in Sources */,
 				BEEE07661B4CCEDC0015E752 /* ViewController.swift in Sources */,
-				BEBDCDB11B540B3E0097FB1F /* NewSettingViewController.swift in Sources */,
 				BEEE07771B4CD0E00015E752 /* DiaryEntry.swift in Sources */,
 				BEEE07641B4CCEDC0015E752 /* AppDelegate.swift in Sources */,
 				BEA659D11B5AAF6F004298AE /* Colors.swift in Sources */,
-				BEBDCDAF1B53F0770097FB1F /* InfoViewController.swift in Sources */,
 				BEEE07791B4CF1930015E752 /* DiaryTableViewCell.swift in Sources */,
 				BE768EF21B4D768C0032B5CE /* GoogleIcon.swift in Sources */,
 				BEB5655E1B4ED8F90096B1FE /* SettingViewController.swift in Sources */,

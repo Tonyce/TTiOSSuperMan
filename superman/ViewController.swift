@@ -41,9 +41,9 @@ class ViewController: UIViewController {
 
         
         // initTable
-        let entry1 = DiaryEntry(time: "11.02", content:"name: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", photo: photo1, rating: 4")
-        let entry2 = DiaryEntry(time: "12.04", content: "UIImage(named:meal2.jpglet meal2 = Meal(name: \"Chicken and Potatoes\", photo: photo2, rating: 5")
-        let entry3 = DiaryEntry(time: "11.04", content: "String(name: \"Pasta with Meatballs\", photo: photo3, rating: 3")
+        let entry1 = DiaryEntry(time: "11.02", content:"name: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", photo: photo1, rating: 4", color: UIColor.MKColor.BlueGrey)
+        let entry2 = DiaryEntry(time: "12.04", content: "UIImage(named:meal2.jpglet meal2 = Meal(name: \"Chicken and Potatoes\", photo: photo2, rating: 5", color: UIColor.MKColor.DeepOrange)
+        let entry3 = DiaryEntry(time: "11.04", content: "String(name: \"Pasta with Meatballs\", photo: photo3, rating: 3", color: UIColor.MKColor.Purple)
         diarys += [entry1, entry2, entry3, entry1, entry2, entry3,entry1, entry2, entry3,entry1, entry2, entry3]
 
         diaryTable.delegate = self
@@ -173,10 +173,13 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCellWithIdentifier("diaryCell", forIndexPath: indexPath) as! DiaryTableViewCell
         
         let diaryEntry = diarys[indexPath.row]
-        cell.labelField.text = diaryEntry.time
-        cell.circleIdentifyLabel.font = UIFont(name: GoogleIconName, size: 12.0)
-        cell.circleIdentifyLabel.textColor = UIColor.MKColor.LightBlue
-        cell.circleIdentifyLabel.text = GoogleIcon.eacd
+        
+        cell.diaryEntry = diaryEntry
+        
+//        cell.labelField.text = diaryEntry.time
+//        cell.circleIdentifyLabel.font = UIFont(name: GoogleIconName, size: 12.0)
+//        cell.circleIdentifyLabel.textColor = UIColor.MKColor.LightBlue
+//        cell.circleIdentifyLabel.text = GoogleIcon.eacd
         
         let cellBackView = UIView(frame: cell.frame)
         cell.selectedBackgroundView = cellBackView
@@ -234,7 +237,7 @@ extension ViewController: UIScrollViewDelegate {
             self.topView.layer.transform = topViewTransform
             self.addDiaryBtn.layer.transform = topViewTransform
             self.statusView.layer.transform = statusViewTransform
-
+            clearTopViewShadow()
         } else { // UP
             
             if offset > 10 {
@@ -255,18 +258,39 @@ extension ViewController: UIScrollViewDelegate {
 }
 
 extension ViewController {
+    
+    @IBAction func unwindToDiaryList(sender: UIStoryboardSegue) {
+        if let sourceViewController = sender.sourceViewController as? DiaryViewController,
+            diaryEntry = sourceViewController.diaryEntry {
+                if let selectedIndexPath = self.diaryTable.indexPathForSelectedRow {
+                    // Update an existing meal.
+                    diarys[selectedIndexPath.row] = diaryEntry
+                    self.diaryTable.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
+                }else {
+                    // Add a new meal.
+                    let newIndexPath = NSIndexPath(forRow: diarys.count, inSection: 0)
+                    diarys.append(diaryEntry)
+                    self.diaryTable.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
+                }
+        }
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 
         if segue.identifier == "ShowAndEditDiary" {
 
             if let indexPath = self.diaryTable.indexPathForSelectedRow {
-                // selectIndexPath = indexPath
-                // let item = self.tableItems[indexPath.row]
+                let diaryView = segue.destinationViewController as! DiaryViewController
+                
+                let diaryEntry = self.diarys[indexPath.row]
                 
                 let rectOfCellInTableView = self.diaryTable.rectForRowAtIndexPath(indexPath)
                 let tmpOriginFrame = self.diaryTable.convertRect(rectOfCellInTableView, toView: diaryTable.superview)
                 openDiaryTransition.tmpOriginFrame = tmpOriginFrame
-                segue.destinationViewController.transitioningDelegate = openDiaryTransition
+                
+                diaryView.transitioningDelegate = openDiaryTransition
+                diaryView.diaryEntry = diaryEntry
+                // segue.destinationViewController.transitioningDelegate = openDiaryTransition
                 // (segue.destinationViewController as! InfoViewController).item = item
             }
         }

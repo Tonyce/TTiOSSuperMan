@@ -9,14 +9,17 @@
 import UIKit
 
 protocol SelectColorViewControllerDelegate: class {
-    func colorPicker(picker: SelectColorViewController, didPickColorEntry colorEntry: [String: AnyObject])
+//    func colorPicker(picker: SelectColorViewController, didPickColorEntry colorEntry: [String: AnyObject])
+    func colorPicker(picker: SelectColorViewController, didPickColorEntry colorEntry: [String: AnyObject], colorIndex index: Int)
 }
 
 class SelectColorViewController: UIViewController {
     
     weak var delegate: SelectColorViewControllerDelegate?
     
-    var systemColorEntry:[String: AnyObject] = SystemConfig.sharedInstance.systemColorEntry!
+//    var systemColorEntry:[String: AnyObject] = SystemConfig.sharedInstance.systemColorEntry!
+    
+    var nowColorEntry: [String: AnyObject]?
     
     let colorArr = Colors.colorArr
     
@@ -48,7 +51,7 @@ extension SelectColorViewController: UITableViewDataSource, UITableViewDelegate 
         
         cell.colorEntry = colorEntry
         
-        if colorEntry as NSObject == systemColorEntry {
+        if colorEntry as NSObject == nowColorEntry {
             cell.colorCircleLabel.text = GoogleIcon.eacd
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark
         }
@@ -58,11 +61,11 @@ extension SelectColorViewController: UITableViewDataSource, UITableViewDelegate 
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if let delegate = delegate {
-            let colorEntry = colorArr[indexPath.row]
-            SystemConfig.sharedInstance.systemColorEntry = colorEntry
             
-            SystemConfig.sharedInstance.saveSystemConfig("systemColor", value: indexPath.row)
-            delegate.colorPicker(self, didPickColorEntry: colorEntry)
+            let colorEntry = colorArr[indexPath.row]
+            
+//            delegate.colorPicker(self, didPickColorEntry: colorEntry)
+            delegate.colorPicker(self, didPickColorEntry: colorEntry, colorIndex: indexPath.row)
         }
     }
 }

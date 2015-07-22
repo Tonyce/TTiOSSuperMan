@@ -73,6 +73,7 @@ class SettingViewController: UIViewController {
         }else if segue.identifier == "colorSetSegue"{
             let setColorView = segue.destinationViewController as! SelectColorViewController
             setColorView.delegate = self
+            setColorView.nowColorEntry = self.colorEntry
 //            setColorView.selectColorEntry = SystemConfig.sharedInstance.systemColorEntry
             
         }else{
@@ -128,7 +129,13 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 extension SettingViewController: SelectColorViewControllerDelegate {
-    func colorPicker(picker: SelectColorViewController, didPickColorEntry colorEntry: [String: AnyObject]) {
+    
+    func colorPicker(picker: SelectColorViewController, didPickColorEntry colorEntry: [String: AnyObject], colorIndex index: Int) {
+        
+        SystemConfig.sharedInstance.systemColorEntry = colorEntry
+        
+        SystemConfig.sharedInstance.saveSystemConfig("systemColor", value: index)
+        
         self.tableView.reloadData()
         navigationController?.popViewControllerAnimated(true)
     }

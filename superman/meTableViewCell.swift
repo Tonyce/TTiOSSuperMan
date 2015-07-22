@@ -11,9 +11,9 @@ import UIKit
 class meTableViewCell: UITableViewCell {
 
     @IBOutlet weak var selfImage: UIImageView!
-    @IBOutlet weak var wordTextView: UITextView!
     
     @IBOutlet weak var wordView: UITextView!
+    
     var selfConfig: SelfConfig! {
         didSet {
             configureCell()
@@ -34,8 +34,6 @@ class meTableViewCell: UITableViewCell {
         selfImage.layer.masksToBounds = true
         
         self.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
-//
-       
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

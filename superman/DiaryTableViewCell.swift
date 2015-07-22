@@ -11,15 +11,32 @@ import UIKit
 class DiaryTableViewCell: UITableViewCell {
 
     @IBOutlet weak var circleIdentifyLabel: UILabel!
-    @IBOutlet weak var labelField: UILabel!
+    @IBOutlet weak var weatherField: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    
+    var diaryEntry: DiaryEntry! {
+        didSet {
+            configureCell()
+        }
+    }
+    // MARK: - Utility methods
+    private func configureCell() {
+        self.weatherField.text = diaryEntry.time
+        
+//        self.weatherField.textColor = diaryEntry.color
+//        self.timeLabel.textColor = diaryEntry.color
+        
+        self.circleIdentifyLabel.font = UIFont(name: GoogleIconName, size: 15.0)
+        self.circleIdentifyLabel.textColor = diaryEntry.color
+        self.circleIdentifyLabel.text = GoogleIcon.eacd
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-//        print(labelField.frame)
-        labelField.layer.cornerRadius = CGRectGetHeight(self.labelField.frame) / 2
-        labelField.layer.masksToBounds = true
-//        labelField.layer.backgroundColor = UIColor.redColor().CGColor
-        labelField.backgroundColor = UIColor.clearColor()
+        
+//        labelField.layer.cornerRadius = CGRectGetHeight(self.labelField.frame) / 2
+//        labelField.layer.masksToBounds = true
+//        labelField.backgroundColor = UIColor.clearColor()
         
     }
 
