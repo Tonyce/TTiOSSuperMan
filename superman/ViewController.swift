@@ -296,15 +296,11 @@ extension ViewController {
         }
         
         if segue.identifier == "addDiary" {
-            let diaryView = segue.destinationViewController as! DiaryViewController
-            diaryView.editBtn?.alpha = 0.0
-            diaryView.doneBtn?.alpha = 1.0
-            diaryView.isFromAdd = true
+            let addDiaryView = segue.destinationViewController as! AddDiaryViewController
 
-            diaryView.isDiaryEditing = false
             openSettingAnimation.fromFrame = self.addDiaryBtn.frame
             openSettingAnimation.fromFrameCenter = self.addDiaryBtn.center
-            diaryView.transitioningDelegate = addDiaryAnimation
+            addDiaryView.transitioningDelegate = addDiaryAnimation
         }
         
         if segue.identifier == "settingSegue" {

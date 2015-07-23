@@ -14,6 +14,8 @@
             <string>googleicon</string>
             <string>googleicon</string>
             <string>googleicon</string>
+            <string>googleicon</string>
+            <string>googleicon</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -208,7 +210,7 @@
                                     <constraint firstAttribute="width" constant="50" id="w3B-uv-4kH"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="24s-cQ-bPw" kind="show" identifier="addDiary" id="AH6-zR-UVa"/>
+                                    <segue destination="Jtf-ea-p5H" kind="show" identifier="addDiary" id="aOh-3Q-AVi"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R3k-0U-tob">
@@ -668,6 +670,91 @@
             </objects>
             <point key="canvasLocation" x="-603" y="-1168"/>
         </scene>
+        <!--Add Diary View Controller-->
+        <scene sceneID="ggf-sn-wQf">
+            <objects>
+                <viewController id="Jtf-ea-p5H" customClass="AddDiaryViewController" customModule="superman" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vJk-Se-FL3"/>
+                        <viewControllerLayoutGuide type="bottom" id="cry-A8-oAa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PZU-vu-L8D">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ks1-L6-jFI">
+                                <rect key="frame" x="-4" y="0.0" width="328" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YeR-6l-wB9">
+                                        <rect key="frame" x="0.0" y="17" width="45" height="45"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="2mI-k9-vJx"/>
+                                            <constraint firstAttribute="height" constant="40" id="Dot-pM-XtY"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="googleicon" family="googleicon" pointSize="22"/>
+                                        <state key="normal" title="close"/>
+                                        <connections>
+                                            <action selector="dismissAction:" destination="Jtf-ea-p5H" eventType="touchUpInside" id="EGl-6I-f4h"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="发生的，经历的..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iOR-cj-hIW">
+                                        <rect key="frame" x="48" y="20" width="232" height="40"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="ank-aY-ZJk"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" red="0.92897727269999997" green="0.92897727269999997" blue="0.92897727269999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wtg-xU-tgW">
+                                        <rect key="frame" x="288" y="20" width="40" height="40"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="5Xj-Zw-kRY"/>
+                                            <constraint firstAttribute="width" constant="40" id="Azv-8x-vpJ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="googleicon" family="googleicon" pointSize="22"/>
+                                        <state key="normal" title="完成"/>
+                                        <connections>
+                                            <segue destination="fvN-qo-j9b" kind="unwind" unwindAction="unwindToDiaryList:" id="hjR-rH-QFz"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" red="0.1921896968" green="0.73395065159999995" blue="0.86276830810000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Wtg-xU-tgW" secondAttribute="trailing" id="Dqz-x0-Pdh"/>
+                                    <constraint firstItem="YeR-6l-wB9" firstAttribute="top" secondItem="Ks1-L6-jFI" secondAttribute="top" constant="20" id="H8W-pn-maD"/>
+                                    <constraint firstItem="Wtg-xU-tgW" firstAttribute="leading" secondItem="iOR-cj-hIW" secondAttribute="trailing" constant="8" id="Ho5-Wc-Msi"/>
+                                    <constraint firstAttribute="bottom" secondItem="iOR-cj-hIW" secondAttribute="bottom" id="Mer-7Q-fK1"/>
+                                    <constraint firstItem="YeR-6l-wB9" firstAttribute="leading" secondItem="Ks1-L6-jFI" secondAttribute="leading" id="d7R-T9-ljB"/>
+                                    <constraint firstItem="Wtg-xU-tgW" firstAttribute="top" secondItem="Ks1-L6-jFI" secondAttribute="top" constant="20" id="kl7-Dp-H34"/>
+                                    <constraint firstItem="iOR-cj-hIW" firstAttribute="leading" secondItem="YeR-6l-wB9" secondAttribute="trailing" constant="8" id="od8-Zm-XGt"/>
+                                    <constraint firstAttribute="height" constant="60" id="qZe-BS-X5C"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ks1-L6-jFI" firstAttribute="leading" secondItem="PZU-vu-L8D" secondAttribute="leadingMargin" constant="-20" id="6Rv-6f-zzU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Ks1-L6-jFI" secondAttribute="trailing" constant="-20" id="80C-rK-S0x"/>
+                            <constraint firstItem="Ks1-L6-jFI" firstAttribute="top" secondItem="vJk-Se-FL3" secondAttribute="bottom" constant="-20" id="jcs-i1-qnT"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="closeBtn" destination="YeR-6l-wB9" id="47h-1x-wnx"/>
+                        <outlet property="saveBtn" destination="Wtg-xU-tgW" id="6JZ-45-3pf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="br6-un-AaI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="fvN-qo-j9b" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-926" y="227"/>
+        </scene>
         <!--Diary View Controller-->
         <scene sceneID="Wt1-Yv-hid">
             <objects>
@@ -861,8 +948,7 @@
         <image name="me" width="60" height="57"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="0Ej-VN-eJl"/>
-        <segue reference="wq3-pr-vKb"/>
         <segue reference="m2P-89-cQO"/>
+        <segue reference="0Ej-VN-eJl"/>
     </inferredMetricsTieBreakers>
 </document>
