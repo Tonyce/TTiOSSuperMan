@@ -14,12 +14,12 @@ class DiaryEntry: NSObject, NSCoding {
     var time: String?
     // var unixTime: Int?
     var content: String?
-    var color : UIColor?
+    var colorEntryIndex : Int?
     
-    init(time: String, content: String, color: UIColor) {
+    init(time: String, content: String, colorEntryIndex: Int) {
         self.time = time
         self.content = content
-        self.color = color
+        self.colorEntryIndex = colorEntryIndex
         
         super.init()
     }
@@ -40,14 +40,14 @@ class DiaryEntry: NSObject, NSCoding {
     func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeObject(time, forKey: PropertyKey.timeKey)
         aCoder.encodeObject(content, forKey: PropertyKey.contentKey)
-        aCoder.encodeObject(color, forKey: PropertyKey.colorKey)
+        aCoder.encodeObject(colorEntryIndex, forKey: PropertyKey.colorKey)
     }
     required convenience init?(coder aDecoder: NSCoder) {
         let time = aDecoder.decodeObjectForKey(PropertyKey.timeKey) as! String
         let content = aDecoder.decodeObjectForKey(PropertyKey.contentKey) as! String
-        let color = aDecoder.decodeObjectForKey(PropertyKey.colorKey) as! UIColor
+        let colorEntryIndex = aDecoder.decodeObjectForKey(PropertyKey.colorKey) as! Int
         // Must call designated initializer.
-        self.init(time: time, content: content, color: color)
+        self.init(time: time, content: content, colorEntryIndex: colorEntryIndex)
     }
     
     

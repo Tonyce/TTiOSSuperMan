@@ -41,9 +41,9 @@ class ViewController: UIViewController {
 
         
         // initTable
-        let entry1 = DiaryEntry(time: "11.02", content:"name: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", photo: photo1, rating: 4", color: UIColor.MKColor.BlueGrey)
-        let entry2 = DiaryEntry(time: "12.04", content: "UIImage(named:meal2.jpglet meal2 = Meal(name: \"Chicken and Potatoes\", photo: photo2, rating: 5", color: UIColor.MKColor.DeepOrange)
-        let entry3 = DiaryEntry(time: "11.04", content: "String(name: \"Pasta with Meatballs\", photo: photo3, rating: 3", color: UIColor.MKColor.Purple)
+        let entry1 = DiaryEntry(time: "11.02", content:"name: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", photo: photo1, rating: 4", colorEntryIndex: 2)
+        let entry2 = DiaryEntry(time: "12.04", content: "UIImage(named:meal2.jpglet meal2 = Meal(name: \"Chicken and Potatoes\", photo: photo2, rating: 5", colorEntryIndex: 5)
+        let entry3 = DiaryEntry(time: "11.04", content: "String(name: \"Pasta with Meatballs\", photo: photo3, rating: 3", colorEntryIndex: 3)
         diarys += [entry1, entry2, entry3, entry1, entry2, entry3,entry1, entry2, entry3,entry1, entry2, entry3]
 
         diaryTable.delegate = self

@@ -88,10 +88,9 @@ class DiaryViewController: UIViewController {
         markLabel.text = "发生的，经历的..."
         
         if let diaryEntry = self.diaryEntry {
-            topView.backgroundColor = diaryEntry.color! as UIColor
-        }else {
-            topView.backgroundColor = topViewColorEntry["color"] as? UIColor
+            topViewColorEntry = Colors.colorArr[ diaryEntry.colorEntryIndex! ]
         }
+        topView.backgroundColor = topViewColorEntry["color"] as? UIColor
 
     }
 
@@ -263,7 +262,7 @@ extension DiaryViewController : SelectColorViewControllerDelegate {
     func colorPicker(picker: SelectColorViewController, didPickColorEntry colorEntry: [String : AnyObject], colorIndex index: Int) {
         topViewColorEntry = colorEntry
         // topView.backgroundColor = colorEntry["color"] as? UIColor
-        diaryEntry?.color = colorEntry["color"] as? UIColor
+        diaryEntry?.colorEntryIndex = index
         dismissViewControllerAnimated(true, completion: nil)
     }
 }

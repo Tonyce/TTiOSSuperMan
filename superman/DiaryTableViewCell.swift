@@ -27,7 +27,8 @@ class DiaryTableViewCell: UITableViewCell {
 //        self.timeLabel.textColor = diaryEntry.color
         
         self.circleIdentifyLabel.font = UIFont(name: GoogleIconName, size: 15.0)
-        self.circleIdentifyLabel.textColor = diaryEntry.color
+        var colorEntry = Colors.colorArr[ diaryEntry.colorEntryIndex! ] as [String: AnyObject]
+        self.circleIdentifyLabel.textColor = colorEntry["color"] as! UIColor
         self.circleIdentifyLabel.text = GoogleIcon.eacd
     }
     
