@@ -266,12 +266,17 @@ extension ViewController {
                     // Update an existing meal.
                     diarys[selectedIndexPath.row] = diaryEntry
                     self.diaryTable.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
-                }else {
-                    // Add a new meal.
-                    let newIndexPath = NSIndexPath(forRow: diarys.count, inSection: 0)
-                    diarys.append(diaryEntry)
-                    self.diaryTable.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
                 }
+        }
+        
+        if let sourceViewController = sender.sourceViewController as? AddDiaryViewController,
+            diaryEntry = sourceViewController.diaryEntry {
+            
+                // Add a new meal.
+                let newIndexPath = NSIndexPath(forRow: 0, inSection: 0)
+                diarys.insert(diaryEntry, atIndex: 0)
+                self.diaryTable.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: UITableViewRowAnimation.Top)
+        
         }
     }
     

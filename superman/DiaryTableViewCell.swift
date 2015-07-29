@@ -13,6 +13,7 @@ class DiaryTableViewCell: UITableViewCell {
     @IBOutlet weak var circleIdentifyLabel: UILabel!
     @IBOutlet weak var weatherField: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var cellText: UITextView!
     
     var diaryEntry: DiaryEntry! {
         didSet {
@@ -30,6 +31,8 @@ class DiaryTableViewCell: UITableViewCell {
         var colorEntry = Colors.colorArr[ diaryEntry.colorEntryIndex! ] as [String: AnyObject]
         self.circleIdentifyLabel.textColor = colorEntry["color"] as! UIColor
         self.circleIdentifyLabel.text = GoogleIcon.eacd
+        
+        self.cellText.text = diaryEntry.content
     }
     
     override func awakeFromNib() {

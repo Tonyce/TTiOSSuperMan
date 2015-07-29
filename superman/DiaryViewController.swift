@@ -89,8 +89,13 @@ class DiaryViewController: UIViewController {
         
         if let diaryEntry = self.diaryEntry {
             topViewColorEntry = Colors.colorArr[ diaryEntry.colorEntryIndex! ]
+            textView.text = diaryEntry.content
         }
+        
         topView.backgroundColor = topViewColorEntry["color"] as? UIColor
+        textViewHeight.constant = textView.contentSize.height
+        // textView.frame.size.height = textView.contentSize.height
+        self.view.layoutIfNeeded()
 
     }
 
@@ -134,24 +139,7 @@ class DiaryViewController: UIViewController {
     }
     
     @IBAction func saveAction(sender: UIButton){
-//        if isDiaryEditing {
-            saveDiary()
-//        }else {
-//            let mainView = storyboard?.instantiateViewControllerWithIdentifier("mainView") as! ViewController
-//
-//            if let selectedIndexPath = mainView.diaryTable.indexPathForSelectedRow {
-//                // Update an existing meal.
-//                mainView.diarys[selectedIndexPath.row] = diaryEntry!
-//                mainView.diaryTable.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
-//            }else {
-//                // Add a new meal.
-//                let newIndexPath = NSIndexPath(forRow: mainView.diarys.count, inSection: 0)
-//                mainView.diarys.append(diaryEntry!)
-//                mainView.diaryTable.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
-//            }
-//            
-//            dismissViewControllerAnimated(true, completion: nil)
-//        }
+        saveDiary()
     }
 
     @IBAction func editAction(sender: UIButton) {
@@ -205,6 +193,10 @@ class DiaryViewController: UIViewController {
             setColorView.delegate = self
             setColorView.nowColorEntry = topViewColorEntry
         }
+        
+        if segue.identifier == "unwindToDiary" {
+            self.diaryEntry?.content = self.textView.text
+        }
     }
 
 }
@@ -219,10 +211,6 @@ extension DiaryViewController: UITextViewDelegate {
         if textView.contentSize.height > textViewHeight.constant {
             textViewHeight.constant = textView.contentSize.height
             scrollViewContainer.contentSize.height = view.bounds.height + textView.contentSize.height
-            
-//            if keyboardRect.height + textView.contentSize.height > view.bounds.height - 40 {
-//                self.scrollViewContainer.setContentOffset(CGPointMake(0, textView.contentSize.height - keyboardRect.height), animated: true)
-//            }
 
             self.view.layoutIfNeeded()
         }

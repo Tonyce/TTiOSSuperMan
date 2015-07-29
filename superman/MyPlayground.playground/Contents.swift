@@ -88,8 +88,8 @@ func getDayOfWeek(today:String)->Int? {
     formatter.dateFormat = "yyyy-MM-dd"
     if let todayDate = formatter.dateFromString(today) {
         let myCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
-        let myComponents = myCalendar.components(NSCalendarUnit.WeekOfYear, fromDate: todayDate)
-        let weekDay = myComponents.weekOfYear
+        let myComponents = myCalendar.components(NSCalendarUnit.Weekday, fromDate: todayDate)
+        let weekDay = myComponents.weekday
         return weekDay
     } else {
         return nil
