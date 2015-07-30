@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		BE1594A91B56B63E0029FF4A /* SelfConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1594A81B56B63E0029FF4A /* SelfConfig.swift */; };
 		BE26DEC81B5816C30018528B /* ColorViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE26DEC71B5816C30018528B /* ColorViewCell.swift */; };
+		BE2E63511B68F63100FB8468 /* Diary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BE2E634F1B68F63100FB8468 /* Diary.xcdatamodeld */; };
 		BE3342F41B578F8A003F06BC /* MKColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3342F31B578F8A003F06BC /* MKColor.swift */; };
 		BE3342F61B57B05A003F06BC /* SelectColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3342F51B57B05A003F06BC /* SelectColorViewController.swift */; };
 		BE4B93981B54ADA0008CAA67 /* SelfCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4B93971B54ADA0008CAA67 /* SelfCenterViewController.swift */; };
@@ -22,6 +23,8 @@
 		BE8517001B58FE2800C65D5D /* SettingViewColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8516FF1B58FE2800C65D5D /* SettingViewColorCell.swift */; };
 		BE8C7CC41B61479C009A8C4D /* AddDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8C7CC31B61479C009A8C4D /* AddDiaryViewController.swift */; };
 		BE8CC83A1B57B5A300408241 /* SelectAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8CC8391B57B5A300408241 /* SelectAlertViewController.swift */; };
+		BE9100701B6A2F4600392981 /* AuthorArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE91006F1B6A2F4600392981 /* AuthorArticleTableViewCell.swift */; };
+		BE9100721B6A4D0000392981 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9100711B6A4D0000392981 /* WebViewController.swift */; };
 		BEA659CF1B5A500D004298AE /* SystemConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA659CE1B5A500D004298AE /* SystemConfig.swift */; };
 		BEA659D11B5AAF6F004298AE /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA659D01B5AAF6F004298AE /* Colors.swift */; };
 		BEB5655A1B4EA35E0096B1FE /* OpenDiaryAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB565591B4EA35E0096B1FE /* OpenDiaryAnimation.swift */; };
@@ -36,11 +39,14 @@
 		BEEE07771B4CD0E00015E752 /* DiaryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEE07761B4CD0E00015E752 /* DiaryEntry.swift */; };
 		BEEE07791B4CF1930015E752 /* DiaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEE07781B4CF1930015E752 /* DiaryTableViewCell.swift */; };
 		BEEE077C1B4CF67E0015E752 /* MyAddBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEE077B1B4CF67E0015E752 /* MyAddBtn.swift */; };
+		BEEFF4331B68F6B900272133 /* Diary+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEFF4311B68F6B900272133 /* Diary+CoreDataProperties.swift */; };
+		BEEFF4341B68F6B900272133 /* Diary.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEFF4321B68F6B900272133 /* Diary.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BE1594A81B56B63E0029FF4A /* SelfConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfConfig.swift; sourceTree = "<group>"; };
 		BE26DEC71B5816C30018528B /* ColorViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorViewCell.swift; sourceTree = "<group>"; };
+		BE2E63501B68F63100FB8468 /* Diary.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Diary.xcdatamodel; sourceTree = "<group>"; };
 		BE3342F31B578F8A003F06BC /* MKColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MKColor.swift; path = "../../../Desktop/MaterialKit-master/Source/MKColor.swift"; sourceTree = "<group>"; };
 		BE3342F51B57B05A003F06BC /* SelectColorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectColorViewController.swift; sourceTree = "<group>"; };
 		BE3A1F5B1B52DACA00569CB8 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
@@ -55,6 +61,8 @@
 		BE8516FF1B58FE2800C65D5D /* SettingViewColorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewColorCell.swift; sourceTree = "<group>"; };
 		BE8C7CC31B61479C009A8C4D /* AddDiaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDiaryViewController.swift; sourceTree = "<group>"; };
 		BE8CC8391B57B5A300408241 /* SelectAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectAlertViewController.swift; sourceTree = "<group>"; };
+		BE91006F1B6A2F4600392981 /* AuthorArticleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorArticleTableViewCell.swift; sourceTree = "<group>"; };
+		BE9100711B6A4D0000392981 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		BEA659CE1B5A500D004298AE /* SystemConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemConfig.swift; sourceTree = "<group>"; };
 		BEA659D01B5AAF6F004298AE /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		BEB565591B4EA35E0096B1FE /* OpenDiaryAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenDiaryAnimation.swift; sourceTree = "<group>"; };
@@ -71,6 +79,8 @@
 		BEEE07761B4CD0E00015E752 /* DiaryEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryEntry.swift; sourceTree = "<group>"; };
 		BEEE07781B4CF1930015E752 /* DiaryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryTableViewCell.swift; sourceTree = "<group>"; };
 		BEEE077B1B4CF67E0015E752 /* MyAddBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAddBtn.swift; sourceTree = "<group>"; };
+		BEEFF4311B68F6B900272133 /* Diary+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Diary+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		BEEFF4321B68F6B900272133 /* Diary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Diary.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				BEB5655D1B4ED8F90096B1FE /* SettingViewController.swift */,
+				BE91006F1B6A2F4600392981 /* AuthorArticleTableViewCell.swift */,
 				BEBDCDAC1B53E24C0097FB1F /* meTableViewCell.swift */,
 				BE4B93971B54ADA0008CAA67 /* SelfCenterViewController.swift */,
 				BE3342F51B57B05A003F06BC /* SelectColorViewController.swift */,
@@ -105,6 +116,7 @@
 				BE4F64D11B57D17F008251E7 /* HandleImageViewController.swift */,
 				BE26DEC71B5816C30018528B /* ColorViewCell.swift */,
 				BE8516FF1B58FE2800C65D5D /* SettingViewColorCell.swift */,
+				BE9100711B6A4D0000392981 /* WebViewController.swift */,
 			);
 			name = Setting;
 			sourceTree = "<group>";
@@ -158,6 +170,9 @@
 		BEEE07751B4CD06A0015E752 /* diaryEntry */ = {
 			isa = PBXGroup;
 			children = (
+				BEEFF4311B68F6B900272133 /* Diary+CoreDataProperties.swift */,
+				BEEFF4321B68F6B900272133 /* Diary.swift */,
+				BE2E634F1B68F63100FB8468 /* Diary.xcdatamodeld */,
 				BE768EF71B4D96F00032B5CE /* DiaryViewController.swift */,
 				BEEE07761B4CD0E00015E752 /* DiaryEntry.swift */,
 				BE8C7CC31B61479C009A8C4D /* AddDiaryViewController.swift */,
@@ -255,15 +270,20 @@
 				BE8C7CC41B61479C009A8C4D /* AddDiaryViewController.swift in Sources */,
 				BE3342F41B578F8A003F06BC /* MKColor.swift in Sources */,
 				BEB5655C1B4ECD130096B1FE /* AddDiaryAnimation.swift in Sources */,
+				BE9100701B6A2F4600392981 /* AuthorArticleTableViewCell.swift in Sources */,
 				BE8CC83A1B57B5A300408241 /* SelectAlertViewController.swift in Sources */,
+				BEEFF4341B68F6B900272133 /* Diary.swift in Sources */,
 				BE4B93981B54ADA0008CAA67 /* SelfCenterViewController.swift in Sources */,
 				BEEE077C1B4CF67E0015E752 /* MyAddBtn.swift in Sources */,
 				BE768EEE1B4D2BF20032B5CE /* MyCustomView.swift in Sources */,
 				BE4F64D41B57D1E9008251E7 /* ImageExtension.swift in Sources */,
+				BE9100721B6A4D0000392981 /* WebViewController.swift in Sources */,
 				BEA659CF1B5A500D004298AE /* SystemConfig.swift in Sources */,
 				BE3342F61B57B05A003F06BC /* SelectColorViewController.swift in Sources */,
 				BEBDCDAD1B53E24C0097FB1F /* meTableViewCell.swift in Sources */,
 				BE4F64D21B57D17F008251E7 /* HandleImageViewController.swift in Sources */,
+				BEEFF4331B68F6B900272133 /* Diary+CoreDataProperties.swift in Sources */,
+				BE2E63511B68F63100FB8468 /* Diary.xcdatamodeld in Sources */,
 				BE8517001B58FE2800C65D5D /* SettingViewColorCell.swift in Sources */,
 				BE26DEC81B5816C30018528B /* ColorViewCell.swift in Sources */,
 				BEB5655A1B4EA35E0096B1FE /* OpenDiaryAnimation.swift in Sources */,
@@ -428,6 +448,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		BE2E634F1B68F63100FB8468 /* Diary.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				BE2E63501B68F63100FB8468 /* Diary.xcdatamodel */,
+			);
+			currentVersion = BE2E63501B68F63100FB8468 /* Diary.xcdatamodel */;
+			name = Diary.xcdatamodeld;
+			path = superman/Diary.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = BEEE07581B4CCEDC0015E752 /* Project object */;
 }

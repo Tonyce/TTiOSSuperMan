@@ -16,6 +16,7 @@
             <string>googleicon</string>
             <string>googleicon</string>
             <string>googleicon</string>
+            <string>googleicon</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -119,7 +120,7 @@
                                 <rect key="frame" x="-4" y="0.0" width="328" height="180"/>
                                 <subviews>
                                     <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="me" translatesAutoresizingMaskIntoConstraints="NO" id="tcM-2r-OBc">
-                                        <rect key="frame" x="23" y="90" width="70" height="70"/>
+                                        <rect key="frame" x="23" y="70" width="70" height="70"/>
                                         <animations/>
                                         <gestureRecognizers/>
                                         <constraints>
@@ -131,7 +132,7 @@
                                         </connections>
                                     </imageView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="路漫漫其修远兮吾将上下而求索" translatesAutoresizingMaskIntoConstraints="NO" id="ysD-3D-rzU">
-                                        <rect key="frame" x="103" y="95" width="187" height="60"/>
+                                        <rect key="frame" x="103" y="75" width="187" height="60"/>
                                         <animations/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -176,10 +177,10 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="ysD-3D-rzU" secondAttribute="trailing" constant="38" id="2hx-NK-bIN"/>
                                     <constraint firstItem="ysD-3D-rzU" firstAttribute="leading" secondItem="tcM-2r-OBc" secondAttribute="trailing" constant="10" id="BlO-1S-Asc"/>
-                                    <constraint firstItem="tcM-2r-OBc" firstAttribute="top" secondItem="T1B-e8-QYq" secondAttribute="top" constant="90" id="HXI-Xw-199"/>
+                                    <constraint firstItem="tcM-2r-OBc" firstAttribute="top" secondItem="T1B-e8-QYq" secondAttribute="top" constant="70" id="HXI-Xw-199"/>
                                     <constraint firstAttribute="trailing" secondItem="Bob-fk-PZX" secondAttribute="trailing" constant="10" id="JhX-o3-Qr6"/>
                                     <constraint firstItem="ack-9Y-jgK" firstAttribute="top" secondItem="T1B-e8-QYq" secondAttribute="top" constant="20" id="PZl-Qv-jIS"/>
-                                    <constraint firstItem="ysD-3D-rzU" firstAttribute="top" secondItem="T1B-e8-QYq" secondAttribute="top" constant="95" id="Xmi-FH-Psm"/>
+                                    <constraint firstItem="ysD-3D-rzU" firstAttribute="top" secondItem="T1B-e8-QYq" secondAttribute="top" constant="75" id="Xmi-FH-Psm"/>
                                     <constraint firstItem="ack-9Y-jgK" firstAttribute="leading" secondItem="T1B-e8-QYq" secondAttribute="leading" constant="10" id="Y5v-Md-N2b"/>
                                     <constraint firstItem="Bob-fk-PZX" firstAttribute="top" secondItem="T1B-e8-QYq" secondAttribute="top" constant="20" id="db7-F6-Ah6"/>
                                     <constraint firstAttribute="bottom" secondItem="ysD-3D-rzU" secondAttribute="bottom" constant="5" id="mzc-J7-qPM"/>
@@ -260,7 +261,7 @@
         <!--设置-->
         <scene sceneID="dp3-0w-mvH">
             <objects>
-                <viewController id="1CX-Fh-OTb" customClass="SettingViewController" customModule="superman" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="settingView" id="1CX-Fh-OTb" customClass="SettingViewController" customModule="superman" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gRG-Zf-FEq"/>
                         <viewControllerLayoutGuide type="bottom" id="efH-p5-WiB"/>
@@ -363,7 +364,7 @@
                                                         </mask>
                                                     </variation>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(主题颜色)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qj8-ZM-tK6">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(主颜色)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qj8-ZM-tK6">
                                                     <rect key="frame" x="232" y="5.5" width="88" height="32"/>
                                                     <animations/>
                                                     <constraints>
@@ -390,6 +391,51 @@
                                             <outlet property="colorLabel" destination="UXW-I1-n1w" id="yXi-zF-GH9"/>
                                             <outlet property="colorNameLabel" destination="lfe-CL-nI4" id="K4t-8M-ZPt"/>
                                             <segue destination="dhr-Ng-4fy" kind="show" identifier="colorSetSegue" id="Bx2-Bj-YaD"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="authorArticleCell" id="0m9-hJ-fMC" customClass="AuthorArticleTableViewCell" customModule="superman" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="227.5" width="328" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0m9-hJ-fMC" id="BXu-DL-5qw">
+                                            <rect key="frame" x="0.0" y="0.0" width="328" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Img" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xkf-eq-QTT">
+                                                    <rect key="frame" x="23" y="5" width="32" height="32"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="32" id="eob-JL-5wF"/>
+                                                        <constraint firstAttribute="width" constant="32" id="ySu-PM-wVB"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="word" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B88-WI-JcA">
+                                                    <rect key="frame" x="70" y="6" width="130" height="32"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="32" id="FU8-1I-RV5"/>
+                                                        <constraint firstAttribute="width" constant="130" id="JuD-hf-X6U"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstItem="B88-WI-JcA" firstAttribute="centerY" secondItem="BXu-DL-5qw" secondAttribute="centerY" id="UiI-QY-Yhh"/>
+                                                <constraint firstItem="B88-WI-JcA" firstAttribute="leading" secondItem="Xkf-eq-QTT" secondAttribute="trailing" constant="15" id="Xnr-td-L3F"/>
+                                                <constraint firstItem="Xkf-eq-QTT" firstAttribute="leading" secondItem="BXu-DL-5qw" secondAttribute="leadingMargin" constant="15" id="d2n-SK-irR"/>
+                                                <constraint firstItem="Xkf-eq-QTT" firstAttribute="centerY" secondItem="BXu-DL-5qw" secondAttribute="centerY" id="x5L-ib-FB3"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                        <connections>
+                                            <outlet property="imageLabel" destination="Xkf-eq-QTT" id="qYe-ln-ob3"/>
+                                            <outlet property="wordLabel" destination="B88-WI-JcA" id="e4J-bO-xSe"/>
+                                            <segue destination="H2L-Lu-NhO" kind="presentation" identifier="openWebSegue" id="OQf-yB-hLP"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -440,6 +486,65 @@
                 <exit id="zm6-w1-vgI" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="208" y="-518"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="msI-ki-xWB">
+            <objects>
+                <viewController id="H2L-Lu-NhO" customClass="WebViewController" customModule="superman" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bTp-aE-wIa"/>
+                        <viewControllerLayoutGuide type="bottom" id="oxf-Et-iVQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DWt-Dn-3J2">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kBB-am-AAS">
+                                <rect key="frame" x="-4" y="20" width="328" height="548"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wDw-X0-Hhj">
+                                <rect key="frame" x="-4" y="528" width="40" height="40"/>
+                                <animations/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="Un4-pN-25A"/>
+                                    <constraint firstAttribute="height" constant="40" id="sVC-tq-dGi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="googleicon" family="googleicon" pointSize="25"/>
+                                <state key="normal" title="close"/>
+                                <connections>
+                                    <action selector="dismissView:" destination="H2L-Lu-NhO" eventType="touchUpInside" id="BPS-Bc-U8w"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kBB-am-AAS" firstAttribute="bottom" secondItem="DWt-Dn-3J2" secondAttribute="bottomMargin" id="3Em-wj-gD4"/>
+                            <constraint firstItem="kBB-am-AAS" firstAttribute="leading" secondItem="DWt-Dn-3J2" secondAttribute="leadingMargin" constant="-20" id="6wU-L1-Ffr"/>
+                            <constraint firstItem="wDw-X0-Hhj" firstAttribute="leading" secondItem="DWt-Dn-3J2" secondAttribute="leadingMargin" constant="-20" id="H6H-NW-PLf"/>
+                            <constraint firstItem="wDw-X0-Hhj" firstAttribute="leading" secondItem="DWt-Dn-3J2" secondAttribute="leadingMargin" constant="-20" id="I2Q-8N-Tok"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="kBB-am-AAS" secondAttribute="trailing" constant="-20" id="M2g-Wa-8Z7"/>
+                            <constraint firstItem="kBB-am-AAS" firstAttribute="top" secondItem="DWt-Dn-3J2" secondAttribute="topMargin" constant="20" id="PwH-Kp-piU"/>
+                            <constraint firstItem="oxf-Et-iVQ" firstAttribute="top" secondItem="wDw-X0-Hhj" secondAttribute="bottom" id="Vb8-c2-ldU"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="H6H-NW-PLf"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="closeBtn" destination="wDw-X0-Hhj" id="Zj6-D6-gry"/>
+                        <outlet property="webView" destination="kBB-am-AAS" id="q5X-hc-gn9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1QF-tG-GoL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="674" y="-424"/>
         </scene>
         <!--我-->
         <scene sceneID="xjN-gZ-vHa">
@@ -1002,7 +1107,7 @@
         <image name="me" width="60" height="57"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="m2P-89-cQO"/>
         <segue reference="0Ej-VN-eJl"/>
+        <segue reference="Bx2-Bj-YaD"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -18,7 +18,7 @@ class AddDiaryViewController: UIViewController {
     @IBOutlet weak var colorLabel: UILabel!
     @IBOutlet weak var colorNameLabel: UILabel!
     
-    var diaryEntry: DiaryEntry?
+    var diaryEntryContainer: (time:String, content: String, colorEntryIndex: Int)?
     var defaultColorEntry: [String: AnyObject]!
     var colorEntryIndex = 0
     override func viewDidLoad() {
@@ -75,7 +75,11 @@ class AddDiaryViewController: UIViewController {
             
             let week = getDayOfWeek(now)
             
-            self.diaryEntry = DiaryEntry(time: nowString + " " + week, content: textView.text, colorEntryIndex: colorEntryIndex)
+//            self.diaryEntry = DiaryEntry(time: nowString + " " + week, content: textView.text, colorEntryIndex: colorEntryIndex)
+            self.diaryEntryContainer = (time: nowString + " " + week, content: textView.text, colorEntryIndex: colorEntryIndex)
+//            self.diaryEntryContainer?.time = nowString + " " + week
+//            self.diaryEntryContainer?.content = textView.text
+//            self.diaryEntryContainer?.colorEntryIndex = colorEntryIndex
         }
     }
 

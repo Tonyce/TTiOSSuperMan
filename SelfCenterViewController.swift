@@ -20,6 +20,8 @@ class SelfCenterViewController: UIViewController , UIImagePickerControllerDelega
     
     let selfScrollViewContainerDefaultContentInset = UIEdgeInsets(top: 120, left: 0, bottom: 0, right: 0)
     
+    var alertController:UIAlertController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -59,6 +61,80 @@ class SelfCenterViewController: UIViewController , UIImagePickerControllerDelega
     }
     
     @IBAction func showSelectPhoto(sender: AnyObject) {
+        
+        alertController = UIAlertController(
+            title: nil,
+            message: nil,
+            preferredStyle: .ActionSheet)
+        
+        let actionEmail = UIAlertAction(title: "Camera", style: UIAlertActionStyle.Default)
+            {[unowned self] action -> Void in
+                self.selectFromCamera()
+        }
+//        let actionImessage = UIAlertAction(title: "photoLib", style: UIAlertActionStyle.Default,
+//            handler: {(paramAction:UIAlertAction!) in
+//                                self.selectFromLib()
+//                /* Send the photo via iMessage */
+//        })
+        let actionImessage = UIAlertAction(title: "photoLib", style: UIAlertActionStyle.Default)
+            {[unowned self] action -> Void in
+                self.selectFromLib()
+                /* Send the photo via iMessage */
+        }
+        let actionDelete = UIAlertAction(title: "cancel", style: UIAlertActionStyle.Cancel,
+            handler: {(paramAction:UIAlertAction!) in
+
+        })
+        
+        alertController!.addAction(actionEmail)
+        alertController!.addAction(actionImessage)
+        alertController!.addAction(actionDelete)
+        self.presentViewController(alertController!, animated: true, completion: nil)
+        
+//        if (UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary)){
+//            let imagePicker = UIImagePickerController()
+//            imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+//            imagePicker.delegate = self
+//            imagePicker.allowsEditing = true
+//    //        picker.mediaTypes = [kUTTypeImage]
+//            presentViewController(imagePicker, animated: true, completion: nil)
+//        }else {
+//            let alert = UIAlertController(title: "No camera", message: "Please allow this app the use of your camera in settings or buy a device that has a camera.", preferredStyle: UIAlertControllerStyle.Alert)
+//            alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
+//            self.presentViewController(alert, animated: true, completion: nil)
+//        }
+//        let lightBlurAction = UIAlertAction(title: "LightBlur", style: .Default) { [unowned self] action -> Void in
+//
+//        }
+//        let extraLightBlurAction = UIAlertAction(title: "ExtraLightBlur", style: .Default) { [unowned self] action -> Void in
+//
+//        }
+//        let darkBlurActionAction = UIAlertAction(title: "DarkBlur", style: .Default) { [unowned self] action -> Void in
+//
+//        }
+//        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+//        
+//        let controller = UIAlertController(title: "Samples", message: "Select to show drop down alert.", preferredStyle: .ActionSheet)
+//        [lightBlurAction, extraLightBlurAction, darkBlurActionAction, cancelAction].map {
+//            controller.addAction($0)
+//        }
+//        
+//        showAlert(controller, sourceView: sender as? UIView)
+    }
+    
+    func showAlert(controller: UIAlertController, sourceView: UIView? = nil) {
+//        if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.Pad {
+//            if let sourceView = sourceView {
+//                let rect = sourceView.convertRect(sourceView.bounds, toView: view)
+//                controller.popoverPresentationController?.sourceView = view
+//                controller.popoverPresentationController?.sourceRect = rect
+//            }
+//        }
+        
+        presentViewController(controller, animated: true, completion: nil)
+    }
+    
+    func selectFromLib(){
         if (UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary)){
             let imagePicker = UIImagePickerController()
             imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
@@ -71,7 +147,19 @@ class SelfCenterViewController: UIViewController , UIImagePickerControllerDelega
             alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
         }
-
+    }
+    func selectFromCamera(){
+        if (UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)){
+            let imagePicker = UIImagePickerController()
+            imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
+            imagePicker.delegate = self
+            imagePicker.allowsEditing = true
+            presentViewController(imagePicker, animated: true, completion: nil)
+        }else {
+            let alert = UIAlertController(title: "No camera", message: "Please allow this app the use of your camera in settings or buy a device that has a camera.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {

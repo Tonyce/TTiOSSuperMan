@@ -36,7 +36,7 @@ class DiaryViewController: UIViewController {
     var isFromAdd = false
     var topViewColorEntry = Colors.colorArr[0]
     
-    var diaryEntry: DiaryEntry?
+    var diaryEntry: Diary?
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent
@@ -88,7 +88,7 @@ class DiaryViewController: UIViewController {
         markLabel.text = "发生的，经历的..."
         
         if let diaryEntry = self.diaryEntry {
-            topViewColorEntry = Colors.colorArr[ diaryEntry.colorEntryIndex! ]
+            topViewColorEntry = Colors.colorArr[ diaryEntry.colorEntryIndex as! Int ]
             textView.text = diaryEntry.content
         }
         

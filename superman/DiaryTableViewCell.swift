@@ -15,7 +15,7 @@ class DiaryTableViewCell: UITableViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var cellText: UITextView!
     
-    var diaryEntry: DiaryEntry! {
+    var diaryEntry: Diary! {
         didSet {
             configureCell()
         }
@@ -28,7 +28,8 @@ class DiaryTableViewCell: UITableViewCell {
 //        self.timeLabel.textColor = diaryEntry.color
         
         self.circleIdentifyLabel.font = UIFont(name: GoogleIconName, size: 15.0)
-        var colorEntry = Colors.colorArr[ diaryEntry.colorEntryIndex! ] as [String: AnyObject]
+//        let index:Int = diaryEntry.colorEntryIndex s
+        var colorEntry = Colors.colorArr[ diaryEntry.colorEntryIndex as! Int] as [String: AnyObject]
         self.circleIdentifyLabel.textColor = colorEntry["color"] as! UIColor
         self.circleIdentifyLabel.text = GoogleIcon.eacd
         

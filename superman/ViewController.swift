@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewController: UIViewController {
 
@@ -18,6 +19,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var diaryTable: UITableView!
     @IBOutlet weak var addDiaryBtn: MyAddButton!
     @IBOutlet weak var topView: UIView!
+    
+    var managedContext: NSManagedObjectContext!
     
     var topViewInitFrame: CGRect!
     var topViewColor: UIColor = UIColor.MKColor.LightBlue
@@ -31,7 +34,8 @@ class ViewController: UIViewController {
     let openSettingAnimation = OpenSettingAnimation()
     
     var addDiaryInitFrame: CGRect!
-    var diarys = [DiaryEntry]()
+    var diarys = [Diary]()
+    var diarysArr = [AnyObject]()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,11 +45,27 @@ class ViewController: UIViewController {
 
         
         // initTable
-        let entry1 = DiaryEntry(time: "11.02", content:"name: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", photo: photo1, rating: 4", colorEntryIndex: 2)
-        let entry2 = DiaryEntry(time: "12.04", content: "UIImage(named:meal2.jpglet meal2 = Meal(name: \"Chicken and Potatoes\", photo: photo2, rating: 5", colorEntryIndex: 5)
-        let entry3 = DiaryEntry(time: "11.04", content: "String(name: \"Pasta with Meatballs\", photo: photo3, rating: 3", colorEntryIndex: 3)
-        diarys += [entry1, entry2, entry3, entry1, entry2, entry3,entry1, entry2, entry3,entry1, entry2, entry3]
+//        let entry1 = DiaryEntry(time: "11.02", content:"name: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", photo: photo1, rating: 4", colorEntryIndex: 2)
+//        let entry2 = DiaryEntry(time: "12.04", content: "UIImage(named:meal2.jpglet meal2 = Meal(name: \"Chicken and Potatoes\", photo: photo2, rating: 5", colorEntryIndex: 5)
+//        let entry3 = DiaryEntry(time: "11.04", content: "String(name: \"Pasta with Meatballs\", photo: photo3, rating: 3", colorEntryIndex: 3)
+        let entry1 = ["time": "11.02", "content":"name: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", photo: photo1, rating: 4", "colorEntryIndex": 2]
+        let entry2 = ["time": "12.04", "content": "UIImage(named:meal2.jpglet meal2 = Meal(name: \"Chicken and Potatoes\", photo: photo2, rating: 5", "colorEntryIndex": 5]
+        let entry3 = ["time": "11.04", "content": "String(name: \"Pasta with Meatballs\", photo: photo3, rating: 3", "colorEntryIndex": 3]
 
+        
+        diarysArr += [entry1, entry2, entry3]
+
+        insertSampleData()
+        
+        let request = NSFetchRequest(entityName: "Diary")
+        request.sortDescriptors = [NSSortDescriptor(key: "time", ascending: false)]
+        
+        do {
+            diarys = try managedContext.executeFetchRequest(request) as! [Diary]
+        }catch let error as NSError {
+            print("\(error), \(error.userInfo)")
+        }
+        
         diaryTable.delegate = self
         diaryTable.dataSource = self
         
@@ -117,7 +137,8 @@ class ViewController: UIViewController {
     }
     
     func initSettingBtn(){
-        settingBtn.setTitle(GoogleIcon.e6c5, forState: UIControlState.Normal)
+//        settingBtn.setTitle(GoogleIcon.e6c5, forState: UIControlState.Normal)
+        settingBtn.setTitle("", forState: UIControlState.Normal)
         settingBtn.tintColor = UIColor.whiteColor()
         settingBtn.layer.cornerRadius = CGRectGetHeight(settingBtn.frame) / 2
         
@@ -172,22 +193,44 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("diaryCell", forIndexPath: indexPath) as! DiaryTableViewCell
         
-        let diaryEntry = diarys[indexPath.row]
-        
+//        let diaryDic = diarysArr[indexPath.row] as! [String : AnyObject]
+//        let diaryEntry = DiaryEntry(time: diaryDic["time"] as! String, content: diaryDic["content"] as! String, colorEntryIndex: diaryDic["colorEntryIndex"] as! Int)
+//        cell.diaryEntry = diaryEntry as DiaryEntry
+
+        // let diaryEntry = diarys[indexPath.row] as Diary
+        let diaryEntry = diarys[indexPath.row] as Diary
+      
         cell.diaryEntry = diaryEntry
-        
-//        cell.labelField.text = diaryEntry.time
-//        cell.circleIdentifyLabel.font = UIFont(name: GoogleIconName, size: 12.0)
-//        cell.circleIdentifyLabel.textColor = UIColor.MKColor.LightBlue
-//        cell.circleIdentifyLabel.text = GoogleIcon.eacd
         
         let cellBackView = UIView(frame: cell.frame)
         cell.selectedBackgroundView = cellBackView
         cell.selectedBackgroundView?.backgroundColor = UIColor.clearColor()
-        // cell.backgroundColor = UIColor.clearColor()
-        // cell.selectionStyle = UITableViewCellSelectionStyle.None
-        // cell.contentText.text = cellEntry.content
+
         return cell
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+            if editingStyle == .Delete {
+                
+                let diaryToRemove = diarys[indexPath.row]
+                
+                managedContext.deleteObject(diaryToRemove)
+                
+                do {
+                    try managedContext.save()
+                } catch let error as NSError {
+                    print("Could not save \(error), \(error.userInfo)")
+                }
+                
+                diarys.removeAtIndex(indexPath.row)
+                //  Delete the row from the data source
+                
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                
+            } else if editingStyle == .Insert {
+                // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+            }    
+        
     }
     
     func animateTable() {
@@ -265,16 +308,36 @@ extension ViewController {
                 if let selectedIndexPath = self.diaryTable.indexPathForSelectedRow {
                     // Update an existing meal.
                     diarys[selectedIndexPath.row] = diaryEntry
+                    do {
+                        try managedContext.save()
+                    } catch let error as NSError {
+                        print("Could not save \(error), \(error.userInfo)")
+                    }
                     self.diaryTable.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
                 }
         }
         
-        if let sourceViewController = sender.sourceViewController as? AddDiaryViewController,
-            diaryEntry = sourceViewController.diaryEntry {
-            
-                // Add a new meal.
+        if let sourceViewController = sender.sourceViewController as? AddDiaryViewController ,
+            diaryEntryContainer = sourceViewController.diaryEntryContainer {
+        
+                let entity =  NSEntityDescription.entityForName("Diary", inManagedObjectContext: managedContext)
+                
+                let diary = Diary(entity: entity!, insertIntoManagedObjectContext: managedContext)
+                
+                diary.time = diaryEntryContainer.time
+                diary.content = diaryEntryContainer.content
+                diary.colorEntryIndex = diaryEntryContainer.colorEntryIndex
+
                 let newIndexPath = NSIndexPath(forRow: 0, inSection: 0)
-                diarys.insert(diaryEntry, atIndex: 0)
+                
+                diarys.insert(diary, atIndex: 0)
+                
+                do {
+                    try managedContext.save()
+                } catch let error as NSError {
+                    print("Could not save \(error), \(error.userInfo)")
+                }
+                
                 self.diaryTable.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: UITableViewRowAnimation.Top)
         
         }
@@ -294,7 +357,7 @@ extension ViewController {
                 openDiaryTransition.tmpOriginFrame = tmpOriginFrame
                 
                 diaryView.transitioningDelegate = openDiaryTransition
-                diaryView.diaryEntry = diaryEntry
+                diaryView.diaryEntry = diaryEntry as Diary
                 // segue.destinationViewController.transitioningDelegate = openDiaryTransition
                 // (segue.destinationViewController as! InfoViewController).item = item
             }
@@ -314,20 +377,51 @@ extension ViewController {
             openSettingAnimation.fromFrameCenter = self.settingBtn.center
 //            settingView.selfConfig = self.selfConfig
             settingView.colorEntry = self.colorEntry
-            settingView.transitioningDelegate = openSettingAnimation
+//            settingView.transitioningDelegate = openSettingAnimation
         }
         
         if segue.identifier == "imageSettingSegue" {
-            let nav = segue.destinationViewController as! UINavigationController
+//            let nav = segue.destinationViewController as! UINavigationController
 
 //            let settingView = nav.topViewController as! SettingViewController
             openSettingAnimation.fromFrame = self.selfImage.frame
             openSettingAnimation.fromFrameCenter = self.selfImage.center
 //            settingView.selfConfig = self.selfConfig
 //            settingView.colorEntry = self.colorEntry
-            nav.transitioningDelegate = openSettingAnimation
+//            nav.transitioningDelegate = openSettingAnimation
         }
         
+    }
+}
+
+extension ViewController {
+    
+    func insertSampleData(){
+        let fetchRequest = NSFetchRequest(entityName: "Diary")
+        // fetchRequest.predicate = NSPredicate(format: "time != nil")
+        let count = managedContext.countForFetchRequest(fetchRequest, error: nil)
+        if count > 0 {
+            return
+        }
+        
+        for dict : AnyObject in diarysArr {
+            // print(dict)
+            let entity =  NSEntityDescription.entityForName("Diary", inManagedObjectContext: managedContext)
+            
+            let diary = Diary(entity: entity!, insertIntoManagedObjectContext: managedContext)
+            
+            let btDict = dict as! NSDictionary
+            
+            diary.time = btDict["time"] as? String
+            diary.content = btDict["content"] as? String
+            diary.colorEntryIndex = btDict["colorEntryIndex"] as? NSNumber
+        }
+        
+        do {
+            try managedContext.save()
+        } catch let error as NSError {
+            print("Could not save \(error), \(error.userInfo)")
+        }
     }
 }
 

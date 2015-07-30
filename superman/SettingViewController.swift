@@ -16,7 +16,13 @@ class SettingViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var model = [
-        ["me"],["color"], ["c", "b"], ["z"], ["tt"]
+        ["me"], ["color"],
+        
+        [ ["img": GoogleIcon.e70c,"word":"赞一下", "href":"http://baidu.com", "colorIndex": 0 ],
+          ["img":GoogleIcon.ec29 , "word":"建议及意见", "href":"http://youku.com", "colorIndex": 1],
+          ["img":GoogleIcon.e985 , "word":"作者痕迹", "href":"http://taobao.com", "colorIndex": 0] ],
+        
+        ["tt"]
     ]
     
     var keys = ["me"]
@@ -26,8 +32,11 @@ class SettingViewController: UIViewController {
 //    var topViewColor: UIColor = UIColor.MKColor.LightBlue
     var colorEntry: [String:AnyObject]!
     
+    var willLoadUrl: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view.
         closeBtn.setTitle(GoogleIcon.ebd0, forState: UIControlState.Normal)
         closeBtn.tintColor = UIColor.whiteColor()
@@ -49,6 +58,7 @@ class SettingViewController: UIViewController {
         if let selectedIndexPath = self.tableView.indexPathForSelectedRow {
             self.tableView.deselectRowAtIndexPath(selectedIndexPath, animated: true)
         }
+
     }
     
     @IBAction func unwindSet(sender: UIStoryboardSegue) {
@@ -76,9 +86,17 @@ class SettingViewController: UIViewController {
             setColorView.nowColorEntry = self.colorEntry
 //            setColorView.selectColorEntry = SystemConfig.sharedInstance.systemColorEntry
             
-        }else{
+        }else if segue.identifier == "selfSetSegue"{
             let selfCenterView = segue.destinationViewController as! SelfCenterViewController
             selfCenterView.selfConfig = self.selfConfig
+        }else if segue.identifier == "openWebSegue" {
+            
+            let tmpCell = self.tableView.cellForRowAtIndexPath(self.tableView.indexPathForSelectedRow!) as! AuthorArticleTableViewCell
+            
+            willLoadUrl = tmpCell.entry["href"] as? String
+            
+            let webView = segue.destinationViewController as! WebViewController
+            webView.willLoadUrl = willLoadUrl
         }
     }
 }
@@ -112,8 +130,14 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
             systemColorCell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
             return systemColorCell
             
+        } else if indexPath.section == 2 {
+            let m = model[2][indexPath.row] as? [String: AnyObject]
+            let authorArticleCell = self.tableView.dequeueReusableCellWithIdentifier("authorArticleCell") as! AuthorArticleTableViewCell
+            authorArticleCell.entry = m
+            authorArticleCell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+            return authorArticleCell
         }else {
-            cell?.textLabel?.text = model[indexPath.section][indexPath.row]
+            cell?.textLabel?.text = model[indexPath.section][indexPath.row] as? String
             cell?.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
             return cell!
         }
