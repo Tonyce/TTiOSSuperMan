@@ -31,6 +31,11 @@
 		BEB5655C1B4ECD130096B1FE /* AddDiaryAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB5655B1B4ECD130096B1FE /* AddDiaryAnimation.swift */; };
 		BEB5655E1B4ED8F90096B1FE /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB5655D1B4ED8F90096B1FE /* SettingViewController.swift */; };
 		BEBDCDAD1B53E24C0097FB1F /* meTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBDCDAC1B53E24C0097FB1F /* meTableViewCell.swift */; };
+		BEE321C21B6CBC5600E964AE /* MABCardsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE321C11B6CBC5600E964AE /* MABCardsContainer.swift */; };
+		BEE321C41B6CBC5C00E964AE /* MABCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE321C31B6CBC5C00E964AE /* MABCardView.swift */; };
+		BEE321CB1B6CF28800E964AE /* test.js in Resources */ = {isa = PBXBuildFile; fileRef = BEE321CA1B6CF28800E964AE /* test.js */; };
+		BEEC67221B6A81E6004EF713 /* LoginLogoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEC67211B6A81E6004EF713 /* LoginLogoutCell.swift */; };
+		BEEC67251B6A8372004EF713 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEC67241B6A8372004EF713 /* RegisterViewController.swift */; };
 		BEEE07641B4CCEDC0015E752 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEE07631B4CCEDC0015E752 /* AppDelegate.swift */; };
 		BEEE07661B4CCEDC0015E752 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEE07651B4CCEDC0015E752 /* ViewController.swift */; };
 		BEEE07691B4CCEDC0015E752 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEEE07671B4CCEDC0015E752 /* Main.storyboard */; };
@@ -56,7 +61,7 @@
 		BE768EED1B4D2BF20032B5CE /* MyCustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCustomView.swift; sourceTree = "<group>"; };
 		BE768EF11B4D768C0032B5CE /* GoogleIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GoogleIcon.swift; path = GoogleSource/GoogleIcon.swift; sourceTree = "<group>"; };
 		BE768EF31B4D77A30032B5CE /* googleicon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = googleicon.ttf; path = GoogleSource/googleicon.ttf; sourceTree = "<group>"; };
-		BE768EF51B4D96510032B5CE /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
+		BE768EF51B4D96510032B5CE /* FriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendsViewController.swift; path = superman/FriendsViewController.swift; sourceTree = "<group>"; };
 		BE768EF71B4D96F00032B5CE /* DiaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiaryViewController.swift; path = superman/DiaryViewController.swift; sourceTree = "<group>"; };
 		BE8516FF1B58FE2800C65D5D /* SettingViewColorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewColorCell.swift; sourceTree = "<group>"; };
 		BE8C7CC31B61479C009A8C4D /* AddDiaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDiaryViewController.swift; sourceTree = "<group>"; };
@@ -69,6 +74,11 @@
 		BEB5655B1B4ECD130096B1FE /* AddDiaryAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDiaryAnimation.swift; sourceTree = "<group>"; };
 		BEB5655D1B4ED8F90096B1FE /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingViewController.swift; path = superman/SettingViewController.swift; sourceTree = "<group>"; };
 		BEBDCDAC1B53E24C0097FB1F /* meTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = meTableViewCell.swift; path = superman/meTableViewCell.swift; sourceTree = "<group>"; };
+		BEE321C11B6CBC5600E964AE /* MABCardsContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MABCardsContainer.swift; sourceTree = "<group>"; };
+		BEE321C31B6CBC5C00E964AE /* MABCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MABCardView.swift; sourceTree = "<group>"; };
+		BEE321CA1B6CF28800E964AE /* test.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = test.js; sourceTree = "<group>"; };
+		BEEC67211B6A81E6004EF713 /* LoginLogoutCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginLogoutCell.swift; sourceTree = "<group>"; };
+		BEEC67241B6A8372004EF713 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		BEEE07601B4CCEDC0015E752 /* superman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = superman.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEEE07631B4CCEDC0015E752 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BEEE07651B4CCEDC0015E752 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -108,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				BEB5655D1B4ED8F90096B1FE /* SettingViewController.swift */,
+				BEEC67211B6A81E6004EF713 /* LoginLogoutCell.swift */,
 				BE91006F1B6A2F4600392981 /* AuthorArticleTableViewCell.swift */,
 				BEBDCDAC1B53E24C0097FB1F /* meTableViewCell.swift */,
 				BE4B93971B54ADA0008CAA67 /* SelfCenterViewController.swift */,
@@ -116,7 +127,6 @@
 				BE4F64D11B57D17F008251E7 /* HandleImageViewController.swift */,
 				BE26DEC71B5816C30018528B /* ColorViewCell.swift */,
 				BE8516FF1B58FE2800C65D5D /* SettingViewColorCell.swift */,
-				BE9100711B6A4D0000392981 /* WebViewController.swift */,
 			);
 			name = Setting;
 			sourceTree = "<group>";
@@ -130,9 +140,37 @@
 			name = animations;
 			sourceTree = "<group>";
 		};
+		BEE321C51B6CBC8800E964AE /* friend */ = {
+			isa = PBXGroup;
+			children = (
+				BE768EF51B4D96510032B5CE /* FriendsViewController.swift */,
+			);
+			name = friend;
+			sourceTree = "<group>";
+		};
+		BEE321C91B6CD41D00E964AE /* web */ = {
+			isa = PBXGroup;
+			children = (
+				BE9100711B6A4D0000392981 /* WebViewController.swift */,
+				BEE321CA1B6CF28800E964AE /* test.js */,
+			);
+			name = web;
+			sourceTree = "<group>";
+		};
+		BEEC67231B6A8353004EF713 /* register */ = {
+			isa = PBXGroup;
+			children = (
+				BEEC67241B6A8372004EF713 /* RegisterViewController.swift */,
+			);
+			name = register;
+			sourceTree = "<group>";
+		};
 		BEEE07571B4CCEDC0015E752 = {
 			isa = PBXGroup;
 			children = (
+				BEE321C91B6CD41D00E964AE /* web */,
+				BEE321C51B6CBC8800E964AE /* friend */,
+				BEEC67231B6A8353004EF713 /* register */,
 				BE1594A71B56B6290029FF4A /* Model */,
 				BE4B93961B54AC06008CAA67 /* Setting */,
 				BEB565581B4EA1FC0096B1FE /* animations */,
@@ -158,7 +196,6 @@
 				BEEE07631B4CCEDC0015E752 /* AppDelegate.swift */,
 				BEEE07651B4CCEDC0015E752 /* ViewController.swift */,
 				BEEE07671B4CCEDC0015E752 /* Main.storyboard */,
-				BE768EF51B4D96510032B5CE /* FriendsViewController.swift */,
 				BEEE076A1B4CCEDC0015E752 /* Assets.xcassets */,
 				BEEE076C1B4CCEDC0015E752 /* LaunchScreen.storyboard */,
 				BEEE076F1B4CCEDC0015E752 /* Info.plist */,
@@ -183,6 +220,8 @@
 		BEEE077A1B4CF65A0015E752 /* UILib */ = {
 			isa = PBXGroup;
 			children = (
+				BEE321C31B6CBC5C00E964AE /* MABCardView.swift */,
+				BEE321C11B6CBC5600E964AE /* MABCardsContainer.swift */,
 				BE3342F31B578F8A003F06BC /* MKColor.swift */,
 				BE768EF31B4D77A30032B5CE /* googleicon.ttf */,
 				BE768EF11B4D768C0032B5CE /* GoogleIcon.swift */,
@@ -250,6 +289,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEE321CB1B6CF28800E964AE /* test.js in Resources */,
 				BE768EF41B4D77A30032B5CE /* googleicon.ttf in Resources */,
 				BEEE076E1B4CCEDC0015E752 /* LaunchScreen.storyboard in Resources */,
 				BEEE076B1B4CCEDC0015E752 /* Assets.xcassets in Resources */,
@@ -269,6 +309,7 @@
 				BE1594A91B56B63E0029FF4A /* SelfConfig.swift in Sources */,
 				BE8C7CC41B61479C009A8C4D /* AddDiaryViewController.swift in Sources */,
 				BE3342F41B578F8A003F06BC /* MKColor.swift in Sources */,
+				BEE321C41B6CBC5C00E964AE /* MABCardView.swift in Sources */,
 				BEB5655C1B4ECD130096B1FE /* AddDiaryAnimation.swift in Sources */,
 				BE9100701B6A2F4600392981 /* AuthorArticleTableViewCell.swift in Sources */,
 				BE8CC83A1B57B5A300408241 /* SelectAlertViewController.swift in Sources */,
@@ -285,13 +326,16 @@
 				BEEFF4331B68F6B900272133 /* Diary+CoreDataProperties.swift in Sources */,
 				BE2E63511B68F63100FB8468 /* Diary.xcdatamodeld in Sources */,
 				BE8517001B58FE2800C65D5D /* SettingViewColorCell.swift in Sources */,
+				BEEC67221B6A81E6004EF713 /* LoginLogoutCell.swift in Sources */,
 				BE26DEC81B5816C30018528B /* ColorViewCell.swift in Sources */,
 				BEB5655A1B4EA35E0096B1FE /* OpenDiaryAnimation.swift in Sources */,
 				BEEE07661B4CCEDC0015E752 /* ViewController.swift in Sources */,
 				BEEE07771B4CD0E00015E752 /* DiaryEntry.swift in Sources */,
 				BEEE07641B4CCEDC0015E752 /* AppDelegate.swift in Sources */,
+				BEEC67251B6A8372004EF713 /* RegisterViewController.swift in Sources */,
 				BEA659D11B5AAF6F004298AE /* Colors.swift in Sources */,
 				BEEE07791B4CF1930015E752 /* DiaryTableViewCell.swift in Sources */,
+				BEE321C21B6CBC5600E964AE /* MABCardsContainer.swift in Sources */,
 				BE768EF21B4D768C0032B5CE /* GoogleIcon.swift in Sources */,
 				BEB5655E1B4ED8F90096B1FE /* SettingViewController.swift in Sources */,
 			);

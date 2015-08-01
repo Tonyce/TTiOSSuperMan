@@ -16,17 +16,18 @@ class SettingViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var model = [
-        ["me"], ["color"],
+        ["me"],
         
-        [ ["img": GoogleIcon.e70c,"word":"赞一下", "href":"http://baidu.com", "colorIndex": 0 ],
-          ["img":GoogleIcon.ec29 , "word":"建议及意见", "href":"http://youku.com", "colorIndex": 1],
-          ["img":GoogleIcon.e985 , "word":"作者痕迹", "href":"http://taobao.com", "colorIndex": 0] ],
+        ["color"],
         
-        ["tt"]
+        [
+            ["img": GoogleIcon.e70c,"word":"赞一下", "href":"http://baidu.com", "colorIndex": 0 ],
+            ["img":GoogleIcon.ec29 , "word":"建议及意见", "href":"http://youku.com", "colorIndex": 1],
+            ["img":GoogleIcon.e985 , "word":"作者痕迹", "href":"http://taobao.com", "colorIndex": 0]
+        ],
+        
+        [[ "login":1] ]
     ]
-    
-    var keys = ["me"]
-    var meValue = ["me"]
     
     var selfConfig: SelfConfig?
 //    var topViewColor: UIColor = UIColor.MKColor.LightBlue
@@ -119,6 +120,40 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "cell")
         }
         
+        switch indexPath.section {
+
+        case 0:
+            let meCell = self.tableView.dequeueReusableCellWithIdentifier("meCell") as! meTableViewCell
+            meCell.selfConfig = self.selfConfig
+            return meCell
+
+        case 1:
+            let systemColorCell = self.tableView.dequeueReusableCellWithIdentifier("colorSetCell") as! SettingViewColorCell
+            systemColorCell.colorEntry = SystemConfig.sharedInstance.systemColorEntry
+            systemColorCell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+            return systemColorCell
+            
+        case 2:
+            let m = model[2][indexPath.row] as? [String: AnyObject]
+            let authorArticleCell = self.tableView.dequeueReusableCellWithIdentifier("authorArticleCell") as! AuthorArticleTableViewCell
+            authorArticleCell.entry = m
+            authorArticleCell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+            return authorArticleCell
+        
+        case model.count-1:
+            let m = model[model.count-1][indexPath.row] as? [String: Int]
+            let loginLogoutCell = self.tableView.dequeueReusableCellWithIdentifier("loginLogoutCell") as! LoginLogoutCell
+            loginLogoutCell.entry = m
+//            loginLogoutCell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+            return loginLogoutCell
+            
+        default:
+            cell?.textLabel?.text = ""
+            cell?.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+            return cell!
+        }
+
+        /*
         if indexPath.section == 0 {
             let meCell = self.tableView.dequeueReusableCellWithIdentifier("meCell") as! meTableViewCell
             meCell.selfConfig = self.selfConfig
@@ -141,6 +176,7 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
             cell?.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
             return cell!
         }
+        */
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
