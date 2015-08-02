@@ -21,7 +21,7 @@ class LoginLogoutCell: UITableViewCell {
     
     func configureCell(){
         if entry["login"] == 0 {
-            imgLabel.font = UIFont(name: GoogleIconName, size: 18.0)
+            imgLabel.font = UIFont(name: GoogleIconName, size: 20.0)
             imgLabel.textColor = UIColor.MKColor.LightBlue
             imgLabel.text = GoogleIcon.e83b
             
@@ -33,7 +33,7 @@ class LoginLogoutCell: UITableViewCell {
 //            
 //            wordLabel.text = "已登陆"
         }else {
-            imgLabel.font = UIFont(name: GoogleIconName, size: 18.0)
+            imgLabel.font = UIFont(name: GoogleIconName, size: 20.0)
             imgLabel.textColor = UIColor.redColor()
             imgLabel.text = GoogleIcon.e839
             

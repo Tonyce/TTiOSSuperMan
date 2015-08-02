@@ -17,9 +17,16 @@ class FriendsViewController: UIViewController {
         super.viewDidLoad()
         
         self.swipeableView = MABCardsContainer(frame: CGRectMake(20, 30, 280, 400))
+//                self.swipeableView = MABCardsContainer(frame: CGRectZero)
         
         self.swipeableView.backgroundColor = UIColor.redColor()
 //        self.swipeableView.setTranslatesAutoresizingMaskIntoConstraints(false)
+//        swipeableView.translatesAutoresizingMaskIntoConstraints = false
+//        let widthConstraint = NSLayoutConstraint(item: swipeableView, attribute: .Width, relatedBy: .Equal, toItem: view, attribute: .Width, multiplier: 1, constant: 0)
+//        view.addConstraint(widthConstraint)
+//        let heightConstraint = NSLayoutConstraint(item: swipeableView, attribute: .Height, relatedBy: .Equal, toItem: view, attribute: .Height, multiplier: 1, constant: -44)
+//        
+//        view.addConstraint(heightConstraint)
         
         self.swipeableView.setNeedsLayout()
         self.swipeableView.layoutIfNeeded()

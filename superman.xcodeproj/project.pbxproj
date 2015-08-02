@@ -13,7 +13,6 @@
 		BE3342F41B578F8A003F06BC /* MKColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3342F31B578F8A003F06BC /* MKColor.swift */; };
 		BE3342F61B57B05A003F06BC /* SelectColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3342F51B57B05A003F06BC /* SelectColorViewController.swift */; };
 		BE4B93981B54ADA0008CAA67 /* SelfCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4B93971B54ADA0008CAA67 /* SelfCenterViewController.swift */; };
-		BE4F64D21B57D17F008251E7 /* HandleImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4F64D11B57D17F008251E7 /* HandleImageViewController.swift */; };
 		BE4F64D41B57D1E9008251E7 /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4F64D31B57D1E9008251E7 /* ImageExtension.swift */; };
 		BE768EEE1B4D2BF20032B5CE /* MyCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE768EED1B4D2BF20032B5CE /* MyCustomView.swift */; };
 		BE768EF21B4D768C0032B5CE /* GoogleIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE768EF11B4D768C0032B5CE /* GoogleIcon.swift */; };
@@ -31,6 +30,11 @@
 		BEB5655C1B4ECD130096B1FE /* AddDiaryAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB5655B1B4ECD130096B1FE /* AddDiaryAnimation.swift */; };
 		BEB5655E1B4ED8F90096B1FE /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB5655D1B4ED8F90096B1FE /* SettingViewController.swift */; };
 		BEBDCDAD1B53E24C0097FB1F /* meTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBDCDAC1B53E24C0097FB1F /* meTableViewCell.swift */; };
+		BEC703A81B6E046700874FF1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC703A71B6E046700874FF1 /* LoginViewController.swift */; };
+		BEC703AA1B6E098B00874FF1 /* MKLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC703A91B6E098B00874FF1 /* MKLayer.swift */; };
+		BEC703AC1B6E099100874FF1 /* MKTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC703AB1B6E099100874FF1 /* MKTextField.swift */; };
+		BEC703AF1B6E1B5C00874FF1 /* MyHTTPHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC703AE1B6E1B5C00874FF1 /* MyHTTPHandler.swift */; };
+		BEC703B11B6E1B6300874FF1 /* JSONHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC703B01B6E1B6300874FF1 /* JSONHandler.swift */; };
 		BEE321C21B6CBC5600E964AE /* MABCardsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE321C11B6CBC5600E964AE /* MABCardsContainer.swift */; };
 		BEE321C41B6CBC5C00E964AE /* MABCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE321C31B6CBC5C00E964AE /* MABCardView.swift */; };
 		BEE321CB1B6CF28800E964AE /* test.js in Resources */ = {isa = PBXBuildFile; fileRef = BEE321CA1B6CF28800E964AE /* test.js */; };
@@ -56,7 +60,6 @@
 		BE3342F51B57B05A003F06BC /* SelectColorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectColorViewController.swift; sourceTree = "<group>"; };
 		BE3A1F5B1B52DACA00569CB8 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 		BE4B93971B54ADA0008CAA67 /* SelfCenterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfCenterViewController.swift; sourceTree = "<group>"; };
-		BE4F64D11B57D17F008251E7 /* HandleImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HandleImageViewController.swift; sourceTree = "<group>"; };
 		BE4F64D31B57D1E9008251E7 /* ImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
 		BE768EED1B4D2BF20032B5CE /* MyCustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCustomView.swift; sourceTree = "<group>"; };
 		BE768EF11B4D768C0032B5CE /* GoogleIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GoogleIcon.swift; path = GoogleSource/GoogleIcon.swift; sourceTree = "<group>"; };
@@ -74,6 +77,12 @@
 		BEB5655B1B4ECD130096B1FE /* AddDiaryAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDiaryAnimation.swift; sourceTree = "<group>"; };
 		BEB5655D1B4ED8F90096B1FE /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingViewController.swift; path = superman/SettingViewController.swift; sourceTree = "<group>"; };
 		BEBDCDAC1B53E24C0097FB1F /* meTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = meTableViewCell.swift; path = superman/meTableViewCell.swift; sourceTree = "<group>"; };
+		BEC703A71B6E046700874FF1 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		BEC703A91B6E098B00874FF1 /* MKLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKLayer.swift; sourceTree = "<group>"; };
+		BEC703AB1B6E099100874FF1 /* MKTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKTextField.swift; sourceTree = "<group>"; };
+		BEC703AE1B6E1B5C00874FF1 /* MyHTTPHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyHTTPHandler.swift; sourceTree = "<group>"; };
+		BEC703B01B6E1B6300874FF1 /* JSONHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONHandler.swift; sourceTree = "<group>"; };
+		BEC703B21B6E1B6700874FF1 /* JSONTest.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = JSONTest.playground; sourceTree = "<group>"; };
 		BEE321C11B6CBC5600E964AE /* MABCardsContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MABCardsContainer.swift; sourceTree = "<group>"; };
 		BEE321C31B6CBC5C00E964AE /* MABCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MABCardView.swift; sourceTree = "<group>"; };
 		BEE321CA1B6CF28800E964AE /* test.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = test.js; sourceTree = "<group>"; };
@@ -124,7 +133,6 @@
 				BE4B93971B54ADA0008CAA67 /* SelfCenterViewController.swift */,
 				BE3342F51B57B05A003F06BC /* SelectColorViewController.swift */,
 				BE8CC8391B57B5A300408241 /* SelectAlertViewController.swift */,
-				BE4F64D11B57D17F008251E7 /* HandleImageViewController.swift */,
 				BE26DEC71B5816C30018528B /* ColorViewCell.swift */,
 				BE8516FF1B58FE2800C65D5D /* SettingViewColorCell.swift */,
 			);
@@ -138,6 +146,16 @@
 				BEB5655B1B4ECD130096B1FE /* AddDiaryAnimation.swift */,
 			);
 			name = animations;
+			sourceTree = "<group>";
+		};
+		BEC703AD1B6E1B5100874FF1 /* HTTP */ = {
+			isa = PBXGroup;
+			children = (
+				BEC703B21B6E1B6700874FF1 /* JSONTest.playground */,
+				BEC703B01B6E1B6300874FF1 /* JSONHandler.swift */,
+				BEC703AE1B6E1B5C00874FF1 /* MyHTTPHandler.swift */,
+			);
+			name = HTTP;
 			sourceTree = "<group>";
 		};
 		BEE321C51B6CBC8800E964AE /* friend */ = {
@@ -161,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				BEEC67241B6A8372004EF713 /* RegisterViewController.swift */,
+				BEC703A71B6E046700874FF1 /* LoginViewController.swift */,
 			);
 			name = register;
 			sourceTree = "<group>";
@@ -168,6 +187,7 @@
 		BEEE07571B4CCEDC0015E752 = {
 			isa = PBXGroup;
 			children = (
+				BEC703AD1B6E1B5100874FF1 /* HTTP */,
 				BEE321C91B6CD41D00E964AE /* web */,
 				BEE321C51B6CBC8800E964AE /* friend */,
 				BEEC67231B6A8353004EF713 /* register */,
@@ -220,6 +240,8 @@
 		BEEE077A1B4CF65A0015E752 /* UILib */ = {
 			isa = PBXGroup;
 			children = (
+				BEC703AB1B6E099100874FF1 /* MKTextField.swift */,
+				BEC703A91B6E098B00874FF1 /* MKLayer.swift */,
 				BEE321C31B6CBC5C00E964AE /* MABCardView.swift */,
 				BEE321C11B6CBC5600E964AE /* MABCardsContainer.swift */,
 				BE3342F31B578F8A003F06BC /* MKColor.swift */,
@@ -313,16 +335,17 @@
 				BEB5655C1B4ECD130096B1FE /* AddDiaryAnimation.swift in Sources */,
 				BE9100701B6A2F4600392981 /* AuthorArticleTableViewCell.swift in Sources */,
 				BE8CC83A1B57B5A300408241 /* SelectAlertViewController.swift in Sources */,
+				BEC703AC1B6E099100874FF1 /* MKTextField.swift in Sources */,
 				BEEFF4341B68F6B900272133 /* Diary.swift in Sources */,
 				BE4B93981B54ADA0008CAA67 /* SelfCenterViewController.swift in Sources */,
 				BEEE077C1B4CF67E0015E752 /* MyAddBtn.swift in Sources */,
 				BE768EEE1B4D2BF20032B5CE /* MyCustomView.swift in Sources */,
+				BEC703B11B6E1B6300874FF1 /* JSONHandler.swift in Sources */,
 				BE4F64D41B57D1E9008251E7 /* ImageExtension.swift in Sources */,
 				BE9100721B6A4D0000392981 /* WebViewController.swift in Sources */,
 				BEA659CF1B5A500D004298AE /* SystemConfig.swift in Sources */,
 				BE3342F61B57B05A003F06BC /* SelectColorViewController.swift in Sources */,
 				BEBDCDAD1B53E24C0097FB1F /* meTableViewCell.swift in Sources */,
-				BE4F64D21B57D17F008251E7 /* HandleImageViewController.swift in Sources */,
 				BEEFF4331B68F6B900272133 /* Diary+CoreDataProperties.swift in Sources */,
 				BE2E63511B68F63100FB8468 /* Diary.xcdatamodeld in Sources */,
 				BE8517001B58FE2800C65D5D /* SettingViewColorCell.swift in Sources */,
@@ -330,11 +353,14 @@
 				BE26DEC81B5816C30018528B /* ColorViewCell.swift in Sources */,
 				BEB5655A1B4EA35E0096B1FE /* OpenDiaryAnimation.swift in Sources */,
 				BEEE07661B4CCEDC0015E752 /* ViewController.swift in Sources */,
+				BEC703AF1B6E1B5C00874FF1 /* MyHTTPHandler.swift in Sources */,
 				BEEE07771B4CD0E00015E752 /* DiaryEntry.swift in Sources */,
 				BEEE07641B4CCEDC0015E752 /* AppDelegate.swift in Sources */,
 				BEEC67251B6A8372004EF713 /* RegisterViewController.swift in Sources */,
 				BEA659D11B5AAF6F004298AE /* Colors.swift in Sources */,
 				BEEE07791B4CF1930015E752 /* DiaryTableViewCell.swift in Sources */,
+				BEC703A81B6E046700874FF1 /* LoginViewController.swift in Sources */,
+				BEC703AA1B6E098B00874FF1 /* MKLayer.swift in Sources */,
 				BEE321C21B6CBC5600E964AE /* MABCardsContainer.swift in Sources */,
 				BE768EF21B4D768C0032B5CE /* GoogleIcon.swift in Sources */,
 				BEB5655E1B4ED8F90096B1FE /* SettingViewController.swift in Sources */,

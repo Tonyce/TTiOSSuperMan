@@ -8,22 +8,25 @@
 
 import UIKit
 
+//protocol RegisterViewController
+
 class RegisterViewController: UIViewController {
+    
+    var loginStatus: Int?
+    var loginEntry: [String: Int]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func dismissView(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
-    }
 
     /*
     // MARK: - Navigation

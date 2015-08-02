@@ -15,6 +15,8 @@ class SettingViewController: UIViewController {
     @IBOutlet weak var closeBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
+    var loginStatus: [String:Int]?
+    
     var model = [
         ["me"],
         
@@ -43,7 +45,9 @@ class SettingViewController: UIViewController {
         closeBtn.tintColor = UIColor.whiteColor()
         closeBtn.layer.cornerRadius = CGRectGetHeight(closeBtn.frame) / 2
     }
-
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -55,10 +59,14 @@ class SettingViewController: UIViewController {
         colorEntry = SystemConfig.sharedInstance.systemColorEntry
 
         navigationController?.navigationBar.barTintColor = colorEntry["color"] as? UIColor
+        navigationController?.navigationBar.barStyle = UIBarStyle.Black
+        navigationController?.navigationBar.tintColor = UIColor.whiteColor()
 
         if let selectedIndexPath = self.tableView.indexPathForSelectedRow {
             self.tableView.deselectRowAtIndexPath(selectedIndexPath, animated: true)
         }
+        
+        self.tableView.reloadData()
 
     }
     
@@ -90,15 +98,56 @@ class SettingViewController: UIViewController {
         }else if segue.identifier == "selfSetSegue"{
             let selfCenterView = segue.destinationViewController as! SelfCenterViewController
             selfCenterView.selfConfig = self.selfConfig
+            
         }else if segue.identifier == "openWebSegue" {
-            
             let tmpCell = self.tableView.cellForRowAtIndexPath(self.tableView.indexPathForSelectedRow!) as! AuthorArticleTableViewCell
-            
             willLoadUrl = tmpCell.entry["href"] as? String
-            
             let webView = segue.destinationViewController as! WebViewController
             webView.willLoadUrl = willLoadUrl
+            
+        }else if segue.identifier == "loginLogoutSegue" {
+            let registerView = segue.destinationViewController as! LoginViewController
+            registerView.delegate = self
         }
+    }
+    
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+        
+        if identifier == "loginLogoutSegue" && loginStatus!["login"] == 1{
+            
+            let alertController = UIAlertController(
+                title: nil,
+                message: "正在退出",
+                preferredStyle: UIAlertControllerStyle.Alert)
+            
+//            alertController.addTextFieldWithConfigurationHandler( {(textField: UITextField!) in
+//                textField.placeholder = "XXXXXXXXXX"
+//                })
+//            
+//            let loading = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
+//            
+//            loading.center =  CGPointMake(130.5, 65.5)
+//            loading.color = UIColor.blackColor()
+//            loading.startAnimating()
+            
+            let action = UIAlertAction(title: "Done", style: UIAlertActionStyle.Cancel,
+                handler: {(paramAction:UIAlertAction!) in
+                
+                self.model[self.model.count-1][0] = ["login": 0]
+                
+                self.tableView.reloadData()
+                
+//                if let selectedIndexPath = self.tableView.indexPathForSelectedRow {
+//                    self.tableView.deselectRowAtIndexPath(selectedIndexPath, animated: true)
+//                }
+            })
+//            alertController.view.addSubview(loading)
+            alertController.addAction(action)
+            self.presentViewController(alertController, animated: true, completion: nil)
+            
+            return false
+        }
+        return true
     }
 }
 
@@ -141,10 +190,13 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
             return authorArticleCell
         
         case model.count-1:
-            let m = model[model.count-1][indexPath.row] as? [String: Int]
+            let m = model[model.count-1][0] as? [String: Int]
             let loginLogoutCell = self.tableView.dequeueReusableCellWithIdentifier("loginLogoutCell") as! LoginLogoutCell
+            
+            loginStatus = m
+            
             loginLogoutCell.entry = m
-//            loginLogoutCell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+
             return loginLogoutCell
             
         default:
@@ -196,7 +248,15 @@ extension SettingViewController: SelectColorViewControllerDelegate {
         
         SystemConfig.sharedInstance.saveSystemConfig("systemColor", value: index)
         
-        self.tableView.reloadData()
+        tableView.reloadData()
         navigationController?.popViewControllerAnimated(true)
+    }
+}
+
+extension SettingViewController: LoginViewControllerDelegate {
+    func writeLoginStatus(loginStatus: [String : Int]) {
+        self.model[model.count-1][0] = loginStatus
+        self.tableView.reloadData()
+        dismissViewControllerAnimated(true, completion: nil)
     }
 }

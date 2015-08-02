@@ -59,7 +59,7 @@ class WebViewController: UIViewController {
         let testScript = WKUserScript(source: testJS!, injectionTime: .AtDocumentStart, forMainFrameOnly: true)
         configuration.userContentController.addUserScript(testScript)
         
-        self.webView = WKWebView(frame: CGRectMake(view.frame.origin.x, view.frame.origin.y + 60, view.frame.size.width, view.frame.size.height-60) , configuration: configuration)
+        self.webView = WKWebView(frame: CGRectMake(view.frame.origin.x, view.frame.origin.y + 60, view.frame.size.width, view.frame.size.height - 60) , configuration: configuration)
 
         self.webView.navigationDelegate = self
         
@@ -107,7 +107,7 @@ class WebViewController: UIViewController {
         if let loadUrl = self.willLoadUrl {
             urlStr = loadUrl
         }
-        urlStr = "http://127.0.0.1:8888"
+//        urlStr = "http://127.0.0.1:8888"
         let url = NSURL(string: urlStr)
         let request = NSURLRequest(URL: url!)
         webView.loadRequest(request)
@@ -122,20 +122,23 @@ class WebViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-//    override func prefersStatusBarHidden() -> Bool {
-//        return true
-//    }
-    
     override func viewWillAppear(animated: Bool) {
         webView.addObserver(self, forKeyPath: "loading", options: .New, context: nil)
         webView.addObserver(self, forKeyPath: "estimatedProgress", options: .New, context: nil)
         webView.addObserver(self, forKeyPath: "title", options: .New, context: nil)
+        titleLabel.text = ""
+        
+//        controlView.backgroundColor = SystemConfig.sharedInstance.systemColorEntry!["color"] as? UIColor
     }
     
     override func viewWillDisappear(animated: Bool) {
         self.webView.removeObserver(self, forKeyPath: "loading", context: nil)
         self.webView.removeObserver(self, forKeyPath: "estimatedProgress", context: nil)
         self.webView.removeObserver(self, forKeyPath: "title", context: nil)
+        
+        if (webView.loading) {
+            webView.stopLoading()
+        }
     }
     
     @IBAction func dismissView(sender: AnyObject) {
