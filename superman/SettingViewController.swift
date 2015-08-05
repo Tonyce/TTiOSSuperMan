@@ -23,8 +23,9 @@ class SettingViewController: UIViewController {
         ["color"],
         
         [
-            ["img": GoogleIcon.e70c,"word":"赞一下", "href":"http://baidu.com", "colorIndex": 0 ],
-            ["img":GoogleIcon.ec29 , "word":"建议及意见", "href":"http://youku.com", "colorIndex": 1],
+//            ["img": GoogleIcon.e70c,"word":"赞一下", "href":"https://itunes.apple.com/cn/app/liu-li-xue-yuan/id978249810?mt=8", "colorIndex": 0 ],
+//            "\u{ec29}"
+            ["img": "\u{ec29}" , "word":"建议及意见", "href":"http://youku.com", "colorIndex": 0],
             ["img":GoogleIcon.e985 , "word":"作者痕迹", "href":"http://taobao.com", "colorIndex": 0]
         ],
         
@@ -39,6 +40,8 @@ class SettingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        model[2] = SystemConfig.sharedInstance.settingEntrys!
         
         // Do any additional setup after loading the view.
         closeBtn.setTitle(GoogleIcon.ebd0, forState: UIControlState.Normal)
@@ -134,7 +137,9 @@ class SettingViewController: UIViewController {
                 handler: {(paramAction:UIAlertAction!) in
                 
                 self.model[self.model.count-1][0] = ["login": 0]
-                
+                self.selfConfig?.userName = ""
+                SelfConfig.sharedInstance.saveSelfConfigs(self.selfConfig!)
+                    
                 self.tableView.reloadData()
                 
 //                if let selectedIndexPath = self.tableView.indexPathForSelectedRow {
@@ -147,6 +152,27 @@ class SettingViewController: UIViewController {
             
             return false
         }
+        
+        if identifier == "openWebSegue" {
+            
+            if let selectedIndexPath = self.tableView.indexPathForSelectedRow {
+                    
+                    let tmpCell = self.tableView.cellForRowAtIndexPath(selectedIndexPath) as! AuthorArticleTableViewCell
+                    willLoadUrl = tmpCell.entry["href"] as? String
+                    let word = tmpCell.entry["word"] as? String
+                    
+                    if word == "赞一下" {
+                    
+                        UIApplication.sharedApplication().openURL(NSURL(string: willLoadUrl!)!)
+                        
+                        self.tableView.deselectRowAtIndexPath(selectedIndexPath, animated: true)
+                        
+                        return false
+                    }
+
+            }
+        }
+        
         return true
     }
 }
@@ -205,30 +231,6 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
             return cell!
         }
 
-        /*
-        if indexPath.section == 0 {
-            let meCell = self.tableView.dequeueReusableCellWithIdentifier("meCell") as! meTableViewCell
-            meCell.selfConfig = self.selfConfig
-            return meCell
-            
-        }else if indexPath.section == 1 {
-            let systemColorCell = self.tableView.dequeueReusableCellWithIdentifier("colorSetCell") as! SettingViewColorCell
-            systemColorCell.colorEntry = SystemConfig.sharedInstance.systemColorEntry
-            systemColorCell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
-            return systemColorCell
-            
-        } else if indexPath.section == 2 {
-            let m = model[2][indexPath.row] as? [String: AnyObject]
-            let authorArticleCell = self.tableView.dequeueReusableCellWithIdentifier("authorArticleCell") as! AuthorArticleTableViewCell
-            authorArticleCell.entry = m
-            authorArticleCell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
-            return authorArticleCell
-        }else {
-            cell?.textLabel?.text = model[indexPath.section][indexPath.row] as? String
-            cell?.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
-            return cell!
-        }
-        */
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -254,8 +256,10 @@ extension SettingViewController: SelectColorViewControllerDelegate {
 }
 
 extension SettingViewController: LoginViewControllerDelegate {
-    func writeLoginStatus(loginStatus: [String : Int]) {
+    func writeLoginStatus(loginStatus: [String : Int], name: String) {
         self.model[model.count-1][0] = loginStatus
+        selfConfig?.userName = name
+        SelfConfig.sharedInstance.saveSelfConfigs(selfConfig!)
         self.tableView.reloadData()
         dismissViewControllerAnimated(true, completion: nil)
     }

@@ -12,10 +12,13 @@ import UIKit
 class SelfConfig: NSObject {
     var image: UIImage?
     var word: String?
+    var userName: String?
+    
     var isDefault = true
     
     struct PropertyKey {
         static let imageKey = "image"
+        static let userNameKey = "name"
         static let wordKey = "word"
     }
     
@@ -41,6 +44,7 @@ class SelfConfig: NSObject {
     func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeObject(image, forKey: PropertyKey.imageKey)
         aCoder.encodeObject(word, forKey: PropertyKey.wordKey)
+        aCoder.encodeObject(userName, forKey: PropertyKey.userNameKey)
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
@@ -49,8 +53,10 @@ class SelfConfig: NSObject {
         
         let  word = aDecoder.decodeObjectForKey(PropertyKey.wordKey) as! String
         
+        let userName = aDecoder.decodeObjectForKey(PropertyKey.userNameKey)  as? String
+        
         // Must call designated initializer.
-        self.init(image: image, word: word)
+        self.init(image: image, word: word, userName: userName)
     }
     
 //    override init(){
@@ -58,7 +64,7 @@ class SelfConfig: NSObject {
 //        loadSelfConfigs()
 //    }
     
-    init(image: UIImage?, word: String){
+    init(image: UIImage?, word: String, userName: String?){
         super.init()
         
         if let image = image {
@@ -67,6 +73,7 @@ class SelfConfig: NSObject {
             self.image = UIImage(named: "defaultImage")
         }
         self.word = word
+        self.userName = userName
     }
     
     func saveSelfConfigs(selfConfig: SelfConfig) {
@@ -86,7 +93,7 @@ class SelfConfig: NSObject {
         if instance != nil {
             return instance!
         }else {
-            return SelfConfig(image: nil, word: "是时候应该做点什么了")
+            return SelfConfig(image: nil, word: "是时候应该做点什么了", userName: "")
         }
     }
     

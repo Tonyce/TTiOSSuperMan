@@ -20,6 +20,72 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
         let viewController = self.window?.rootViewController as! ViewController
         viewController.managedContext = self.managedObjectContext
+        
+        MyHTTPHandler.get("http://107.150.96.151/api/me/setting"){
+            data, error in
+            
+//            print("-------")
+            let jsonParsed: AnyObject!
+            if error != nil {
+                print("error:\(error)")
+                return
+            }
+            // print("Response: \(response)")
+            // let strData = NSString(data: data!, encoding: NSUTF8StringEncoding)
+            // print("Body: \(strData)")
+            do {
+                jsonParsed = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions())
+                // print("json\(jsonParsed)")
+            }catch _ {
+                print("err")
+                return
+            }
+            
+            let jsonResult = JSONValue.fromObject(jsonParsed)!
+//            let goodSetting = jsonResult["goodSetting"]?.array
+//            print("\(goodSetting)")
+//            print("\(goodSetting!.count)")
+            
+//            print("\(goodSetting[0])")
+            
+            var netSettingEntrys = [[String: AnyObject]]()
+            
+            if let goodSetting = jsonResult["goodSetting"]?.array {
+                var netSettingEntry = [
+                    "colorIndex": 0,
+                    "img":"",
+                    "word":"",
+                    "href":""
+                ]
+                for obj in goodSetting {
+                    // print(obj.object)
+                    if let colorIndex = obj["colorIndex"] {
+                        // print(_obj["colorIndex"]!.integer)
+                        netSettingEntry["colorIndex"] = colorIndex.integer
+                    }
+                    
+                    guard let img = obj["img"] else { return }
+                    guard let word = obj["word"] else { return }
+                    guard let href = obj["href"] else { return }
+                    
+//                    print("img \(img.string!)")
+                    netSettingEntry["img"] = img.string!
+                    netSettingEntry["word"] = word.string
+                    netSettingEntry["href"] = href.string
+                    
+                    netSettingEntrys.append(netSettingEntry)
+                }
+            }
+            
+            SystemConfig.sharedInstance.settingEntrys = netSettingEntrys + SystemConfig.sharedInstance.settingEntrys!
+//                as [[String: AnyObject]]
+//                + SystemConfig.sharedInstance.settingEntrys
+//            SystemConfig.sharedInstance.saveSystemConfig("settingEntrys", value: SystemConfig.sharedInstance.settingEntrys!)
+        
+            
+        }
+        
+//        print("++++++++")
         return true
     }
 
@@ -111,3 +177,89 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+
+//        dispatch_async(dispatch_get_global_queue(0, 0), {
+//            // 耗时操作...
+//            let settingEntrys = SystemConfig.sharedInstance.settingEntrys! as Array
+//
+//            var netSettingEntrys = [[String: AnyObject]]()
+//            if settingEntrys.count > 1 {
+//                return
+//            }else {
+//                MyHTTPHandler.get("http://107.150.96.151/api/me/setting"){
+//                    data, error in
+//
+//                    print("-------")
+//                    if error != nil {
+//                        print("error:\(error)")
+//                        return
+//                    }
+//                    // print("Response: \(response)")
+//                    let strData = NSString(data: data!, encoding: NSUTF8StringEncoding)
+//                    print("Body: \(strData)")
+//                    do {
+//                        let json = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions())
+//                        print("json\(json)")
+//                    }catch _ {
+//                        print("err")
+//                        return
+//                    }
+//
+//
+//                }
+//
+//                print("++++++++")
+//
+//
+//                netSettingEntrys = [
+//                    ["img": GoogleIcon.e70c,"word":"赞一下", "href":"https://itunes.apple.com/cn/app/liu-li-xue-yuan/id978249810?mt=8", "colorIndex": 0 ],
+//                    //            "\u{ec29}"
+//                    ["img":GoogleIcon.ec29 , "word":"建议及意见", "href":"http://youku.com", "colorIndex": 0],
+//                    ["img":GoogleIcon.e985 , "word":"作者痕迹", "href":"http://taobao.com", "colorIndex": 0]
+//                ]
+//
+//            }
+//
+//            print(">>>>>>>>>>>")
+//    })
+
+//主线程刷新
+/*
+dispatch_async(dispatch_get_main_queue(), {
+print("<<<<<<<<<<<")
+
+let settingEntrys = SystemConfig.sharedInstance.settingEntrys! as Array
+
+var netSettingEntrys = [[String: AnyObject]]()
+if settingEntrys.count > 1 {
+return
+}else {
+
+
+MyHTTPHandler.get("http://107.150.96.151/api/me/setting"){
+data, error in
+
+print("-------")
+if error != nil {
+print("error:\(error)")
+return
+}
+// print("Response: \(response)")
+let strData = NSString(data: data!, encoding: NSUTF8StringEncoding)
+print("Body: \(strData)")
+do {
+let json = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions())
+print("json\(json)")
+}catch _ {
+print("err")
+return
+}
+}
+}
+
+if netSettingEntrys.count > 0 {
+SystemConfig.sharedInstance.settingEntrys = netSettingEntrys as [[String: AnyObject]]
+SystemConfig.sharedInstance.saveSystemConfig("settingEntrys", value: settingEntrys)
+}
+})
+*/

@@ -12,6 +12,7 @@ class meTableViewCell: UITableViewCell {
 
     @IBOutlet weak var selfImage: UIImageView!
     
+    @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var wordView: UITextView!
     
     var selfConfig: SelfConfig! {
@@ -24,7 +25,17 @@ class meTableViewCell: UITableViewCell {
         selfImage.image = selfConfig?.image
 //        wordTextView.text = selfConfig?.word
 //        wordView.text = "路漫漫其修远兮\n吾将上下而求索"
+//        userName.text = selfConfig?.userName
         wordView.text = selfConfig?.word
+        
+        if "" == selfConfig?.userName {
+            userName.text = "未登录"
+            userName.textColor = UIColor.grayColor()
+        }else {
+            userName.text = selfConfig?.userName
+            userName.textColor = UIColor.blackColor()
+        }
+
     }
     
     override func awakeFromNib() {

@@ -151,7 +151,7 @@ class SelfCenterViewController: UIViewController , UIImagePickerControllerDelega
         if segue.identifier == "saveSelfConfig" {
             let image: UIImage = selfImage.image!
             let word: String = textView.text
-            selfConfig = SelfConfig(image: image, word: word)
+            selfConfig = SelfConfig(image: image, word: word, userName: selfConfig.userName)
         }
     }
 }

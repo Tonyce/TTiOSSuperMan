@@ -13,7 +13,7 @@ let kMMRingStrokeAnimationKey = "mmmaterialdesignspinner.stroke"
 let kMMRingRotationAnimationKey = "mmmaterialdesignspinner.rotation"
 
 protocol LoginViewControllerDelegate : class{
-    func writeLoginStatus(loginStatus: [String: Int])
+    func writeLoginStatus(loginStatus: [String: Int], name: String)
 }
 
 class LoginViewController: UIViewController {
@@ -128,10 +128,12 @@ class LoginViewController: UIViewController {
     }
     
     func sendUserNameAndPwd(url: String, requestBody: [String: String], isLogin: Bool){
-        MyHTTPHandler.post(url, params: requestBody){
+        
+        dispatch_async(dispatch_get_main_queue(), {
+            MyHTTPHandler.post(url, params: requestBody){
             
-            data, err in
-            dispatch_async(dispatch_get_main_queue(), {
+                data, err in
+
 
                 let jsonParsed: AnyObject!
                 if err != nil {
@@ -165,9 +167,9 @@ class LoginViewController: UIViewController {
                         self.resumeRegisterBtn()
                     }
                 }
-            })
+            }
             
-        }
+        })
     }
     
     func displayAlert(message: String){
@@ -219,7 +221,7 @@ class LoginViewController: UIViewController {
     
 
     func logined(){
-        delegate?.writeLoginStatus(["login": 1])
+        delegate?.writeLoginStatus(["login": 1], name: userName.text!)
     }
     
     @IBAction func dismissKeyboard(sender: AnyObject) {

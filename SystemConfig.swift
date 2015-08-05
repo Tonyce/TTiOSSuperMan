@@ -12,10 +12,16 @@ import UIKit
 class SystemConfig: NSObject {
     
     var systemConfigData: NSMutableDictionary?
+    
     var systemColorEntry: [String: AnyObject]?
     let colorArr = Colors.colorArr
-    
     let defaultColorEntry = Colors.colorArr[0]
+    
+    var settingEntrys: [[String: AnyObject]]?
+    let defaultSettingEntrys = [ ["img":GoogleIcon.ec29 , "word":"建议及意见", "href":"http://youku.com", "colorIndex": 0] ]
+//    let defaultSettingEntrys = [ ["img": "\u{ec29}" , "word":"建议及意见", "href":"http://youku.com", "colorIndex": 0] ]
+    
+
     
     class var sharedInstance: SystemConfig {
         struct Singleton {
@@ -26,15 +32,28 @@ class SystemConfig: NSObject {
     
     override init() {
         super.init()
+        
+        print(GoogleIcon.ec29)
+        
         systemConfigData = readSystemConfig()
         
         if let systemConfigData = systemConfigData {
-            let colorEntryLocation = systemConfigData["systemColor"] as! Int
-            systemColorEntry = colorArr[colorEntryLocation]
+            if let colorEntryLocation = systemConfigData["systemColor"] as? Int {
+                systemColorEntry = colorArr[colorEntryLocation]
+            }
+            
+            if let settingEntrysData = systemConfigData["settingEntrys"] as? [[String: AnyObject]] {
+                settingEntrys = settingEntrysData
+            }
+
         }
         
         if systemColorEntry == nil {
             systemColorEntry = defaultColorEntry
+        }
+        
+        if settingEntrys == nil {
+            settingEntrys = defaultSettingEntrys as? [[String: AnyObject]]
         }
     }
     

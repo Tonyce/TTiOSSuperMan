@@ -128,6 +128,8 @@ class WebViewController: UIViewController {
         webView.addObserver(self, forKeyPath: "title", options: .New, context: nil)
         titleLabel.text = ""
         
+        controlView.backgroundColor = UIColor.MKColor.Grey
+        
 //        controlView.backgroundColor = SystemConfig.sharedInstance.systemColorEntry!["color"] as? UIColor
     }
     

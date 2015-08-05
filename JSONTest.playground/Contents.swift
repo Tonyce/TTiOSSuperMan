@@ -160,6 +160,9 @@ if let jsonData = (json as String).dataUsingEncoding(NSUTF8StringEncoding) {
     }
 }
 
+var a = "a"
+a.endIndex
+
 
 
 
