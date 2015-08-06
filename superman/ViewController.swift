@@ -142,9 +142,10 @@ class ViewController: UIViewController {
         settingBtn.tintColor = UIColor.whiteColor()
         settingBtn.layer.cornerRadius = CGRectGetHeight(settingBtn.frame) / 2
         
-        friendBtn.setTitle(GoogleIcon.e7cb, forState: UIControlState.Normal)
-        friendBtn.tintColor = UIColor.whiteColor()
-        friendBtn.layer.cornerRadius = CGRectGetHeight(settingBtn.frame) / 2
+//        friendBtn.setTitle(GoogleIcon.e7cb, forState: UIControlState.Normal)
+//        friendBtn.setTitle("", forState: UIControlState.Normal)
+//        friendBtn.tintColor = UIColor.whiteColor()
+//        friendBtn.layer.cornerRadius = CGRectGetHeight(settingBtn.frame) / 2
         
         selfImage.layer.cornerRadius = CGRectGetHeight(selfImage.frame) / 2
         selfImage.layer.masksToBounds = true

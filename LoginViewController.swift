@@ -13,13 +13,14 @@ let kMMRingStrokeAnimationKey = "mmmaterialdesignspinner.stroke"
 let kMMRingRotationAnimationKey = "mmmaterialdesignspinner.rotation"
 
 protocol LoginViewControllerDelegate : class{
-    func writeLoginStatus(loginStatus: [String: Int], name: String)
+    func writeLoginStatus(loginStatus: [String: Bool], name: String)
 }
 
 class LoginViewController: UIViewController {
     
     weak var delegate: LoginViewControllerDelegate?
 
+    @IBOutlet weak var topView: UIView!
     @IBOutlet weak var dismissBtn: UIButton!
     @IBOutlet weak var userName: MKTextField!
     @IBOutlet weak var password: MKTextField!
@@ -46,6 +47,8 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        topView.backgroundColor = UIColor.MKColor.LightBlue
         
         dismissBtn.setTitle(GoogleIcon.e811, forState: UIControlState.Normal)
         dismissBtn.tintColor = UIColor.whiteColor()
@@ -129,47 +132,50 @@ class LoginViewController: UIViewController {
     
     func sendUserNameAndPwd(url: String, requestBody: [String: String], isLogin: Bool){
         
-        dispatch_async(dispatch_get_main_queue(), {
+//        dispatch_async(dispatch_get_main_queue(), {
             MyHTTPHandler.post(url, params: requestBody){
             
                 data, err in
+                dispatch_async(dispatch_get_main_queue(), {
 
-
-                let jsonParsed: AnyObject!
-                if err != nil {
-                    self.displayAlert("client goes wrong")
-                    return
-                }
-                
-                do {
-                    jsonParsed = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions())
-                }catch _ {
-                    print("err")
-                    self.displayAlert("parse json goes wrong")
-                    if isLogin {
-                        self.resumeLoginBtn()
-                    }else {
-                        self.resumeRegisterBtn()
+                    let jsonParsed: AnyObject!
+                    if err != nil {
+                        self.displayAlert("client goes wrong")
+                        return
                     }
+                    
+                    do {
+                        jsonParsed = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions())
+                    }catch _ {
+                        print("err")
+                        self.displayAlert("parse json goes wrong")
+                        if isLogin {
+                            self.resumeLoginBtn()
+                        }else {
+                            self.resumeRegisterBtn()
+                        }
 
-                    return
-                }
-                
-                let jsonResult = JSONValue.fromObject(jsonParsed)!
-                let success = jsonResult["success"]?.bool
-                if success == true {
-                    self.logined()
-                }else {
-                    self.displayAlert("password is wrong")
-                    if isLogin {
-                        self.resumeLoginBtn()
-                    }else {
-                        self.resumeRegisterBtn()
+                        return
                     }
-                }
+                    
+                    let jsonResult = JSONValue.fromObject(jsonParsed)!
+                    let success = jsonResult["success"]?.bool
+                    if success == true {
+                        SelfConfig.sharedInstance.userName = self.userName.text!
+                        SelfConfig.sharedInstance.saveSelfConfigs(SelfConfig.sharedInstance)
+                        self.logined()
+                    }else {
+                        self.displayAlert("password is wrong")
+                        if isLogin {
+                            self.resumeLoginBtn()
+                        }else {
+                            self.resumeRegisterBtn()
+                        }
+                    }
+                })
             }
             
-        })
+//        })
     }
     
     func displayAlert(message: String){
@@ -221,7 +227,7 @@ class LoginViewController: UIViewController {
     
 
     func logined(){
-        delegate?.writeLoginStatus(["login": 1], name: userName.text!)
+        delegate?.writeLoginStatus(["logined": true], name: userName.text!)
     }
     
     @IBAction func dismissKeyboard(sender: AnyObject) {
@@ -261,7 +267,9 @@ class LoginViewController: UIViewController {
     @IBAction func registerAction(sender: AnyObject) {
         registerText = registerBtn.currentTitle
         if registerText == "注册" {
+            password.text = ""
             conformFeildShow()
+            
             UIView.animateWithDuration(0.5, animations: {
                 self.view.layoutIfNeeded()
                 self.registerBtn.setTitle("ok", forState: UIControlState.Normal)

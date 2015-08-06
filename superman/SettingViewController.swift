@@ -15,12 +15,14 @@ class SettingViewController: UIViewController {
     @IBOutlet weak var closeBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
-    var loginStatus: [String:Int]?
+    var loginStatus: [String:Bool]?
     
     var model = [
         ["me"],
         
-        ["color"],
+        ["color", "friends"],
+        
+        [["img":GoogleIcon.e985 , "word":"作者痕迹", "href":"http://taobao.com", "colorIndex": 0]],
         
         [
 //            ["img": GoogleIcon.e70c,"word":"赞一下", "href":"https://itunes.apple.com/cn/app/liu-li-xue-yuan/id978249810?mt=8", "colorIndex": 0 ],
@@ -29,7 +31,9 @@ class SettingViewController: UIViewController {
             ["img":GoogleIcon.e985 , "word":"作者痕迹", "href":"http://taobao.com", "colorIndex": 0]
         ],
         
-        [[ "login":1] ]
+
+        
+        [ [ "logined":false] ]
     ]
     
     var selfConfig: SelfConfig?
@@ -41,12 +45,21 @@ class SettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        model[2] = SystemConfig.sharedInstance.settingEntrys!
+        model[3] = SystemConfig.sharedInstance.settingEntrys!
+        
+        if let _ = SelfConfig.sharedInstance.userName {
+            model[model.count - 1] = [["logined": true]]
+        }
         
         // Do any additional setup after loading the view.
         closeBtn.setTitle(GoogleIcon.ebd0, forState: UIControlState.Normal)
         closeBtn.tintColor = UIColor.whiteColor()
         closeBtn.layer.cornerRadius = CGRectGetHeight(closeBtn.frame) / 2
+        
+
+//        tableView.footerViewForSection(<#T##section: Int##Int#>)
+//        tableView.footerViewForSection(model.count - 1) = UITableViewHeaderFooterView(reuseIdentifier: "")
+        tableView.registerClass(LastSectionFootView.self, forHeaderFooterViewReuseIdentifier: "lastSectionFootView")
     }
     
     
@@ -74,16 +87,16 @@ class SettingViewController: UIViewController {
     }
     
     @IBAction func unwindSet(sender: UIStoryboardSegue) {
-        if let sourceViewController = sender.sourceViewController as? SelfCenterViewController,
-            selfConfig = sourceViewController.selfConfig {
+//        if let sourceViewController = sender.sourceViewController as? SelfCenterViewController {
+//            selfConfig = sourceViewController.selfConfig {
 //                self.selfConfig = selfConfig
-                SelfConfig.sharedInstance.image = selfConfig.image
-                SelfConfig.sharedInstance.word  = selfConfig.word
+//                SelfConfig.sharedInstance.image = selfConfig.image
+//                SelfConfig.sharedInstance.word  = selfConfig.word
                 SelfConfig.sharedInstance.isDefault = false
                 
                 SelfConfig.sharedInstance.saveSelfConfigs(SelfConfig.sharedInstance)
                 self.tableView.reloadData()
-        }
+//        }
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -98,9 +111,9 @@ class SettingViewController: UIViewController {
             setColorView.nowColorEntry = self.colorEntry
 //            setColorView.selectColorEntry = SystemConfig.sharedInstance.systemColorEntry
             
-        }else if segue.identifier == "selfSetSegue"{
-            let selfCenterView = segue.destinationViewController as! SelfCenterViewController
-            selfCenterView.selfConfig = self.selfConfig
+//        }else if segue.identifier == "selfSetSegue"{
+//            let selfCenterView = segue.destinationViewController as! SelfCenterViewController
+//            selfCenterView.selfConfig = self.selfConfig
             
         }else if segue.identifier == "openWebSegue" {
             let tmpCell = self.tableView.cellForRowAtIndexPath(self.tableView.indexPathForSelectedRow!) as! AuthorArticleTableViewCell
@@ -116,11 +129,11 @@ class SettingViewController: UIViewController {
     
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
         
-        if identifier == "loginLogoutSegue" && loginStatus!["login"] == 1{
+        if identifier == "loginLogoutSegue" && loginStatus!["logined"] == true{
             
             let alertController = UIAlertController(
                 title: nil,
-                message: "正在退出",
+                message: "退出?",
                 preferredStyle: UIAlertControllerStyle.Alert)
             
 //            alertController.addTextFieldWithConfigurationHandler( {(textField: UITextField!) in
@@ -133,11 +146,11 @@ class SettingViewController: UIViewController {
 //            loading.color = UIColor.blackColor()
 //            loading.startAnimating()
             
-            let action = UIAlertAction(title: "Done", style: UIAlertActionStyle.Cancel,
+            let action = UIAlertAction(title: "YES", style: UIAlertActionStyle.Cancel,
                 handler: {(paramAction:UIAlertAction!) in
                 
-                self.model[self.model.count-1][0] = ["login": 0]
-                self.selfConfig?.userName = ""
+                self.model[self.model.count-1] = [["logined": false]]
+                self.selfConfig?.userName = nil
                 SelfConfig.sharedInstance.saveSelfConfigs(self.selfConfig!)
                     
                 self.tableView.reloadData()
@@ -187,6 +200,26 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
         return keyArray.count
     }
     
+    
+//    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+//        if section == model.count-1 {
+//            return 50
+//        }else{
+//            return 0
+//        }
+//    }
+    
+    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        if section == model.count-1 {
+            let footView = tableView.dequeueReusableHeaderFooterViewWithIdentifier("lastSectionFootView")
+//            contentView.backgroundColor = UIColor.clearColor()
+            return footView
+        }else {
+            return nil
+        }
+    }
+    
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         var cell = tableView.dequeueReusableCellWithIdentifier("cell")
@@ -203,10 +236,17 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
             return meCell
 
         case 1:
-            let systemColorCell = self.tableView.dequeueReusableCellWithIdentifier("colorSetCell") as! SettingViewColorCell
-            systemColorCell.colorEntry = SystemConfig.sharedInstance.systemColorEntry
-            systemColorCell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
-            return systemColorCell
+            if indexPath.row == 0 {
+                let systemColorCell = self.tableView.dequeueReusableCellWithIdentifier("colorSetCell") as! SettingViewColorCell
+                systemColorCell.colorEntry = SystemConfig.sharedInstance.systemColorEntry
+                systemColorCell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+                return systemColorCell
+            }else {
+                let friendsCell = self.tableView.dequeueReusableCellWithIdentifier("friendsCell") as! FriendsCell
+
+                friendsCell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+                return friendsCell
+            }
             
         case 2:
             let m = model[2][indexPath.row] as? [String: AnyObject]
@@ -214,9 +254,16 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
             authorArticleCell.entry = m
             authorArticleCell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
             return authorArticleCell
+            
+        case 3:
+            let m = model[3][indexPath.row] as? [String: AnyObject]
+            let authorArticleCell = self.tableView.dequeueReusableCellWithIdentifier("authorArticleCell") as! AuthorArticleTableViewCell
+            authorArticleCell.entry = m
+            authorArticleCell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+            return authorArticleCell
         
         case model.count-1:
-            let m = model[model.count-1][0] as? [String: Int]
+            let m = model[model.count-1][0] as? [String: Bool]
             let loginLogoutCell = self.tableView.dequeueReusableCellWithIdentifier("loginLogoutCell") as! LoginLogoutCell
             
             loginStatus = m
@@ -235,9 +282,9 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return 100
+            return 90
         }else {
-            return 50
+            return 45
         }
     }
 }
@@ -256,7 +303,7 @@ extension SettingViewController: SelectColorViewControllerDelegate {
 }
 
 extension SettingViewController: LoginViewControllerDelegate {
-    func writeLoginStatus(loginStatus: [String : Int], name: String) {
+    func writeLoginStatus(loginStatus: [String : Bool], name: String) {
         self.model[model.count-1][0] = loginStatus
         selfConfig?.userName = name
         SelfConfig.sharedInstance.saveSelfConfigs(selfConfig!)

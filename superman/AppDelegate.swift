@@ -18,21 +18,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         // UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+        
         let viewController = self.window?.rootViewController as! ViewController
         viewController.managedContext = self.managedObjectContext
+        
+
+//        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: NSBundle(forClass: self.dynamicType))
+//        let mainViewController = storyboard.instantiateViewControllerWithIdentifier("mainView") as! ViewController
+//        mainViewController.managedContext = self.managedObjectContext
+//        self.window?.rootViewController = mainViewController
+//        
+//        MyHTTPHandler.post("http://127.0.0.1:9999", params: ["emoji": "\u{2665}", "icon":"\u{e70c}"]){
+//            data , err in
+//            
+//        }
+        
+        let settingEntrys = SystemConfig.sharedInstance.settingEntrys! as Array
+//        if let settingEntrys = SystemConfig.sharedInstance.settingEntrys as? Array {
+//            settingEntrys[0]["word"] ==
+//        }
+        if settingEntrys[0]["word"] as! String == "赞一下" {
+            return true
+        }
+        
         
         MyHTTPHandler.get("http://107.150.96.151/api/me/setting"){
             data, error in
             
-//            print("-------")
             let jsonParsed: AnyObject!
             if error != nil {
                 print("error:\(error)")
                 return
             }
-            // print("Response: \(response)")
-            // let strData = NSString(data: data!, encoding: NSUTF8StringEncoding)
-            // print("Body: \(strData)")
+
             do {
                 jsonParsed = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions())
                 // print("json\(jsonParsed)")
@@ -42,11 +60,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             
             let jsonResult = JSONValue.fromObject(jsonParsed)!
-//            let goodSetting = jsonResult["goodSetting"]?.array
-//            print("\(goodSetting)")
-//            print("\(goodSetting!.count)")
-            
-//            print("\(goodSetting[0])")
             
             var netSettingEntrys = [[String: AnyObject]]()
             
@@ -59,33 +72,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 ]
                 for obj in goodSetting {
                     // print(obj.object)
-                    if let colorIndex = obj["colorIndex"] {
+                    if let colorIndex = obj["colorIndex"], img = obj["img"] ,word = obj["word"], href = obj["href"]{
                         // print(_obj["colorIndex"]!.integer)
                         netSettingEntry["colorIndex"] = colorIndex.integer
+                        netSettingEntry["img"] = img.string!
+                        netSettingEntry["word"] = word.string
+                        netSettingEntry["href"] = href.string
+                        
+                        netSettingEntrys.append(netSettingEntry)
                     }
-                    
-                    guard let img = obj["img"] else { return }
-                    guard let word = obj["word"] else { return }
-                    guard let href = obj["href"] else { return }
-                    
-//                    print("img \(img.string!)")
-                    netSettingEntry["img"] = img.string!
-                    netSettingEntry["word"] = word.string
-                    netSettingEntry["href"] = href.string
-                    
-                    netSettingEntrys.append(netSettingEntry)
                 }
             }
             
             SystemConfig.sharedInstance.settingEntrys = netSettingEntrys + SystemConfig.sharedInstance.settingEntrys!
-//                as [[String: AnyObject]]
-//                + SystemConfig.sharedInstance.settingEntrys
-//            SystemConfig.sharedInstance.saveSystemConfig("settingEntrys", value: SystemConfig.sharedInstance.settingEntrys!)
-        
-            
+            SystemConfig.sharedInstance.saveSystemConfig("settingEntrys", value: SystemConfig.sharedInstance.settingEntrys!)
         }
-        
-//        print("++++++++")
+
         return true
     }
 
@@ -263,3 +265,16 @@ SystemConfig.sharedInstance.saveSystemConfig("settingEntrys", value: settingEntr
 }
 })
 */
+
+//                    guard let img = obj["img"] else { return }
+//                    guard let word = obj["word"] else { return }
+//                    guard let href = obj["href"] else { return }
+//
+//                    netSettingEntry["img"] = img.string!
+//                    netSettingEntry["word"] = word.string
+//                    netSettingEntry["href"] = href.string
+//
+//                    netSettingEntrys.append(netSettingEntry)
+
+
+

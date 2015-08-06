@@ -18,18 +18,21 @@ class DiaryViewController: UIViewController {
     @IBOutlet weak var markLabel: UILabel!
     @IBOutlet weak var editBtn: UIButton!
     
+    
     @IBOutlet weak var textView: UITextView!
-    @IBOutlet weak var selectColorBtn: UIButton!
     
     @IBOutlet weak var textViewHeight: NSLayoutConstraint!
     @IBOutlet weak var topViewHeight: NSLayoutConstraint!
     @IBOutlet weak var editBtnTop: NSLayoutConstraint!
     
+    @IBOutlet weak var colorView: UIView!
+    @IBOutlet weak var colorLabel: UILabel!
+    @IBOutlet weak var colorNameLabel: UILabel!
+    
     var keyboardRect = CGRectZero
-    var wordTextView: UITextView!
-    var contentSuperView: UIScrollView!
     let contentSuperViewDefaultContentInset = UIEdgeInsets(top: 120, left: 0, bottom: 0, right: 0)
-    var defaultContentInset = UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10)
+    
+    var defaultContentInset = UIEdgeInsets()
     var keyBoardRect: CGRect!
     
     var isDiaryEditing = false
@@ -44,26 +47,21 @@ class DiaryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        scrollViewContainer.contentSize = CGSize(width: view.bounds.width, height:  view.bounds.height + 10 )
         
         initCloseBtn()
         initDoneBtn()
         initEditBtn()
         
-        contentSuperView = UIScrollView(frame: CGRectMake(0, 60, self.view.frame.size.width, self.view.frame.height - 60))
-        contentSuperView.backgroundColor = UIColor.brownColor()
-        contentSuperView.contentInset = contentSuperViewDefaultContentInset
-        
-        wordTextView = UITextView(frame: CGRectMake(10, 300, contentSuperView.frame.size.width - 25, 50))
         defaultContentInset = textView.contentInset
-        textView.font = UIFont.systemFontOfSize(16)
+        
         textView.userInteractionEnabled = false
         textView.delegate = self
+    
+        colorView.layer.borderColor = UIColor.MKColor.BlueGrey.CGColor
+        colorView.layer.borderWidth = 0.3
         
-
-        // self.view.insertSubview(contentSuperView, belowSubview: topView)
-        
+        colorLabel.font = UIFont(name: GoogleIconName, size: 18.0)
+        colorLabel.text = GoogleIcon.eacd
         
         // MARK: Keyboard handle
         NSNotificationCenter.defaultCenter().addObserver(
@@ -85,16 +83,23 @@ class DiaryViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        markLabel.text = "发生的，经历的..."
+        markLabel.text = ""
         
         if let diaryEntry = self.diaryEntry {
             topViewColorEntry = Colors.colorArr[ diaryEntry.colorEntryIndex as! Int ]
             textView.text = diaryEntry.content
+            markLabel.text = diaryEntry.time
         }
         
         topView.backgroundColor = topViewColorEntry["color"] as? UIColor
-        textViewHeight.constant = textView.contentSize.height
+        colorLabel.textColor =  topViewColorEntry["color"] as? UIColor
+        colorNameLabel.text = topViewColorEntry["name"] as? String
+
+        if textView.contentSize.height > textViewHeight.constant {
+            textViewHeight.constant = textView.contentSize.height + 30
+        }
         // textView.frame.size.height = textView.contentSize.height
+        scrollViewContainer.contentSize.height = view.bounds.height + textView.contentSize.height
         self.view.layoutIfNeeded()
 
     }
@@ -137,10 +142,6 @@ class DiaryViewController: UIViewController {
             editBtn.alpha = 1.0
         }
     }
-    
-    @IBAction func saveAction(sender: UIButton){
-        saveDiary()
-    }
 
     @IBAction func editAction(sender: UIButton) {
         // print(self.markLabel.center)
@@ -153,7 +154,7 @@ class DiaryViewController: UIViewController {
                 self.doneBtn.alpha = 1.0
                 
                 
-                self.markLabel.text = "2015-07-25 周六"
+//                self.markLabel.text = "2015-07-25 周六"
                 self.editBtnTop.constant -= 15
                 self.topViewHeight.constant = 70
                 self.view.layoutIfNeeded()
@@ -170,6 +171,7 @@ class DiaryViewController: UIViewController {
  
     func saveDiary(){
         
+        self.diaryEntry?.content = self.textView.text
         self.textView.resignFirstResponder()
         self.textView.userInteractionEnabled = false
         UIView.animateWithDuration(0.35, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut,
@@ -187,15 +189,16 @@ class DiaryViewController: UIViewController {
         })
     }
     
+    @IBAction func selectColor(sender: UITapGestureRecognizer) {
+        let colorSelectView = storyboard?.instantiateViewControllerWithIdentifier("selectColorView") as! SelectColorViewController
+        colorSelectView.delegate = self
+        colorSelectView.nowColorEntry = topViewColorEntry
+        presentViewController(colorSelectView, animated: true, completion: nil)
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "setDiaryColorSegue" {
-            let setColorView = segue.destinationViewController as! SelectColorViewController
-            setColorView.delegate = self
-            setColorView.nowColorEntry = topViewColorEntry
-        }
-        
         if segue.identifier == "unwindToDiary" {
-            self.diaryEntry?.content = self.textView.text
+
         }
     }
 
@@ -208,12 +211,12 @@ extension DiaryViewController: UITextViewDelegate {
     
     func textViewDidChange(textView: UITextView) {
         // let textHeight = CGFloat(textViewHeight)
-        if textView.contentSize.height > textViewHeight.constant {
+//        if textView.contentSize.height > textViewHeight.constant {
             textViewHeight.constant = textView.contentSize.height
             scrollViewContainer.contentSize.height = view.bounds.height + textView.contentSize.height
 
             self.view.layoutIfNeeded()
-        }
+//        }
 
     }
 }

@@ -13,25 +13,19 @@ class LoginLogoutCell: UITableViewCell {
     @IBOutlet weak var wordLabel: UILabel!
     @IBOutlet weak var imgLabel: UILabel!
     
-    var entry: [String: Int]! {
+    var entry: [String: Bool]! {
         didSet {
             configureCell()
         }
     }
     
     func configureCell(){
-        if entry["login"] == 0 {
+        if entry["logined"] == false {
             imgLabel.font = UIFont(name: GoogleIconName, size: 20.0)
             imgLabel.textColor = UIColor.MKColor.LightBlue
             imgLabel.text = GoogleIcon.e83b
             
-            wordLabel.text = "登陆账号"
-//        }else if entry["login"] == 1 {
-//            imgLabel.font = UIFont(name: GoogleIconName, size: 18.0)
-//            imgLabel.textColor = UIColor.MKColor.LightBlue
-//            imgLabel.text = GoogleIcon.e83b
-//            
-//            wordLabel.text = "已登陆"
+            wordLabel.text = "登陆/注册账号"
         }else {
             imgLabel.font = UIFont(name: GoogleIconName, size: 20.0)
             imgLabel.textColor = UIColor.redColor()

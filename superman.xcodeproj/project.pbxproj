@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE0E9D3D1B738F6F0027DF86 /* FriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0E9D3C1B738F6F0027DF86 /* FriendsCell.swift */; };
 		BE1594A91B56B63E0029FF4A /* SelfConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1594A81B56B63E0029FF4A /* SelfConfig.swift */; };
 		BE26DEC81B5816C30018528B /* ColorViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE26DEC71B5816C30018528B /* ColorViewCell.swift */; };
 		BE2E63511B68F63100FB8468 /* Diary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BE2E634F1B68F63100FB8468 /* Diary.xcdatamodeld */; };
@@ -21,11 +22,13 @@
 		BE768EF81B4D96F00032B5CE /* DiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE768EF71B4D96F00032B5CE /* DiaryViewController.swift */; };
 		BE8517001B58FE2800C65D5D /* SettingViewColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8516FF1B58FE2800C65D5D /* SettingViewColorCell.swift */; };
 		BE8C7CC41B61479C009A8C4D /* AddDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8C7CC31B61479C009A8C4D /* AddDiaryViewController.swift */; };
-		BE8CC83A1B57B5A300408241 /* SelectAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8CC8391B57B5A300408241 /* SelectAlertViewController.swift */; };
 		BE9100701B6A2F4600392981 /* AuthorArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE91006F1B6A2F4600392981 /* AuthorArticleTableViewCell.swift */; };
 		BE9100721B6A4D0000392981 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9100711B6A4D0000392981 /* WebViewController.swift */; };
 		BEA659CF1B5A500D004298AE /* SystemConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA659CE1B5A500D004298AE /* SystemConfig.swift */; };
 		BEA659D11B5AAF6F004298AE /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA659D01B5AAF6F004298AE /* Colors.swift */; };
+		BEAEC6481B72407A00C3CF7A /* LoginStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAEC6471B72407A00C3CF7A /* LoginStatus.swift */; };
+		BEAEC64A1B72778E00C3CF7A /* BakIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAEC6491B72778E00C3CF7A /* BakIntroViewController.swift */; };
+		BEAEC64E1B72833A00C3CF7A /* LastSectionFootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAEC64D1B72833A00C3CF7A /* LastSectionFootView.swift */; };
 		BEB5655A1B4EA35E0096B1FE /* OpenDiaryAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB565591B4EA35E0096B1FE /* OpenDiaryAnimation.swift */; };
 		BEB5655C1B4ECD130096B1FE /* AddDiaryAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB5655B1B4ECD130096B1FE /* AddDiaryAnimation.swift */; };
 		BEB5655E1B4ED8F90096B1FE /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB5655D1B4ED8F90096B1FE /* SettingViewController.swift */; };
@@ -39,7 +42,6 @@
 		BEE321C41B6CBC5C00E964AE /* MABCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE321C31B6CBC5C00E964AE /* MABCardView.swift */; };
 		BEE321CB1B6CF28800E964AE /* test.js in Resources */ = {isa = PBXBuildFile; fileRef = BEE321CA1B6CF28800E964AE /* test.js */; };
 		BEEC67221B6A81E6004EF713 /* LoginLogoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEC67211B6A81E6004EF713 /* LoginLogoutCell.swift */; };
-		BEEC67251B6A8372004EF713 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEC67241B6A8372004EF713 /* RegisterViewController.swift */; };
 		BEEE07641B4CCEDC0015E752 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEE07631B4CCEDC0015E752 /* AppDelegate.swift */; };
 		BEEE07661B4CCEDC0015E752 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEE07651B4CCEDC0015E752 /* ViewController.swift */; };
 		BEEE07691B4CCEDC0015E752 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEEE07671B4CCEDC0015E752 /* Main.storyboard */; };
@@ -53,6 +55,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BE0E9D3C1B738F6F0027DF86 /* FriendsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsCell.swift; sourceTree = "<group>"; };
 		BE1594A81B56B63E0029FF4A /* SelfConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfConfig.swift; sourceTree = "<group>"; };
 		BE26DEC71B5816C30018528B /* ColorViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorViewCell.swift; sourceTree = "<group>"; };
 		BE2E63501B68F63100FB8468 /* Diary.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Diary.xcdatamodel; sourceTree = "<group>"; };
@@ -68,11 +71,13 @@
 		BE768EF71B4D96F00032B5CE /* DiaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiaryViewController.swift; path = superman/DiaryViewController.swift; sourceTree = "<group>"; };
 		BE8516FF1B58FE2800C65D5D /* SettingViewColorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewColorCell.swift; sourceTree = "<group>"; };
 		BE8C7CC31B61479C009A8C4D /* AddDiaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDiaryViewController.swift; sourceTree = "<group>"; };
-		BE8CC8391B57B5A300408241 /* SelectAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectAlertViewController.swift; sourceTree = "<group>"; };
 		BE91006F1B6A2F4600392981 /* AuthorArticleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorArticleTableViewCell.swift; sourceTree = "<group>"; };
 		BE9100711B6A4D0000392981 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		BEA659CE1B5A500D004298AE /* SystemConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemConfig.swift; sourceTree = "<group>"; };
 		BEA659D01B5AAF6F004298AE /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		BEAEC6471B72407A00C3CF7A /* LoginStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginStatus.swift; sourceTree = "<group>"; };
+		BEAEC6491B72778E00C3CF7A /* BakIntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BakIntroViewController.swift; sourceTree = "<group>"; };
+		BEAEC64D1B72833A00C3CF7A /* LastSectionFootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastSectionFootView.swift; sourceTree = "<group>"; };
 		BEB565591B4EA35E0096B1FE /* OpenDiaryAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenDiaryAnimation.swift; sourceTree = "<group>"; };
 		BEB5655B1B4ECD130096B1FE /* AddDiaryAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDiaryAnimation.swift; sourceTree = "<group>"; };
 		BEB5655D1B4ED8F90096B1FE /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingViewController.swift; path = superman/SettingViewController.swift; sourceTree = "<group>"; };
@@ -87,7 +92,6 @@
 		BEE321C31B6CBC5C00E964AE /* MABCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MABCardView.swift; sourceTree = "<group>"; };
 		BEE321CA1B6CF28800E964AE /* test.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = test.js; sourceTree = "<group>"; };
 		BEEC67211B6A81E6004EF713 /* LoginLogoutCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginLogoutCell.swift; sourceTree = "<group>"; };
-		BEEC67241B6A8372004EF713 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		BEEE07601B4CCEDC0015E752 /* superman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = superman.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEEE07631B4CCEDC0015E752 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BEEE07651B4CCEDC0015E752 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +123,7 @@
 				BE1594A81B56B63E0029FF4A /* SelfConfig.swift */,
 				BEA659CE1B5A500D004298AE /* SystemConfig.swift */,
 				BEA659D01B5AAF6F004298AE /* Colors.swift */,
+				BEAEC6471B72407A00C3CF7A /* LoginStatus.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -132,9 +137,11 @@
 				BEBDCDAC1B53E24C0097FB1F /* meTableViewCell.swift */,
 				BE4B93971B54ADA0008CAA67 /* SelfCenterViewController.swift */,
 				BE3342F51B57B05A003F06BC /* SelectColorViewController.swift */,
-				BE8CC8391B57B5A300408241 /* SelectAlertViewController.swift */,
 				BE26DEC71B5816C30018528B /* ColorViewCell.swift */,
 				BE8516FF1B58FE2800C65D5D /* SettingViewColorCell.swift */,
+				BEAEC6491B72778E00C3CF7A /* BakIntroViewController.swift */,
+				BEAEC64D1B72833A00C3CF7A /* LastSectionFootView.swift */,
+				BE0E9D3C1B738F6F0027DF86 /* FriendsCell.swift */,
 			);
 			name = Setting;
 			sourceTree = "<group>";
@@ -178,7 +185,6 @@
 		BEEC67231B6A8353004EF713 /* register */ = {
 			isa = PBXGroup;
 			children = (
-				BEEC67241B6A8372004EF713 /* RegisterViewController.swift */,
 				BEC703A71B6E046700874FF1 /* LoginViewController.swift */,
 			);
 			name = register;
@@ -331,10 +337,10 @@
 				BE1594A91B56B63E0029FF4A /* SelfConfig.swift in Sources */,
 				BE8C7CC41B61479C009A8C4D /* AddDiaryViewController.swift in Sources */,
 				BE3342F41B578F8A003F06BC /* MKColor.swift in Sources */,
+				BEAEC6481B72407A00C3CF7A /* LoginStatus.swift in Sources */,
 				BEE321C41B6CBC5C00E964AE /* MABCardView.swift in Sources */,
 				BEB5655C1B4ECD130096B1FE /* AddDiaryAnimation.swift in Sources */,
 				BE9100701B6A2F4600392981 /* AuthorArticleTableViewCell.swift in Sources */,
-				BE8CC83A1B57B5A300408241 /* SelectAlertViewController.swift in Sources */,
 				BEC703AC1B6E099100874FF1 /* MKTextField.swift in Sources */,
 				BEEFF4341B68F6B900272133 /* Diary.swift in Sources */,
 				BE4B93981B54ADA0008CAA67 /* SelfCenterViewController.swift in Sources */,
@@ -344,8 +350,10 @@
 				BE4F64D41B57D1E9008251E7 /* ImageExtension.swift in Sources */,
 				BE9100721B6A4D0000392981 /* WebViewController.swift in Sources */,
 				BEA659CF1B5A500D004298AE /* SystemConfig.swift in Sources */,
+				BEAEC64A1B72778E00C3CF7A /* BakIntroViewController.swift in Sources */,
 				BE3342F61B57B05A003F06BC /* SelectColorViewController.swift in Sources */,
 				BEBDCDAD1B53E24C0097FB1F /* meTableViewCell.swift in Sources */,
+				BEAEC64E1B72833A00C3CF7A /* LastSectionFootView.swift in Sources */,
 				BEEFF4331B68F6B900272133 /* Diary+CoreDataProperties.swift in Sources */,
 				BE2E63511B68F63100FB8468 /* Diary.xcdatamodeld in Sources */,
 				BE8517001B58FE2800C65D5D /* SettingViewColorCell.swift in Sources */,
@@ -355,8 +363,8 @@
 				BEEE07661B4CCEDC0015E752 /* ViewController.swift in Sources */,
 				BEC703AF1B6E1B5C00874FF1 /* MyHTTPHandler.swift in Sources */,
 				BEEE07771B4CD0E00015E752 /* DiaryEntry.swift in Sources */,
+				BE0E9D3D1B738F6F0027DF86 /* FriendsCell.swift in Sources */,
 				BEEE07641B4CCEDC0015E752 /* AppDelegate.swift in Sources */,
-				BEEC67251B6A8372004EF713 /* RegisterViewController.swift in Sources */,
 				BEA659D11B5AAF6F004298AE /* Colors.swift in Sources */,
 				BEEE07791B4CF1930015E752 /* DiaryTableViewCell.swift in Sources */,
 				BEC703A81B6E046700874FF1 /* LoginViewController.swift in Sources */,

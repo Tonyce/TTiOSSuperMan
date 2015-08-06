@@ -14,7 +14,10 @@ class AddDiaryViewController: UIViewController {
     @IBOutlet weak var closeBtn: UIButton!
     @IBOutlet weak var saveBtn: UIButton!
     
+    @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var textView: UITextView!
+    
+    @IBOutlet weak var colorView: UIView!
     @IBOutlet weak var colorLabel: UILabel!
     @IBOutlet weak var colorNameLabel: UILabel!
     
@@ -25,7 +28,13 @@ class AddDiaryViewController: UIViewController {
         super.viewDidLoad()
         defaultColorEntry = Colors.colorArr[0]
         
+        textLabel.font = UIFont(name: GoogleIconName, size: 22.0)
+        textLabel.text = GoogleIcon.e6f9
         
+        colorLabel.font = UIFont(name: GoogleIconName, size: 15.0)
+        colorLabel.text = GoogleIcon.eacd
+        
+        textView.contentInset = UIEdgeInsets(top: 30, left: 0, bottom: 20, right: 0)
         
         closeBtn.setTitle(GoogleIcon.e811, forState: UIControlState.Normal)
         closeBtn.tintColor = UIColor.whiteColor()
@@ -34,6 +43,9 @@ class AddDiaryViewController: UIViewController {
         saveBtn.setTitle(GoogleIcon.e649, forState: UIControlState.Normal)
         saveBtn.tintColor = UIColor.whiteColor()
         saveBtn.layer.cornerRadius = CGRectGetHeight(saveBtn.frame) / 2
+        
+        colorView.layer.borderColor = UIColor.MKColor.BlueGrey.CGColor
+        colorView.layer.borderWidth = 0.3
 
         // Do any additional setup after loading the view.
     }
@@ -41,10 +53,9 @@ class AddDiaryViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         textView.becomeFirstResponder()
 
-        colorLabel.font = UIFont(name: GoogleIconName, size: 15.0)
-        colorLabel.textColor = defaultColorEntry["color"] as! UIColor
-        colorLabel.text = GoogleIcon.eacd
+        textLabel.textColor = defaultColorEntry["color"] as! UIColor
         
+        colorLabel.textColor = defaultColorEntry["color"] as! UIColor
         colorNameLabel.text = defaultColorEntry["name"] as? String
         
         topView.backgroundColor = defaultColorEntry["color"] as? UIColor
@@ -125,5 +136,8 @@ extension AddDiaryViewController : SelectColorViewControllerDelegate {
         dismissViewControllerAnimated(true, completion: nil)
     }
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
     
 }

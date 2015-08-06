@@ -28,14 +28,13 @@ class meTableViewCell: UITableViewCell {
 //        userName.text = selfConfig?.userName
         wordView.text = selfConfig?.word
         
-        if "" == selfConfig?.userName {
+        if let userNameData = selfConfig?.userName {
+            userName.text = userNameData
+            userName.textColor = UIColor.blackColor()
+        }else {
             userName.text = "未登录"
             userName.textColor = UIColor.grayColor()
-        }else {
-            userName.text = selfConfig?.userName
-            userName.textColor = UIColor.blackColor()
         }
-
     }
     
     override func awakeFromNib() {

@@ -15,16 +15,18 @@ class SelfCenterViewController: UIViewController , UIImagePickerControllerDelega
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var selfImage: UIImageView!
     
+    @IBOutlet weak var bakSwith: UISwitch!
+    
     var selfConfig: SelfConfig!
     var alphaView : UIView!
     
     let selfScrollViewContainerDefaultContentInset = UIEdgeInsets(top: 120, left: 0, bottom: 0, right: 0)
     
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        selfConfig = SelfConfig.sharedInstance
         
         selfImage.layer.cornerRadius = CGRectGetHeight(selfImage.frame) / 2
         selfImage.layer.masksToBounds = true
@@ -36,9 +38,9 @@ class SelfCenterViewController: UIViewController , UIImagePickerControllerDelega
         
         
         // Do any additional setup after loading the view.
-        saveBtn.setTitle(GoogleIcon.ebc4, forState: UIControlState.Normal)
-        saveBtn.tintColor = UIColor.whiteColor()
-        saveBtn.layer.cornerRadius = CGRectGetHeight(saveBtn.frame) / 2
+//        saveBtn.setTitle(GoogleIcon.ebc4, forState: UIControlState.Normal)
+//        saveBtn.tintColor = UIColor.whiteColor()
+//        saveBtn.layer.cornerRadius = CGRectGetHeight(saveBtn.frame) / 2
         
         selfScrollViewContainer.frame = view.frame
 
@@ -47,6 +49,8 @@ class SelfCenterViewController: UIViewController , UIImagePickerControllerDelega
         
         selfImage.image = selfConfig.image
         textView.text = selfConfig.word
+//        textView.layer.borderWidth = 0.5
+//        textView.layer.borderColor = UIColor.MKColor.Grey.CGColor
     }
     
 
@@ -151,7 +155,9 @@ class SelfCenterViewController: UIViewController , UIImagePickerControllerDelega
         if segue.identifier == "saveSelfConfig" {
             let image: UIImage = selfImage.image!
             let word: String = textView.text
-            selfConfig = SelfConfig(image: image, word: word, userName: selfConfig.userName)
+            SelfConfig.sharedInstance.image = image
+            SelfConfig.sharedInstance.word = word
+//            selfConfig = SelfConfig(image: image, word: word, userName: selfConfig.userName)
         }
     }
 }

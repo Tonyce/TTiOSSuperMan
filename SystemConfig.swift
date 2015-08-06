@@ -21,7 +21,8 @@ class SystemConfig: NSObject {
     let defaultSettingEntrys = [ ["img":GoogleIcon.ec29 , "word":"建议及意见", "href":"http://youku.com", "colorIndex": 0] ]
 //    let defaultSettingEntrys = [ ["img": "\u{ec29}" , "word":"建议及意见", "href":"http://youku.com", "colorIndex": 0] ]
     
-
+//    var userName: String?
+//    var lastLoginTime: Int?
     
     class var sharedInstance: SystemConfig {
         struct Singleton {
@@ -33,8 +34,6 @@ class SystemConfig: NSObject {
     override init() {
         super.init()
         
-        print(GoogleIcon.ec29)
-        
         systemConfigData = readSystemConfig()
         
         if let systemConfigData = systemConfigData {
@@ -45,6 +44,15 @@ class SystemConfig: NSObject {
             if let settingEntrysData = systemConfigData["settingEntrys"] as? [[String: AnyObject]] {
                 settingEntrys = settingEntrysData
             }
+            
+            // login
+//            if let userNameStr = systemConfigData["userName"] as? String {
+//                userName = userNameStr
+//            }
+//            
+//            if let lastLoginTimeData = systemConfigData["lastLoginTime"] as? Int{
+//                lastLoginTime = lastLoginTimeData
+//            }
 
         }
         

@@ -23,7 +23,7 @@ class AuthorArticleTableViewCell: UITableViewCell {
         imageLabel.font = UIFont(name: GoogleIconName, size: 20.0)
         let colorIndex = entry["colorIndex"] as! Int
         imageLabel.textColor = Colors.colorArr[colorIndex]["color"] as! UIColor
-        print(entry["img"]!)
+        
         imageLabel.text = entry["img"] as? String
         
         wordLabel.text = entry["word"] as? String
