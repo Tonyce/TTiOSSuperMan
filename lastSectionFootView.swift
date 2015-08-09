@@ -15,7 +15,8 @@ class LastSectionFootView: UITableViewHeaderFooterView {
     // An empty implementation adversely affects performance during animation.
     override func drawRect(rect: CGRect) {
         // Drawing code
+//        contentView.backgroundColor = UIColor.clearColor()
     }
+    
     */
-
 }

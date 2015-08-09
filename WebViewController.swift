@@ -59,10 +59,12 @@ class WebViewController: UIViewController {
         let testScript = WKUserScript(source: testJS!, injectionTime: .AtDocumentStart, forMainFrameOnly: true)
         configuration.userContentController.addUserScript(testScript)
         
-        self.webView = WKWebView(frame: CGRectMake(view.frame.origin.x, view.frame.origin.y + 60, view.frame.size.width, view.frame.size.height - 60) , configuration: configuration)
+        webView = WKWebView(frame: CGRectMake(view.frame.origin.x, view.frame.origin.y + 60, view.frame.size.width, view.frame.size.height - 60) , configuration: configuration)
 
-        self.webView.navigationDelegate = self
+//        webView.scrollView.delegate = self
+        webView.navigationDelegate = self
         
+        webProcess.tintColor = UIColor.grayColor()
 
         view.insertSubview(webView, belowSubview:controlView)
         
@@ -128,7 +130,7 @@ class WebViewController: UIViewController {
         webView.addObserver(self, forKeyPath: "title", options: .New, context: nil)
         titleLabel.text = ""
         
-        controlView.backgroundColor = UIColor.MKColor.Grey
+//        controlView.backgroundColor = UIColor.MKColor.Grey
         
 //        controlView.backgroundColor = SystemConfig.sharedInstance.systemColorEntry!["color"] as? UIColor
     }
@@ -185,11 +187,36 @@ extension WebViewController: WKNavigationDelegate {
 //                inputURLField.text = webView.URL!.absoluteString
 //            }
         } else if (keyPath == "estimatedProgress") {
-            webProcess.hidden = webView.estimatedProgress == 1
+            // webProcess.hidden = webView.estimatedProgress == 1
             webProcess.setProgress(Float(webView.estimatedProgress), animated: true)
         } else if (keyPath == "title") {
 //            print(webView.title!)
             titleLabel.text = webView.title!
         }
     }
+}
+
+extension WebViewController: UIScrollViewDelegate {
+//    func scrollViewDidScroll(scrollView: UIScrollView) {
+//        let offset = scrollView.contentOffset.y
+//        if offset > 10 {
+//            shadowTopView()
+//        }else {
+//            clearTopViewShadow()
+//        }
+//    }
+    
+    func shadowTopView(){
+        controlView.layer.shadowOpacity = 0.5
+        controlView.layer.shadowOffset  = CGSize(width: 1, height: 1)
+        controlView.layer.shadowColor   = UIColor.grayColor().CGColor
+        //topView.layer.shadowRadius  = 10.0
+    }
+    
+    func clearTopViewShadow(){
+        controlView.layer.shadowOpacity = 0
+        controlView.layer.shadowOffset  = CGSizeZero
+        controlView.layer.shadowColor   = UIColor.clearColor().CGColor
+    }
+    
 }

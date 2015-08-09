@@ -138,9 +138,9 @@ class ViewController: UIViewController {
     
     func initSettingBtn(){
 //        settingBtn.setTitle(GoogleIcon.e6c5, forState: UIControlState.Normal)
-        settingBtn.setTitle("", forState: UIControlState.Normal)
-        settingBtn.tintColor = UIColor.whiteColor()
-        settingBtn.layer.cornerRadius = CGRectGetHeight(settingBtn.frame) / 2
+//        settingBtn.setTitle("", forState: UIControlState.Normal)
+//        settingBtn.tintColor = UIColor.whiteColor()
+//        settingBtn.layer.cornerRadius = CGRectGetHeight(settingBtn.frame) / 2
         
 //        friendBtn.setTitle(GoogleIcon.e7cb, forState: UIControlState.Normal)
 //        friendBtn.setTitle("", forState: UIControlState.Normal)
