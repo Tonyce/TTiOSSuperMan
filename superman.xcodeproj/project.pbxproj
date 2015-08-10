@@ -16,6 +16,7 @@
 		BE3342F61B57B05A003F06BC /* SelectColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3342F51B57B05A003F06BC /* SelectColorViewController.swift */; };
 		BE4B93981B54ADA0008CAA67 /* SelfCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4B93971B54ADA0008CAA67 /* SelfCenterViewController.swift */; };
 		BE4F64D41B57D1E9008251E7 /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4F64D31B57D1E9008251E7 /* ImageExtension.swift */; };
+		BE7652DF1B79142D003886D1 /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7652DE1B79142D003886D1 /* PersonalViewController.swift */; };
 		BE768EEE1B4D2BF20032B5CE /* MyCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE768EED1B4D2BF20032B5CE /* MyCustomView.swift */; };
 		BE768EF21B4D768C0032B5CE /* GoogleIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE768EF11B4D768C0032B5CE /* GoogleIcon.swift */; };
 		BE768EF41B4D77A30032B5CE /* googleicon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BE768EF31B4D77A30032B5CE /* googleicon.ttf */; };
@@ -32,6 +33,7 @@
 		BEB5655A1B4EA35E0096B1FE /* OpenDiaryAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB565591B4EA35E0096B1FE /* OpenDiaryAnimation.swift */; };
 		BEB5655C1B4ECD130096B1FE /* AddDiaryAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB5655B1B4ECD130096B1FE /* AddDiaryAnimation.swift */; };
 		BEB5655E1B4ED8F90096B1FE /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB5655D1B4ED8F90096B1FE /* SettingViewController.swift */; };
+		BEBA8B7D1B78D361008EE0C7 /* SupermanCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBA8B7C1B78D361008EE0C7 /* SupermanCell.swift */; };
 		BEBDCDAD1B53E24C0097FB1F /* meTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBDCDAC1B53E24C0097FB1F /* meTableViewCell.swift */; };
 		BEC703A81B6E046700874FF1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC703A71B6E046700874FF1 /* LoginViewController.swift */; };
 		BEC703AA1B6E098B00874FF1 /* MKLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC703A91B6E098B00874FF1 /* MKLayer.swift */; };
@@ -63,6 +65,7 @@
 		BE3A1F5B1B52DACA00569CB8 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 		BE4B93971B54ADA0008CAA67 /* SelfCenterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfCenterViewController.swift; sourceTree = "<group>"; };
 		BE4F64D31B57D1E9008251E7 /* ImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
+		BE7652DE1B79142D003886D1 /* PersonalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalViewController.swift; sourceTree = "<group>"; };
 		BE768EED1B4D2BF20032B5CE /* MyCustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCustomView.swift; sourceTree = "<group>"; };
 		BE768EF11B4D768C0032B5CE /* GoogleIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GoogleIcon.swift; path = GoogleSource/GoogleIcon.swift; sourceTree = "<group>"; };
 		BE768EF31B4D77A30032B5CE /* googleicon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = googleicon.ttf; path = GoogleSource/googleicon.ttf; sourceTree = "<group>"; };
@@ -79,6 +82,7 @@
 		BEB565591B4EA35E0096B1FE /* OpenDiaryAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenDiaryAnimation.swift; sourceTree = "<group>"; };
 		BEB5655B1B4ECD130096B1FE /* AddDiaryAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDiaryAnimation.swift; sourceTree = "<group>"; };
 		BEB5655D1B4ED8F90096B1FE /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingViewController.swift; path = superman/SettingViewController.swift; sourceTree = "<group>"; };
+		BEBA8B7C1B78D361008EE0C7 /* SupermanCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupermanCell.swift; sourceTree = "<group>"; };
 		BEBDCDAC1B53E24C0097FB1F /* meTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = meTableViewCell.swift; path = superman/meTableViewCell.swift; sourceTree = "<group>"; };
 		BEC703A71B6E046700874FF1 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BEC703A91B6E098B00874FF1 /* MKLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKLayer.swift; sourceTree = "<group>"; };
@@ -165,6 +169,8 @@
 			isa = PBXGroup;
 			children = (
 				BE0E9D401B73D02B0027DF86 /* SupermansController.swift */,
+				BEBA8B7C1B78D361008EE0C7 /* SupermanCell.swift */,
+				BE7652DE1B79142D003886D1 /* PersonalViewController.swift */,
 			);
 			name = friend;
 			sourceTree = "<group>";
@@ -332,6 +338,7 @@
 				BE3342F41B578F8A003F06BC /* MKColor.swift in Sources */,
 				BEAEC6481B72407A00C3CF7A /* LoginStatus.swift in Sources */,
 				BEB5655C1B4ECD130096B1FE /* AddDiaryAnimation.swift in Sources */,
+				BEBA8B7D1B78D361008EE0C7 /* SupermanCell.swift in Sources */,
 				BE9100701B6A2F4600392981 /* AuthorArticleTableViewCell.swift in Sources */,
 				BEC703AC1B6E099100874FF1 /* MKTextField.swift in Sources */,
 				BEEFF4341B68F6B900272133 /* Diary.swift in Sources */,
@@ -351,6 +358,7 @@
 				BE2E63511B68F63100FB8468 /* Diary.xcdatamodeld in Sources */,
 				BE8517001B58FE2800C65D5D /* SettingViewColorCell.swift in Sources */,
 				BEEC67221B6A81E6004EF713 /* LoginLogoutCell.swift in Sources */,
+				BE7652DF1B79142D003886D1 /* PersonalViewController.swift in Sources */,
 				BE26DEC81B5816C30018528B /* ColorViewCell.swift in Sources */,
 				BEB5655A1B4EA35E0096B1FE /* OpenDiaryAnimation.swift in Sources */,
 				BEEE07661B4CCEDC0015E752 /* ViewController.swift in Sources */,

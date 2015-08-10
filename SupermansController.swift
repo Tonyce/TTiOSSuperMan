@@ -14,20 +14,36 @@ class SupermansController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.tableFooterView = UIView()
+        
+        tableView.tableHeaderView = UIView(frame: CGRectMake(0, 0, view.bounds.width, 20))
+        tableView.tableHeaderView?.backgroundColor = UIColor.whiteColor()
+        // self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+//        title = "Supermans"
+//         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+//         self.navigationItem.leftBarButtonItem?.title = ""
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-        self.tableView.tableFooterView = UIView()
+        
     }
 
+    override func viewWillAppear(animated: Bool) {
+//        UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffsetMake(-100, 0), forBarMetrics: UIBarMetrics.Default)
+        if let selectedIndexPath = self.tableView.indexPathForSelectedRow {
+            self.tableView.deselectRowAtIndexPath(selectedIndexPath, animated: true)
+        }
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
 }
 
 extension SupermansController: UITableViewDelegate, UITableViewDataSource {
@@ -46,10 +62,10 @@ extension SupermansController: UITableViewDelegate, UITableViewDataSource {
 
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("supermanCell", forIndexPath: indexPath) as! SupermanCell
 
         // Configure the cell...
-        cell.textLabel?.text = String(indexPath.row)
+        cell.supermanNameLabel?.text = String(indexPath.row)
 
         return cell
     }

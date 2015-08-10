@@ -28,22 +28,7 @@ class WebViewController: UIViewController {
     @IBOutlet weak var controlView: UIView!
 
     var willLoadUrl: String?
-    
-//    required init?(coder aDecoder: NSCoder) {
-//        let configuration = WKWebViewConfiguration()
-//        let hideBioScriptURL = NSBundle.mainBundle().pathForResource("hideBio", ofType: "js")
-//        let hideBioJS: String?
-//        do {
-//            hideBioJS = try String(contentsOfFile:hideBioScriptURL!, encoding:NSUTF8StringEncoding)
-//        } catch _ {
-//            hideBioJS = nil
-//        }
-//        let hideBioScript = WKUserScript(source: hideBioJS!, injectionTime: .AtDocumentStart, forMainFrameOnly: true)
-//        configuration.userContentController.addUserScript(hideBioScript)
-//        self.webView = WKWebView(frame: CGRectZero, configuration: configuration)
-//        super.init(coder: aDecoder)
-//        self.webView.navigationDelegate = self
-//    }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +46,6 @@ class WebViewController: UIViewController {
         
         webView = WKWebView(frame: CGRectMake(view.frame.origin.x, view.frame.origin.y + 60, view.frame.size.width, view.frame.size.height - 60) , configuration: configuration)
 
-//        webView.scrollView.delegate = self
         webView.navigationDelegate = self
         
         webProcess.tintColor = UIColor.grayColor()
@@ -69,7 +53,7 @@ class WebViewController: UIViewController {
         view.insertSubview(webView, belowSubview:controlView)
         
         closeBtn.alpha = 0.7
-//        closeBtn.backgroundColor = UIColor.redColor()
+
         closeBtn.setTitle(GoogleIcon.e811, forState: UIControlState.Normal)
         closeBtn.tintColor = UIColor.redColor()
         closeBtn.layer.cornerRadius = CGRectGetHeight(closeBtn.frame) / 2
@@ -94,22 +78,22 @@ class WebViewController: UIViewController {
         
         backBtn.setTitle(GoogleIcon.ebae, forState: UIControlState.Normal)
         backBtn.layer.cornerRadius = CGRectGetHeight(backBtn.frame) / 2
-//        backBtn.layer.addSublayer(bCircleLayer)
+        // backBtn.layer.addSublayer(bCircleLayer)
         
         forwardBtn.setTitle(GoogleIcon.ebbc, forState: UIControlState.Normal)
         forwardBtn.layer.cornerRadius = CGRectGetHeight(forwardBtn.frame) / 2
-//        forwardBtn.layer.addSublayer(fCircleLayer)
+        // forwardBtn.layer.addSublayer(fCircleLayer)
 
         reloadBtn.setTitle(GoogleIcon.ec2e, forState: UIControlState.Normal)
         reloadBtn.layer.cornerRadius = CGRectGetHeight(reloadBtn.frame) / 2
-//        reloadBtn.layer.addSublayer(rCircleLayer)
+        // reloadBtn.layer.addSublayer(rCircleLayer)
         
         // Do any additional setup after loading the view.
         var urlStr = "http://www.apple.com"
         if let loadUrl = self.willLoadUrl {
             urlStr = loadUrl
         }
-//        urlStr = "http://127.0.0.1:8888"
+
         let url = NSURL(string: urlStr)
         let request = NSURLRequest(URL: url!)
         webView.loadRequest(request)
@@ -129,10 +113,6 @@ class WebViewController: UIViewController {
         webView.addObserver(self, forKeyPath: "estimatedProgress", options: .New, context: nil)
         webView.addObserver(self, forKeyPath: "title", options: .New, context: nil)
         titleLabel.text = ""
-        
-//        controlView.backgroundColor = UIColor.MKColor.Grey
-        
-//        controlView.backgroundColor = SystemConfig.sharedInstance.systemColorEntry!["color"] as? UIColor
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -182,35 +162,22 @@ extension WebViewController: WKNavigationDelegate {
             
             webView.loading ? reloadBtn.setTitle(GoogleIcon.ebd0, forState: UIControlState.Normal) : reloadBtn.setTitle(GoogleIcon.ec2e, forState: UIControlState.Normal)
             
-//            reloadBtn..image = webView.loading ? UIImage(named: "icon_stop") : UIImage(named: "icon_refresh")
-//            if (webView.loading == false) {
-//                inputURLField.text = webView.URL!.absoluteString
-//            }
         } else if (keyPath == "estimatedProgress") {
             // webProcess.hidden = webView.estimatedProgress == 1
             webProcess.setProgress(Float(webView.estimatedProgress), animated: true)
         } else if (keyPath == "title") {
-//            print(webView.title!)
             titleLabel.text = webView.title!
         }
     }
 }
 
 extension WebViewController: UIScrollViewDelegate {
-//    func scrollViewDidScroll(scrollView: UIScrollView) {
-//        let offset = scrollView.contentOffset.y
-//        if offset > 10 {
-//            shadowTopView()
-//        }else {
-//            clearTopViewShadow()
-//        }
-//    }
     
     func shadowTopView(){
         controlView.layer.shadowOpacity = 0.5
         controlView.layer.shadowOffset  = CGSize(width: 1, height: 1)
         controlView.layer.shadowColor   = UIColor.grayColor().CGColor
-        //topView.layer.shadowRadius  = 10.0
+        // topView.layer.shadowRadius  = 10.0
     }
     
     func clearTopViewShadow(){

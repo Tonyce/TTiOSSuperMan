@@ -133,6 +133,12 @@ class SettingViewController: UIViewController {
             let registerView = segue.destinationViewController as! LoginViewController
             registerView.delegate = self
         }
+        if segue.identifier == "supermanSegue"{
+//            self.navigationItem.backBarButtonItem?.title = ""
+            self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+        }else {
+            self.navigationItem.backBarButtonItem = UIBarButtonItem(title: self.title, style: .Plain, target: nil, action: nil)
+        }
     }
     
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
