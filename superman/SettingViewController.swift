@@ -19,6 +19,8 @@ class SettingViewController: UIViewController {
     
     var loginStatus: [String:Bool]?
     
+    var version = ""
+    
     var model = [
         ["me"],
         
@@ -27,8 +29,7 @@ class SettingViewController: UIViewController {
         [["img":GoogleIcon.e985 , "word":"作者痕迹", "href":"http://baidu.com", "colorIndex": 0]],
         
         [
-//            ["img": GoogleIcon.e70c,"word":"赞一下", "href":"https://itunes.apple.com/cn/app/liu-li-xue-yuan/id978249810?mt=8", "colorIndex": 0 ],
-//            "\u{ec29}"
+            // ["img": GoogleIcon.e70c,"word":"赞一下", "href":"https://itunes.apple.com/cn/app/liu-li-xue-yuan/id978249810?mt=8", "colorIndex": 0 ],
             ["img": "\u{ec29}" , "word":"建议及意见", "href":"http://haosou.com", "colorIndex": 0]
         ],
         
@@ -38,7 +39,7 @@ class SettingViewController: UIViewController {
     ]
     
     var selfConfig: SelfConfig?
-//    var topViewColor: UIColor = UIColor.MKColor.LightBlue
+
     var colorEntry: [String:AnyObject]!
     
     var willLoadUrl: String?
@@ -46,9 +47,12 @@ class SettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        version = appVersion()
+        lastFooterLabel.text = "version:" + APPVERSIOIN
+        
         model[3] = SystemConfig.sharedInstance.settingEntrys!
-//        SystemConfig.sharedInstance.settingEntrys = model[3] as? [[String: AnyObject]]
-//        SystemConfig.sharedInstance.saveSystemConfig("settingEntrys", value: SystemConfig.sharedInstance.settingEntrys!)
+        // SystemConfig.sharedInstance.settingEntrys = model[3] as? [[String: AnyObject]]
+        // SystemConfig.sharedInstance.saveSystemConfig("settingEntrys", value: SystemConfig.sharedInstance.settingEntrys!)
         if let _ = SelfConfig.sharedInstance.userName {
             model[model.count - 1] = [["logined": true]]
         }
@@ -58,15 +62,7 @@ class SettingViewController: UIViewController {
         closeBtn.tintColor = UIColor.whiteColor()
         closeBtn.layer.cornerRadius = CGRectGetHeight(closeBtn.frame) / 2
         
-
-//        lastFooterLabel.shadowColor = UIColor.darkGrayColor()
-//        lastFooterLabel.shadowOffset = CGSize(width: 1, height: 1)
         lastFooterLabel.shadowColor = UIColor(red: 0.8, green: 0.86, blue: 0.88, alpha: 1.0)
-//            [UIColorcolorWithRed:0.855green:0.863blue:0.882alpha:1.0];
-//        lastFooterLabel.textColor = UIColor(red: 0.29, green: 0.37, blue: 0.42, alpha: 1.0)
-//            [UIColorcolorWithRed:0.298green:0.337blue:0.424alpha:1.0];
-//        tableView.footerViewForSection(<#T##section: Int##Int#>)
-//        tableView.footerViewForSection(model.count - 1) = UITableViewHeaderFooterView(reuseIdentifier: "")
         tableView.registerClass(LastSectionFootView.self, forHeaderFooterViewReuseIdentifier: "lastSectionFootView")
     }
     
@@ -215,18 +211,9 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     
-//    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-//        if section == model.count-1 {
-//            return 50
-//        }else{
-//            return 0
-//        }
-//    }
-    
     func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         if section == model.count-1 {
             let footView = tableView.dequeueReusableHeaderFooterViewWithIdentifier("lastSectionFootView")
-//            contentView.backgroundColor = UIColor.clearColor()
             return footView
         }else {
             return nil

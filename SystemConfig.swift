@@ -11,6 +11,8 @@ import UIKit
 
 class SystemConfig: NSObject {
     
+    var isFirstIn: Bool?
+    
     var systemConfigData: NSMutableDictionary?
     
     var systemColorEntry: [String: AnyObject]?
@@ -18,7 +20,7 @@ class SystemConfig: NSObject {
     let defaultColorEntry = Colors.colorArr[0]
     
     var settingEntrys: [[String: AnyObject]]?
-    let defaultSettingEntrys = [ ["img":GoogleIcon.ec29 , "word":"建议及意见", "href":"http://youku.com", "colorIndex": 0] ]
+    let defaultSettingEntrys = [ ["img":GoogleIcon.ec29 , "word":"建议及意见", "href":"http://haosou.com", "colorIndex": 0] ]
 //    let defaultSettingEntrys = [ ["img": "\u{ec29}" , "word":"建议及意见", "href":"http://youku.com", "colorIndex": 0] ]
     
 //    var userName: String?
@@ -43,6 +45,10 @@ class SystemConfig: NSObject {
             
             if let settingEntrysData = systemConfigData["settingEntrys"] as? [[String: AnyObject]] {
                 settingEntrys = settingEntrysData
+            }
+            
+            if let isFirstInData = systemConfigData["isFirstIn"] as? Bool {
+                isFirstIn = isFirstInData
             }
             
             // login

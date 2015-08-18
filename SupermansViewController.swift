@@ -1,75 +1,77 @@
 //
-//  SupermansController.swift
+//  SupermansViewController.swift
 //  superman
 //
-//  Created by D_ttang on 15/8/7.
+//  Created by D_ttang on 15/8/13.
 //  Copyright © 2015年 D_ttang. All rights reserved.
 //
 
 import UIKit
 
-class SupermansController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
+func delay(seconds seconds: Double, completion:()->()) {
+    let popTime = dispatch_time(DISPATCH_TIME_NOW, Int64( Double(NSEC_PER_SEC) * seconds ))
+    
+    dispatch_after(popTime, dispatch_get_main_queue()) {
+        completion()
+    }
+}
+
+
+class SupermansViewController: UITableViewController {
+    
+    var refreshView: RefreshView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.tableFooterView = UIView()
-        
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+
+        title = "Supermans"
         tableView.tableHeaderView = UIView(frame: CGRectMake(0, 0, view.bounds.width, 20))
         tableView.tableHeaderView?.backgroundColor = UIColor.whiteColor()
-        // self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
-//        title = "Supermans"
-//         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
-//         self.navigationItem.leftBarButtonItem?.title = ""
-
         
+        let refreshRect = CGRect(x: 0.0, y: -60, width: view.frame.size.width, height: 60)
+        refreshView = RefreshView(frame: refreshRect, scrollView: self.tableView)
+//        refreshView.backgroundColor = UIColor.grayColor()
+        refreshView.delegate = self
+        view.addSubview(refreshView)
     }
 
-    override func viewWillAppear(animated: Bool) {
-//        UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffsetMake(-100, 0), forBarMetrics: UIBarMetrics.Default)
-        if let selectedIndexPath = self.tableView.indexPathForSelectedRow {
-            self.tableView.deselectRowAtIndexPath(selectedIndexPath, animated: true)
-        }
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-}
-
-extension SupermansController: UITableViewDelegate, UITableViewDataSource {
 
     // MARK: - Table view data source
 
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return 5
     }
 
-
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("supermanCell", forIndexPath: indexPath) as! SupermanCell
-
+        
         // Configure the cell...
         cell.supermanNameLabel?.text = String(indexPath.row)
-
+        
         return cell
     }
-
+    
+//    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+//    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -106,14 +108,33 @@ extension SupermansController: UITableViewDelegate, UITableViewDataSource {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Supers", style: .Plain, target: nil, action: nil)
     }
-    */
+    
 
+}
+
+extension SupermansViewController: RefreshViewDelegate {
+    // MARK: Refresh control methods
+    func refreshViewDidRefresh(refreshView: RefreshView) {
+        delay(seconds: 4) {
+            refreshView.endRefreshing()
+        }
+    }
+    
+    // MARK: Scroll view methods
+    override func scrollViewDidScroll(scrollView: UIScrollView) {
+        refreshView.scrollViewDidScroll(scrollView)
+    }
+    
+    override func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        refreshView.scrollViewWillEndDragging(scrollView, withVelocity: velocity, targetContentOffset: targetContentOffset)
+    }
 }

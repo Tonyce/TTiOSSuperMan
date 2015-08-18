@@ -23,20 +23,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         viewController.managedContext = self.managedObjectContext
         
 
-//        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: NSBundle(forClass: self.dynamicType))
-//        let mainViewController = storyboard.instantiateViewControllerWithIdentifier("mainView") as! ViewController
-//        mainViewController.managedContext = self.managedObjectContext
-//        self.window?.rootViewController = mainViewController
-//        
 //        MyHTTPHandler.post("http://127.0.0.1:9999", params: ["emoji": "\u{2665}", "icon":"\u{e70c}"]){
 //            data , err in
-//            
 //        }
         
+        if let _ = SystemConfig.sharedInstance.isFirstIn {
+            let viewController = self.window?.rootViewController as! ViewController
+            viewController.managedContext = self.managedObjectContext
+        }else {
+            let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: NSBundle(forClass: self.dynamicType))
+            let welcomeViewController = storyboard.instantiateViewControllerWithIdentifier("welcomeView") as! WelcomeViewController
+            welcomeViewController.managedContext = self.managedObjectContext
+            
+            let mainViewController = storyboard.instantiateViewControllerWithIdentifier("mainView") as! ViewController
+            mainViewController.managedContext = self.managedObjectContext
+            
+            self.window?.rootViewController = welcomeViewController
+        }
+        
         let settingEntrys = SystemConfig.sharedInstance.settingEntrys! as Array
-//        if let settingEntrys = SystemConfig.sharedInstance.settingEntrys as? Array {
-//            settingEntrys[0]["word"] ==
-//        }
+
         if settingEntrys[0]["word"] as! String == "赞一下" {
             return true
         }

@@ -1,28 +1,31 @@
 //
-//  PersonalViewController.swift
+//  SuperInfoViewController.swift
 //  superman
 //
-//  Created by D_ttang on 15/8/11.
+//  Created by D_ttang on 15/8/14.
 //  Copyright © 2015年 D_ttang. All rights reserved.
 //
 
 import UIKit
 
-class PersonalViewController: UIViewController {
+class SuperInfoViewController: UIViewController {
 
+    @IBOutlet weak var barItem: UITabBarItem!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+//        self.navigationController?.title = "Info"
+//        self.navigationController?.navigationItem.title = "Info"
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.tabBarController?.title = "Info"
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-//        UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffsetMake(1, 0), forBarMetrics: UIBarMetrics.Default)
     }
     
 

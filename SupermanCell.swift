@@ -20,8 +20,9 @@ class SupermanCell: UITableViewCell {
         supermainImage.layer.cornerRadius = CGRectGetHeight(supermainImage.frame) / 2
         supermainImage.layer.masksToBounds = true
         
-        goodHeartBtn.setTitle( GoogleIcon.e65a, forState:UIControlState.Normal)
-        goodHeartBtn.tintColor = UIColor.redColor()
+        // goodHeartBtn.setTitle( GoogleIcon.e65a, forState:UIControlState.Normal)
+        goodHeartBtn.setTitle( GoogleIcon.e70c, forState:UIControlState.Normal)
+        goodHeartBtn.tintColor = UIColor.grayColor()
         
     }
 
@@ -33,5 +34,6 @@ class SupermanCell: UITableViewCell {
 
     @IBAction func heartAction(sender: AnyObject) {
         print("----")
+        goodHeartBtn.tintColor = UIColor.MKColor.LightBlue
     }
 }
