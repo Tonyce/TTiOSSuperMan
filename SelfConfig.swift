@@ -23,7 +23,6 @@ class SelfConfig: NSObject {
     }
     
 //    var instance:
-    
     class var sharedInstance: SelfConfig {
         struct Singleton {
             static let instance = SelfConfig.initInstance()
@@ -58,11 +57,6 @@ class SelfConfig: NSObject {
         // Must call designated initializer.
         self.init(image: image, word: word, userName: userName)
     }
-    
-//    override init(){
-//        super.init()
-//        loadSelfConfigs()
-//    }
     
     init(image: UIImage?, word: String, userName: String?){
         super.init()

@@ -153,8 +153,6 @@ class DiaryViewController: UIViewController {
                 self.editBtn.alpha = 0.0
                 self.doneBtn.alpha = 1.0
                 
-                
-//                self.markLabel.text = "2015-07-25 周六"
                 self.editBtnTop.constant -= 15
                 self.topViewHeight.constant = 70
                 self.view.layoutIfNeeded()
@@ -210,13 +208,10 @@ extension DiaryViewController: UITextViewDelegate {
     }
     
     func textViewDidChange(textView: UITextView) {
-        // let textHeight = CGFloat(textViewHeight)
-//        if textView.contentSize.height > textViewHeight.constant {
             textViewHeight.constant = textView.contentSize.height
             scrollViewContainer.contentSize.height = view.bounds.height + textView.contentSize.height
 
             self.view.layoutIfNeeded()
-//        }
 
     }
 }
@@ -231,12 +226,7 @@ extension DiaryViewController {
         
         
         keyboardRectAsObject.getValue(&keyboardRect)
-        
-//        self.scrollView setContentOffset:CGPointMake(0, kbSize.height) animated:YES
-//        self.scrollViewContainer.setContentOffset(CGPointMake(0, keyboardRect.height), animated: true)
-        
-//        let contentInsets = UIEdgeInsetsMake(defaultContentInset.top, defaultContentInset.left,keyboardRect.height, defaultContentInset.right)
-//        textView.contentInset = contentInsets
+
         
     }
     
@@ -258,29 +248,3 @@ extension DiaryViewController : SelectColorViewControllerDelegate {
     }
 }
 
-
-//            print(textView.contentSize)
-//                contentSuperView.scrollRectToVisible(wordTextView.frame, animated: true)
-
-//        print(wordTextView.contentSize.height)
-//        wordTextView.frame.size.height = wordTextView.contentSize.height
-//
-//        contentSuperView.contentSize = wordTextView.bounds.size
-//        contentSuperView.scrollRectToVisible( CGRectMake(wordTextView.frame.origin.x, wordTextView.frame.origin.y + wordTextView.frame.size.height, wordTextView.frame.size.width, 10), animated: true)
-
-//        contentSuperView.setContentOffset(CGPointMake(0.0, wordTextView.frame.origin.y - keyBoardRect.height), animated: true)
-
-
-//        contentSuperView.contentInset =  contentInsets
-
-//        keyBoardRect = keyboardRect
-//        var aRect:CGRect  = self.view.frame
-//        aRect.size.height -= (keyboardRect.height + aRect.origin.y)
-
-//        let point = CGPointMake(wordTextView.frame.origin.x, wordTextView.frame.origin.y + 180)
-
-//        if !CGRectContainsPoint(aRect, point)  {
-//            print("no contains")
-//             contentSuperView.setContentOffset(CGPointMake(0.0, wordTextView.frame.origin.y - keyboardRect.height), animated: true)
-//            contentSuperView.scrollRectToVisible(CGRectMake(wordTextView.frame.origin.x, wordTextView.frame.origin.y + 180, wordTextView.frame.size.width, wordTextView.frame.size.height), animated: true)
-//        }

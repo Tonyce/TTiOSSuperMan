@@ -44,6 +44,18 @@
 		BEC703AF1B6E1B5C00874FF1 /* MyHTTPHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC703AE1B6E1B5C00874FF1 /* MyHTTPHandler.swift */; };
 		BEC703B11B6E1B6300874FF1 /* JSONHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC703B01B6E1B6300874FF1 /* JSONHandler.swift */; };
 		BECCF3A31B7B465D00391778 /* SystemDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECCF3A21B7B465D00391778 /* SystemDefine.swift */; };
+		BED6143D1B831EB9008881E2 /* TestDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED6143C1B831EB9008881E2 /* TestDiaryViewController.swift */; };
+		BED6143F1B832515008881E2 /* CountryData.plist in Resources */ = {isa = PBXBuildFile; fileRef = BED6143E1B832515008881E2 /* CountryData.plist */; };
+		BED614411B83254C008881E2 /* CollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED614401B83254C008881E2 /* CollectionViewLayout.swift */; };
+		BED614431B832574008881E2 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED614421B832574008881E2 /* Country.swift */; };
+		BED614451B83258B008881E2 /* CountriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED614441B83258B008881E2 /* CountriesViewController.swift */; };
+		BED614471B8325B1008881E2 /* OverlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED614461B8325B1008881E2 /* OverlayViewController.swift */; };
+		BED614491B8325BB008881E2 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED614481B8325BB008881E2 /* CollectionViewCell.swift */; };
+		BED6144B1B8325C8008881E2 /* AwesomeTransitioner.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED6144A1B8325C8008881E2 /* AwesomeTransitioner.swift */; };
+		BED6144D1B8325D0008881E2 /* AwesomePresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED6144C1B8325D0008881E2 /* AwesomePresentationController.swift */; };
+		BED6144F1B832702008881E2 /* SelectionObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED6144E1B832702008881E2 /* SelectionObject.swift */; };
+		BED614511B8347CC008881E2 /* SimpleTransitioner.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED614501B8347CC008881E2 /* SimpleTransitioner.swift */; };
+		BED614531B8347D1008881E2 /* SimplePresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED614521B8347D1008881E2 /* SimplePresentationController.swift */; };
 		BED70FDC1B7DC09C00620C8B /* SuperInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED70FDB1B7DC09C00620C8B /* SuperInfoViewController.swift */; };
 		BEDAA20A1B7A2063007E6102 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDAA2091B7A2063007E6102 /* WelcomeViewController.swift */; };
 		BEE0ACC51B7CCE240010E075 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEE0ACC31B7CCE240010E075 /* LaunchScreen.storyboard */; };
@@ -100,6 +112,18 @@
 		BEC703B01B6E1B6300874FF1 /* JSONHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONHandler.swift; sourceTree = "<group>"; };
 		BEC703B21B6E1B6700874FF1 /* JSONTest.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = JSONTest.playground; sourceTree = "<group>"; };
 		BECCF3A21B7B465D00391778 /* SystemDefine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemDefine.swift; sourceTree = "<group>"; };
+		BED6143C1B831EB9008881E2 /* TestDiaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestDiaryViewController.swift; sourceTree = "<group>"; };
+		BED6143E1B832515008881E2 /* CountryData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CountryData.plist; sourceTree = "<group>"; };
+		BED614401B83254C008881E2 /* CollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewLayout.swift; sourceTree = "<group>"; };
+		BED614421B832574008881E2 /* Country.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		BED614441B83258B008881E2 /* CountriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountriesViewController.swift; sourceTree = "<group>"; };
+		BED614461B8325B1008881E2 /* OverlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayViewController.swift; sourceTree = "<group>"; };
+		BED614481B8325BB008881E2 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		BED6144A1B8325C8008881E2 /* AwesomeTransitioner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwesomeTransitioner.swift; sourceTree = "<group>"; };
+		BED6144C1B8325D0008881E2 /* AwesomePresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwesomePresentationController.swift; sourceTree = "<group>"; };
+		BED6144E1B832702008881E2 /* SelectionObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionObject.swift; sourceTree = "<group>"; };
+		BED614501B8347CC008881E2 /* SimpleTransitioner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleTransitioner.swift; sourceTree = "<group>"; };
+		BED614521B8347D1008881E2 /* SimplePresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimplePresentationController.swift; sourceTree = "<group>"; };
 		BED70FDB1B7DC09C00620C8B /* SuperInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperInfoViewController.swift; sourceTree = "<group>"; };
 		BEDAA2091B7A2063007E6102 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		BEE0ACC41B7CCE240010E075 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = superman/Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -189,6 +213,17 @@
 		BEE321C51B6CBC8800E964AE /* Supers */ = {
 			isa = PBXGroup;
 			children = (
+				BED6144E1B832702008881E2 /* SelectionObject.swift */,
+				BED614461B8325B1008881E2 /* OverlayViewController.swift */,
+				BED614521B8347D1008881E2 /* SimplePresentationController.swift */,
+				BED614501B8347CC008881E2 /* SimpleTransitioner.swift */,
+				BED6144A1B8325C8008881E2 /* AwesomeTransitioner.swift */,
+				BED6144C1B8325D0008881E2 /* AwesomePresentationController.swift */,
+				BED614421B832574008881E2 /* Country.swift */,
+				BED614481B8325BB008881E2 /* CollectionViewCell.swift */,
+				BED614441B83258B008881E2 /* CountriesViewController.swift */,
+				BED614401B83254C008881E2 /* CollectionViewLayout.swift */,
+				BED6143E1B832515008881E2 /* CountryData.plist */,
 				BEBA8B7C1B78D361008EE0C7 /* SupermanCell.swift */,
 				BE42ACA11B7C7F85000F2449 /* RefreshView.swift */,
 				BE42ACA31B7CBFCB000F2449 /* SupermansViewController.swift */,
@@ -267,6 +302,7 @@
 				BE768EF71B4D96F00032B5CE /* DiaryViewController.swift */,
 				BEEE07761B4CD0E00015E752 /* DiaryEntry.swift */,
 				BE8C7CC31B61479C009A8C4D /* AddDiaryViewController.swift */,
+				BED6143C1B831EB9008881E2 /* TestDiaryViewController.swift */,
 			);
 			name = diaryEntry;
 			sourceTree = "<group>";
@@ -344,6 +380,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BEE321CB1B6CF28800E964AE /* test.js in Resources */,
+				BED6143F1B832515008881E2 /* CountryData.plist in Resources */,
 				BE768EF41B4D77A30032B5CE /* googleicon.ttf in Resources */,
 				BEEE076B1B4CCEDC0015E752 /* Assets.xcassets in Resources */,
 				BEE0ACC51B7CCE240010E075 /* LaunchScreen.storyboard in Resources */,
@@ -365,15 +402,20 @@
 				BE3342F41B578F8A003F06BC /* MKColor.swift in Sources */,
 				BEA35C5C1B7DFF3A0058CB35 /* SuperMoreViewController.swift in Sources */,
 				BEAEC6481B72407A00C3CF7A /* LoginStatus.swift in Sources */,
+				BED614511B8347CC008881E2 /* SimpleTransitioner.swift in Sources */,
 				BEB5655C1B4ECD130096B1FE /* AddDiaryAnimation.swift in Sources */,
 				BEBA8B7D1B78D361008EE0C7 /* SupermanCell.swift in Sources */,
 				BED70FDC1B7DC09C00620C8B /* SuperInfoViewController.swift in Sources */,
+				BED6144B1B8325C8008881E2 /* AwesomeTransitioner.swift in Sources */,
 				BE9100701B6A2F4600392981 /* AuthorArticleTableViewCell.swift in Sources */,
 				BEC703AC1B6E099100874FF1 /* MKTextField.swift in Sources */,
 				BEEFF4341B68F6B900272133 /* Diary.swift in Sources */,
+				BED614451B83258B008881E2 /* CountriesViewController.swift in Sources */,
 				BE4B93981B54ADA0008CAA67 /* SelfCenterViewController.swift in Sources */,
+				BED614431B832574008881E2 /* Country.swift in Sources */,
 				BE7988631B83014C0075BF49 /* SuperGaysViewController.swift in Sources */,
 				BEEE077C1B4CF67E0015E752 /* MyAddBtn.swift in Sources */,
+				BED6144D1B8325D0008881E2 /* AwesomePresentationController.swift in Sources */,
 				BE768EEE1B4D2BF20032B5CE /* MyCustomView.swift in Sources */,
 				BEC703B11B6E1B6300874FF1 /* JSONHandler.swift in Sources */,
 				BE4F64D41B57D1E9008251E7 /* ImageExtension.swift in Sources */,
@@ -390,15 +432,21 @@
 				BE8517001B58FE2800C65D5D /* SettingViewColorCell.swift in Sources */,
 				BEEC67221B6A81E6004EF713 /* LoginLogoutCell.swift in Sources */,
 				BE26DEC81B5816C30018528B /* ColorViewCell.swift in Sources */,
+				BED614491B8325BB008881E2 /* CollectionViewCell.swift in Sources */,
 				BEB5655A1B4EA35E0096B1FE /* OpenDiaryAnimation.swift in Sources */,
 				BEEE07661B4CCEDC0015E752 /* ViewController.swift in Sources */,
 				BEC703AF1B6E1B5C00874FF1 /* MyHTTPHandler.swift in Sources */,
 				BEEE07771B4CD0E00015E752 /* DiaryEntry.swift in Sources */,
+				BED6143D1B831EB9008881E2 /* TestDiaryViewController.swift in Sources */,
 				BE0E9D3D1B738F6F0027DF86 /* FriendsCell.swift in Sources */,
 				BEDAA20A1B7A2063007E6102 /* WelcomeViewController.swift in Sources */,
+				BED6144F1B832702008881E2 /* SelectionObject.swift in Sources */,
 				BEEE07641B4CCEDC0015E752 /* AppDelegate.swift in Sources */,
 				BEA659D11B5AAF6F004298AE /* Colors.swift in Sources */,
 				BEEE07791B4CF1930015E752 /* DiaryTableViewCell.swift in Sources */,
+				BED614531B8347D1008881E2 /* SimplePresentationController.swift in Sources */,
+				BED614411B83254C008881E2 /* CollectionViewLayout.swift in Sources */,
+				BED614471B8325B1008881E2 /* OverlayViewController.swift in Sources */,
 				BE42ACA21B7C7F85000F2449 /* RefreshView.swift in Sources */,
 				BEC703A81B6E046700874FF1 /* LoginViewController.swift in Sources */,
 				BEC703AA1B6E098B00874FF1 /* MKLayer.swift in Sources */,

@@ -28,10 +28,20 @@ class WebViewController: UIViewController {
     @IBOutlet weak var controlView: UIView!
 
     var willLoadUrl: String?
-
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        WKWebViewConfiguration *theConfiguration =
+//            [[WKWebViewConfiguration alloc] init];
+//        [theConfiguration.userContentController
+//        addScriptMessageHandler:self name:@"myApp"];
+//        
+//        _theWebView = [[WKWebView alloc] initWithFrame:self.view.frame
+//        configuration:theConfiguration];
+//        [_theWebView loadRequest:request];
+//        [self.view addSubview:_theWebView];
         
         let configuration = WKWebViewConfiguration()
         let testScriptURL = NSBundle.mainBundle().pathForResource("test", ofType: "js")
@@ -44,7 +54,9 @@ class WebViewController: UIViewController {
         let testScript = WKUserScript(source: testJS!, injectionTime: .AtDocumentStart, forMainFrameOnly: true)
         configuration.userContentController.addUserScript(testScript)
         
-        webView = WKWebView(frame: CGRectMake(view.frame.origin.x, view.frame.origin.y + 60, view.frame.size.width, view.frame.size.height - 60) , configuration: configuration)
+        configuration.userContentController.addScriptMessageHandler(self, name: "myApp")
+        
+        webView = WKWebView(frame: CGRectMake(view.frame.origin.x, view.frame.origin.y, view.frame.size.width, view.frame.size.height - 40) , configuration: configuration)
 
         webView.navigationDelegate = self
         
@@ -103,6 +115,7 @@ class WebViewController: UIViewController {
         forwardBtn.enabled = false;
     }
 
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -125,6 +138,37 @@ class WebViewController: UIViewController {
         }
     }
     
+//    override func prefersStatusBarHidden() -> Bool {
+//        return true
+//    }
+
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
+    
+    /** Overwrite this method if you want to be able to handle custom URL schemes that are launched
+    * from your channel
+    * \param request the request that is being sent
+    *
+    * You can use it like this:
+    * NSURL* theURL = [request mainDocumentURL];
+    * NSString* absoluteString = [theURL absoluteString];
+    * if( [[absoluteString lowercaseString] hasPrefix:@"yourapp://"] )
+    * {
+    *   // do something
+    *   return NO;
+    * }
+    * return YES;
+    */
+    //    - (BOOL) shouldStartLoadWithRequest:(NSURLRequest *) request;
+    func webView(webView: WKWebView, decidePolicyForNavigationAction navigationAction: WKNavigationAction, decisionHandler: (WKNavigationActionPolicy) -> Void) {
+        let request = navigationAction.request
+        let url = request.URL?.absoluteString
+        print("url \(url)")
+        
+        decisionHandler(WKNavigationActionPolicy.Allow)
+    }
+    
     @IBAction func dismissView(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
     }
@@ -144,6 +188,18 @@ class WebViewController: UIViewController {
             let request = NSURLRequest(URL:webView.URL!)
             webView.loadRequest(request)
         }
+    }
+}
+
+extension WebViewController: WKScriptMessageHandler {
+    func userContentController(userContentController: WKUserContentController, didReceiveScriptMessage message: WKScriptMessage) {
+        let sendData = message.body
+        // print(sendData["message"])
+        // print(sendData["email"])
+        
+        let email = sendData["email"] as! String
+        let url = NSURL(string: "mailto:\(email)")
+        UIApplication.sharedApplication().openURL(url!)
     }
 }
 

@@ -10,6 +10,10 @@ import Foundation
 
 let APPVERSIOIN = "1.0.0"
 
+let host = "107.150.96.151"
+//let host = "127.0.0.1:9990"
+
+
 func appVersion()->String {
     return "1.1.0"
 }

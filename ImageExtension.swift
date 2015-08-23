@@ -16,7 +16,7 @@ extension UIImage{
         let smallBounds:CGRect = CGRectMake(CGFloat(0.0), CGFloat(0.0), CGFloat(CGImageGetWidth(subImageRef)), CGFloat(CGImageGetHeight(subImageRef)))
         
         UIGraphicsBeginImageContext(smallBounds.size)
-        let context: CGContextRef  = UIGraphicsGetCurrentContext()
+        let context: CGContextRef  = UIGraphicsGetCurrentContext()!
         CGContextDrawImage(context, smallBounds, subImageRef)
         let smallImage:UIImage = UIImage(CGImage: subImageRef!)
         UIGraphicsEndImageContext()

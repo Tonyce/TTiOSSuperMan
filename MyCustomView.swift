@@ -93,7 +93,7 @@ class MyCustomView: UIView {
     }
     
     func setCtxColor(){
-                let ctx:CGContextRef = UIGraphicsGetCurrentContext()
+                let ctx:CGContextRef = UIGraphicsGetCurrentContext()!
         CGContextSetFillColorWithColor(ctx, bkColor!.CGColor)
 //        let ctx:CGContextRef = NSGraphicsContext.currentContext?.CGContext
 //        CGContextSetFillColorWithColor(ctx, bkColor!.CGColor)

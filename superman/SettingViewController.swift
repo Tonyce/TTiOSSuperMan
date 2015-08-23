@@ -26,7 +26,7 @@ class SettingViewController: UIViewController {
         
         ["color", "friends"],
         
-        [["img":GoogleIcon.e985 , "word":"作者痕迹", "href":"http://baidu.com", "colorIndex": 0]],
+        [["img":GoogleIcon.e985 , "word":"精选美文", "href":"http://\(host)/about/me.html", "colorIndex": 0]],
         
         [
             // ["img": GoogleIcon.e70c,"word":"赞一下", "href":"https://itunes.apple.com/cn/app/liu-li-xue-yuan/id978249810?mt=8", "colorIndex": 0 ],
@@ -129,6 +129,12 @@ class SettingViewController: UIViewController {
             let registerView = segue.destinationViewController as! LoginViewController
             registerView.delegate = self
         }
+        
+        if segue.identifier == "aboutDeveloper" {
+            let webView = segue.destinationViewController as! WebViewController
+            webView.willLoadUrl = "http://\(host)/about/me.html"
+        }
+        
         if segue.identifier == "supermanSegue"{
 //            self.navigationItem.backBarButtonItem?.title = ""
             self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
@@ -158,18 +164,58 @@ class SettingViewController: UIViewController {
             
             let action = UIAlertAction(title: "YES", style: UIAlertActionStyle.Cancel,
                 handler: {(paramAction:UIAlertAction!) in
-                
-                self.model[self.model.count-1] = [["logined": false]]
-                self.selfConfig?.userName = nil
-                SelfConfig.sharedInstance.saveSelfConfigs(self.selfConfig!)
                     
-                self.tableView.reloadData()
-                
-//                if let selectedIndexPath = self.tableView.indexPathForSelectedRow {
-//                    self.tableView.deselectRowAtIndexPath(selectedIndexPath, animated: true)
-//                }
+                    let url = "http://\(host)/api/me/logout"
+                    MyHTTPHandler.get(url){
+                        data, response, err in
+                        dispatch_async(dispatch_get_main_queue(), {
+                            
+                            let jsonParsed: AnyObject!
+                            if err != nil {
+//                                self.displayAlert("client goes wrong")
+                                print("client goes wrong")
+                                self.tableView.reloadData()
+                                return
+                            }
+                            
+                            if response!.statusCode == 404 {
+                                print("path not found")
+                                self.tableView.reloadData()
+                                return
+                            }
+                            
+                            
+                            do {
+                                jsonParsed = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions())
+                            }catch _ {
+                               
+                                print("parse json goes wrong")
+                                return
+                            }
+                            
+                            let jsonResult = JSONValue.fromObject(jsonParsed)!
+//                            let success = jsonResult["success"]?.bool
+                            let token = jsonResult["token"]?.string
+                            
+                            self.model[self.model.count-1] = [["logined": false]]
+                            self.selfConfig?.userName = nil
+                            SelfConfig.sharedInstance.saveSelfConfigs(self.selfConfig!)
+                            
+                            LoginStatus.sharedInstance.authorizationToken = token
+                            LoginStatus.sharedInstance.updateKeyChain(LoginStatus.sharedInstance.authorizationName, value: token!)
+                            self.tableView.reloadData()
+
+                        })
+
+                    }
+                    
+                   
+                    
+//                    if let selectedIndexPath = self.tableView.indexPathForSelectedRow {
+//                        self.tableView.deselectRowAtIndexPath(selectedIndexPath, animated: true)
+//                    }
             })
-//            alertController.view.addSubview(loading)
+            //            alertController.view.addSubview(loading)
             alertController.addAction(action)
             self.presentViewController(alertController, animated: true, completion: nil)
             
@@ -256,8 +302,8 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
             authorArticleCell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
             return authorArticleCell
             
-        case 3:
-            let m = model[3][indexPath.row] as? [String: AnyObject]
+        case model.count-2:
+            let m = model[model.count-2][indexPath.row] as? [String: AnyObject]
             let authorArticleCell = self.tableView.dequeueReusableCellWithIdentifier("authorArticleCell") as! AuthorArticleTableViewCell
             authorArticleCell.entry = m
             authorArticleCell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator

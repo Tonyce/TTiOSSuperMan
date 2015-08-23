@@ -36,9 +36,15 @@ class LoginViewController: UIViewController {
     
     @IBOutlet var loginRight: NSLayoutConstraint!
     @IBOutlet var registerLeft: NSLayoutConstraint!
+   
+    @IBOutlet weak var userNameLeft: NSLayoutConstraint!
+    @IBOutlet weak var passwordLeft: NSLayoutConstraint!
+    @IBOutlet weak var comformLeft: NSLayoutConstraint!
+    
     
     @IBOutlet var conformCenter: NSLayoutConstraint!
     @IBOutlet weak var conformLeft: NSLayoutConstraint!
+
     
     var centerLayoutConstraint : NSLayoutConstraint?
 
@@ -57,6 +63,15 @@ class LoginViewController: UIViewController {
         conformFeildHidden()
         
         initElement()
+        
+        if view.bounds.width > 320 {
+            loginRight.constant -= (view.bounds.width - 320) / 2
+            registerLeft.constant += (view.bounds.width - 320) / 2
+            
+            userNameLeft.constant += (view.bounds.width - 320) / 2
+            passwordLeft.constant += (view.bounds.width - 320) / 2
+            comformLeft.constant += (view.bounds.width - 320) / 2
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -95,7 +110,8 @@ class LoginViewController: UIViewController {
                 _ in
                 self.addMMSpinner(self.loginBtn)
                 let requestBody = ["userName": userNameValue, "password": passwordValue]
-                self.sendUserNameAndPwd("http://107.150.96.151/api/me/login", requestBody: requestBody, isLogin: true)
+                let url = "http://\(host)/api/me/login"
+                self.sendUserNameAndPwd(url, requestBody: requestBody, isLogin: true)
         })
     }
     
@@ -126,16 +142,17 @@ class LoginViewController: UIViewController {
                 _ in
                 self.addMMSpinner( self.registerBtn)
                 let requestBody = ["userName": userNameValue, "password": passwordValue]
-                self.sendUserNameAndPwd("http://107.150.96.151/api/me/login", requestBody: requestBody, isLogin: false)
+                let url = "http://\(host)/api/me/register"
+                self.sendUserNameAndPwd(url, requestBody: requestBody, isLogin: false)
         })
     }
     
     func sendUserNameAndPwd(url: String, requestBody: [String: String], isLogin: Bool){
         
-//        dispatch_async(dispatch_get_main_queue(), {
+        // dispatch_async(dispatch_get_main_queue(), {
             MyHTTPHandler.post(url, params: requestBody){
             
-                data, err in
+                data, response, err in
                 dispatch_async(dispatch_get_main_queue(), {
 
                     let jsonParsed: AnyObject!
@@ -160,10 +177,20 @@ class LoginViewController: UIViewController {
                     
                     let jsonResult = JSONValue.fromObject(jsonParsed)!
                     let success = jsonResult["success"]?.bool
+                    let token = jsonResult["token"]?.string
                     if success == true {
                         SelfConfig.sharedInstance.userName = self.userName.text!
                         SelfConfig.sharedInstance.saveSelfConfigs(SelfConfig.sharedInstance)
-                        self.logined()
+                        
+                        LoginStatus.sharedInstance.authorizationToken = token
+                        let status = LoginStatus.sharedInstance.updateKeyChain(LoginStatus.sharedInstance.authorizationName, value: token!)
+
+                        if status == 0 {
+                            self.logined()
+                        }else {
+                            self.displayAlert("update status \(status)")
+                        }
+
                     }else {
                         self.displayAlert("password is wrong")
                         if isLogin {
@@ -175,7 +202,7 @@ class LoginViewController: UIViewController {
                 })
             }
             
-//        })
+        // })
     }
     
     func displayAlert(message: String){

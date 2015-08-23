@@ -9,17 +9,24 @@
 import Foundation
 
 class MyHTTPHandler {
-    class func get(url: String, callback: (data: NSData?, err: NSError?) -> Void){
+    class func get(url: String, callback: (data: NSData?, response: NSHTTPURLResponse?, err: NSError?) -> Void){
         let request = NSMutableURLRequest(URL: NSURL(string: url)!)
         let session = NSURLSession.sharedSession()
+//        let token = LoginStatus.sharedInstance.authorizationToken!
+//        print("token: \(token) ")
+        request.addValue(LoginStatus.sharedInstance.authorizationToken!, forHTTPHeaderField: "Authorization")
         let task = session.dataTaskWithRequest(request){
-            (data, response, error) -> Void in
-            callback(data: data, err: error )
+            data, response, error -> Void in
+            
+            //let strData = NSString(data: data!, encoding: NSUTF8StringEncoding)
+            //print("Body: \(strData)")
+            
+            callback(data: data, response: response as? NSHTTPURLResponse, err: error )
         }
-        task!.resume()
+        task.resume()
     }
     
-    class func post( url: String, params: Dictionary<String, AnyObject>, callback: (data: NSData?, err: NSError?) -> Void ){
+    class func post( url: String, params: Dictionary<String, AnyObject>, callback: (data: NSData?, response: NSHTTPURLResponse?, err: NSError?) -> Void ){
         
         let request = NSMutableURLRequest(URL: NSURL(string: url)!)
         let session = NSURLSession.sharedSession()
@@ -34,9 +41,15 @@ class MyHTTPHandler {
         }
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        request.addValue(LoginStatus.sharedInstance.authorizationToken!, forHTTPHeaderField: "Authorization")
         let task = session.dataTaskWithRequest(request, completionHandler: {
             data, response, error -> Void in
-            callback(data: data, err: error)
+            
+            // let strData = NSString(data: data!, encoding: NSUTF8StringEncoding)
+            // print("Body: \(strData)")
+            
+            callback(data: data, response: response as? NSHTTPURLResponse, err: error)
 
             /*
             if error != nil {
@@ -56,6 +69,6 @@ class MyHTTPHandler {
             */
             
         })
-        task!.resume()
+        task.resume()
     }
 }

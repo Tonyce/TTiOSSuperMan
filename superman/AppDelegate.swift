@@ -19,6 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         // UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
         
+        LoginStatus.sharedInstance
+        
         let viewController = self.window?.rootViewController as! ViewController
         viewController.managedContext = self.managedObjectContext
         
@@ -49,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         MyHTTPHandler.get("http://107.150.96.151/api/me/setting"){
-            data, error in
+            data, response , error in
             
             let jsonParsed: AnyObject!
             if error != nil {

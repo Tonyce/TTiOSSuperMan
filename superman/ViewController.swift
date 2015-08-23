@@ -304,19 +304,19 @@ extension ViewController: UIScrollViewDelegate {
 extension ViewController {
     
     @IBAction func unwindToDiaryList(sender: UIStoryboardSegue) {
-        if let sourceViewController = sender.sourceViewController as? DiaryViewController,
-            diaryEntry = sourceViewController.diaryEntry {
-                if let selectedIndexPath = self.diaryTable.indexPathForSelectedRow {
-                    // Update an existing meal.
-                    diarys[selectedIndexPath.row] = diaryEntry
-                    do {
-                        try managedContext.save()
-                    } catch let error as NSError {
-                        print("Could not save \(error), \(error.userInfo)")
-                    }
-                    self.diaryTable.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
-                }
-        }
+//        if let sourceViewController = sender.sourceViewController as? DiaryViewController,
+//            diaryEntry = sourceViewController.diaryEntry {
+//                if let selectedIndexPath = self.diaryTable.indexPathForSelectedRow {
+//                    // Update an existing meal.
+//                    diarys[selectedIndexPath.row] = diaryEntry
+//                    do {
+//                        try managedContext.save()
+//                    } catch let error as NSError {
+//                        print("Could not save \(error), \(error.userInfo)")
+//                    }
+//                    self.diaryTable.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
+//                }
+//        }
         
         if let sourceViewController = sender.sourceViewController as? AddDiaryViewController ,
             diaryEntryContainer = sourceViewController.diaryEntryContainer {
@@ -349,18 +349,20 @@ extension ViewController {
         if segue.identifier == "ShowAndEditDiary" {
 
             if let indexPath = self.diaryTable.indexPathForSelectedRow {
-                let diaryView = segue.destinationViewController as! DiaryViewController
-                
+//                 let diaryView = segue.destinationViewController as! DiaryViewController
+                let testDiaryView = segue.destinationViewController as! TestDiaryViewController
+//
                 let diaryEntry = self.diarys[indexPath.row]
-                
+//
                 let rectOfCellInTableView = self.diaryTable.rectForRowAtIndexPath(indexPath)
                 let tmpOriginFrame = self.diaryTable.convertRect(rectOfCellInTableView, toView: diaryTable.superview)
                 openDiaryTransition.tmpOriginFrame = tmpOriginFrame
-                
-                diaryView.transitioningDelegate = openDiaryTransition
-                diaryView.diaryEntry = diaryEntry as Diary
-                // segue.destinationViewController.transitioningDelegate = openDiaryTransition
-                // (segue.destinationViewController as! InfoViewController).item = item
+//
+                testDiaryView.diaryEntry = diaryEntry
+                segue.destinationViewController.transitioningDelegate = openDiaryTransition
+//                diaryView.diaryEntry = diaryEntry as Diary
+//                diaryView.transitioningDelegate = openDiaryTransition
+
             }
         }
         

@@ -50,15 +50,6 @@ class SystemConfig: NSObject {
             if let isFirstInData = systemConfigData["isFirstIn"] as? Bool {
                 isFirstIn = isFirstInData
             }
-            
-            // login
-//            if let userNameStr = systemConfigData["userName"] as? String {
-//                userName = userNameStr
-//            }
-//            
-//            if let lastLoginTimeData = systemConfigData["lastLoginTime"] as? Int{
-//                lastLoginTime = lastLoginTimeData
-//            }
 
         }
         
