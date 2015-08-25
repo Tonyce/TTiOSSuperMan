@@ -15,11 +15,13 @@ class DiaryEntry: NSObject, NSCoding {
     // var unixTime: Int?
     var content: String?
     var colorEntryIndex : Int?
+    var baked: Bool?
     
-    init(time: String, content: String, colorEntryIndex: Int) {
+    init(time: String, content: String, colorEntryIndex: Int, baked: Bool) {
         self.time = time
         self.content = content
         self.colorEntryIndex = colorEntryIndex
+        self.baked = baked
         
         super.init()
     }
@@ -29,6 +31,7 @@ class DiaryEntry: NSObject, NSCoding {
         static let timeKey = "time"
         static let contentKey = "content"
         static let colorKey = "color"
+        static let bakedKey = "baked"
     }
     
     // MARK: Archiving Paths
@@ -41,13 +44,16 @@ class DiaryEntry: NSObject, NSCoding {
         aCoder.encodeObject(time, forKey: PropertyKey.timeKey)
         aCoder.encodeObject(content, forKey: PropertyKey.contentKey)
         aCoder.encodeObject(colorEntryIndex, forKey: PropertyKey.colorKey)
+        aCoder.encodeObject(baked, forKey: PropertyKey.bakedKey)
     }
+    
     required convenience init?(coder aDecoder: NSCoder) {
         let time = aDecoder.decodeObjectForKey(PropertyKey.timeKey) as! String
         let content = aDecoder.decodeObjectForKey(PropertyKey.contentKey) as! String
         let colorEntryIndex = aDecoder.decodeObjectForKey(PropertyKey.colorKey) as! Int
+        let baked = aDecoder.decodeObjectForKey(PropertyKey.bakedKey) as! Bool
         // Must call designated initializer.
-        self.init(time: time, content: content, colorEntryIndex: colorEntryIndex)
+        self.init(time: time, content: content, colorEntryIndex: colorEntryIndex, baked: baked)
     }
     
     

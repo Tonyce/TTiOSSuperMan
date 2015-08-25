@@ -40,7 +40,8 @@ class AddDiaryViewController: UIViewController {
         closeBtn.tintColor = UIColor.whiteColor()
         closeBtn.layer.cornerRadius = CGRectGetHeight(closeBtn.frame) / 2
         
-        saveBtn.setTitle(GoogleIcon.e649, forState: UIControlState.Normal)
+        // saveBtn.setTitle(GoogleIcon.e649, forState: UIControlState.Normal)
+        // saveBtn.setTitle("保存", forState: UIControlState.Normal)
         saveBtn.tintColor = UIColor.whiteColor()
         saveBtn.layer.cornerRadius = CGRectGetHeight(saveBtn.frame) / 2
         

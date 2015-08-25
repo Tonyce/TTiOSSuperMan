@@ -18,7 +18,6 @@
             <string>googleicon</string>
             <string>googleicon</string>
             <string>googleicon</string>
-            <string>googleicon</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -1406,7 +1405,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w1x-Rv-xHR">
-                                <rect key="frame" x="6" y="80" width="40" height="40"/>
+                                <rect key="frame" x="6" y="82" width="40" height="40"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="Iv5-9z-27V"/>
@@ -1441,7 +1440,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WHf-RR-p1a">
-                                        <rect key="frame" x="60" y="14" width="100" height="21"/>
+                                        <rect key="frame" x="60" y="14" width="100" height="20.5"/>
                                         <animations/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="NBe-tc-1cd"/>
@@ -1475,7 +1474,7 @@
                                             <constraint firstAttribute="width" constant="40" id="2mI-k9-vJx"/>
                                             <constraint firstAttribute="height" constant="40" id="Dot-pM-XtY"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="googleicon" family="googleicon" pointSize="22"/>
+                                        <fontDescription key="fontDescription" name="googleicon" family="googleicon" pointSize="20"/>
                                         <state key="normal" title="close"/>
                                         <connections>
                                             <action selector="dismissAction:" destination="Jtf-ea-p5H" eventType="touchUpInside" id="EGl-6I-f4h"/>
@@ -1498,8 +1497,10 @@
                                             <constraint firstAttribute="height" constant="40" id="5Xj-Zw-kRY"/>
                                             <constraint firstAttribute="width" constant="40" id="Azv-8x-vpJ"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="googleicon" family="googleicon" pointSize="22"/>
-                                        <state key="normal" title="完成"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <state key="normal" title="保存">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
                                         <connections>
                                             <segue destination="fvN-qo-j9b" kind="unwind" identifier="addDiary" unwindAction="unwindToDiaryList:" id="hjR-rH-QFz"/>
                                         </connections>
@@ -1533,7 +1534,7 @@
                             <constraint firstItem="7Si-le-Cck" firstAttribute="centerX" secondItem="PZU-vu-L8D" secondAttribute="centerX" id="T9a-lT-3qy"/>
                             <constraint firstItem="fIH-Ig-jl7" firstAttribute="centerX" secondItem="PZU-vu-L8D" secondAttribute="centerX" id="UdT-Uy-0eA"/>
                             <constraint firstItem="w1x-Rv-xHR" firstAttribute="leading" secondItem="PZU-vu-L8D" secondAttribute="leadingMargin" constant="-10" id="WDK-Vw-3fb"/>
-                            <constraint firstItem="w1x-Rv-xHR" firstAttribute="top" secondItem="Ks1-L6-jFI" secondAttribute="bottom" constant="20" id="beE-zI-Nzu"/>
+                            <constraint firstItem="w1x-Rv-xHR" firstAttribute="top" secondItem="Ks1-L6-jFI" secondAttribute="bottom" constant="22" id="beE-zI-Nzu"/>
                             <constraint firstItem="Ks1-L6-jFI" firstAttribute="top" secondItem="vJk-Se-FL3" secondAttribute="bottom" constant="-20" id="jcs-i1-qnT"/>
                             <constraint firstItem="fIH-Ig-jl7" firstAttribute="leading" secondItem="PZU-vu-L8D" secondAttribute="leadingMargin" constant="-20" id="xTm-mj-zoI"/>
                             <constraint firstItem="fIH-Ig-jl7" firstAttribute="leading" secondItem="PZU-vu-L8D" secondAttribute="leadingMargin" constant="-20" id="zHv-ev-hEc"/>

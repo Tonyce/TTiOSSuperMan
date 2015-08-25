@@ -161,14 +161,15 @@ class WebViewController: UIViewController {
     * return YES;
     */
     //    - (BOOL) shouldStartLoadWithRequest:(NSURLRequest *) request;
+    /*
     func webView(webView: WKWebView, decidePolicyForNavigationAction navigationAction: WKNavigationAction, decisionHandler: (WKNavigationActionPolicy) -> Void) {
         let request = navigationAction.request
         let url = request.URL?.absoluteString
-        print("url \(url)")
+        // print("url \(url)")
         
         decisionHandler(WKNavigationActionPolicy.Allow)
     }
-    
+    */
     @IBAction func dismissView(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
     }
@@ -185,8 +186,13 @@ class WebViewController: UIViewController {
         if (webView.loading) {
             webView.stopLoading()
         } else {
-            let request = NSURLRequest(URL:webView.URL!)
-            webView.loadRequest(request)
+            if let url = webView.URL {
+                let request = NSURLRequest(URL:url)
+                webView.loadRequest(request)
+            }else {
+                webView.loadHTMLString("<p style=\"color:red\">url not found</p>", baseURL: nil)
+            }
+
         }
     }
 }

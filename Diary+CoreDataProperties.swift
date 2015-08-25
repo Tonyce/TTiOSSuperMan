@@ -17,5 +17,5 @@ extension Diary {
     @NSManaged var colorEntryIndex: NSNumber?
     @NSManaged var content: String?
     @NSManaged var time: String?
-
+    @NSManaged var baked: NSNumber?
 }

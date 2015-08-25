@@ -111,12 +111,6 @@ class ViewController: UIViewController {
         selfImage.image = selfConfig.image
         selfWord.text = selfConfig.word
         
-//        if selfConfig.isDefault == true {
-//            selfWord.textColor = UIColor.grayColor()
-//        }else {
-//            selfWord.textColor = UIColor.whiteColor()
-//        }
-        
         UIView.animateWithDuration(0.5, animations: {
                 self.addDiaryBtn.frame = self.addDiaryInitFrame
             }, completion: nil)
@@ -137,15 +131,6 @@ class ViewController: UIViewController {
     }
     
     func initSettingBtn(){
-//        settingBtn.setTitle(GoogleIcon.e6c5, forState: UIControlState.Normal)
-//        settingBtn.setTitle("", forState: UIControlState.Normal)
-//        settingBtn.tintColor = UIColor.whiteColor()
-//        settingBtn.layer.cornerRadius = CGRectGetHeight(settingBtn.frame) / 2
-        
-//        friendBtn.setTitle(GoogleIcon.e7cb, forState: UIControlState.Normal)
-//        friendBtn.setTitle("", forState: UIControlState.Normal)
-//        friendBtn.tintColor = UIColor.whiteColor()
-//        friendBtn.layer.cornerRadius = CGRectGetHeight(settingBtn.frame) / 2
         
         selfImage.layer.cornerRadius = CGRectGetHeight(selfImage.frame) / 2
         selfImage.layer.masksToBounds = true

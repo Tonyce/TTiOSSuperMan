@@ -28,12 +28,18 @@ class DiaryTableViewCell: UITableViewCell {
 //        self.timeLabel.textColor = diaryEntry.color
         
         self.circleIdentifyLabel.font = UIFont(name: GoogleIconName, size: 15.0)
-//        let index:Int = diaryEntry.colorEntryIndex s
+//        let index:Int = diaryEntry.colorEntryIndexs
         var colorEntry = Colors.colorArr[ diaryEntry.colorEntryIndex as! Int] as [String: AnyObject]
         self.circleIdentifyLabel.textColor = colorEntry["color"] as! UIColor
-        self.circleIdentifyLabel.text = GoogleIcon.eacd
+
         
         self.cellText.text = diaryEntry.content
+        
+        if diaryEntry.baked == true {
+            self.circleIdentifyLabel.text = GoogleIcon.eacd
+        }else {
+            self.circleIdentifyLabel.text = GoogleIcon.eaed
+        }
     }
     
     override func awakeFromNib() {

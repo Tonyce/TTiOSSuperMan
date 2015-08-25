@@ -18,7 +18,9 @@ class TestDiaryViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        print(diaryEntry)
+        // print(diaryEntry)
+
+        print(diaryEntry!.objectID)
         closeBtn.setTitle(GoogleIcon.e811, forState: UIControlState.Normal)
         closeBtn.tintColor = UIColor.whiteColor()
         closeBtn.layer.cornerRadius = CGRectGetHeight(closeBtn.frame) / 2
