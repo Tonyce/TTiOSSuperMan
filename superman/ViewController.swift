@@ -179,11 +179,6 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("diaryCell", forIndexPath: indexPath) as! DiaryTableViewCell
         
-//        let diaryDic = diarysArr[indexPath.row] as! [String : AnyObject]
-//        let diaryEntry = DiaryEntry(time: diaryDic["time"] as! String, content: diaryDic["content"] as! String, colorEntryIndex: diaryDic["colorEntryIndex"] as! Int)
-//        cell.diaryEntry = diaryEntry as DiaryEntry
-
-        // let diaryEntry = diarys[indexPath.row] as Diary
         let diaryEntry = diarys[indexPath.row] as Diary
       
         cell.diaryEntry = diaryEntry
@@ -199,8 +194,42 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
             if editingStyle == .Delete {
                 
                 let diaryToRemove = diarys[indexPath.row]
+                print(diaryToRemove.objectID)
+                let instanceURL = diaryToRemove.objectID.URIRepresentation()
+                print(instanceURL)
+                print(instanceURL.absoluteString)
+                let instanceURLStr = instanceURL.absoluteString
+//                let classURL = instanceURL().URLByDeletingLastPathComponent
+//                
+//                let classString = classURL!.absoluteString
+//                let instanceId = instanceURL().lastPathComponent
+//                
+//                print(classString)
+//                print(instanceId)
+                
+
+//                let reconstructedClassURL = NSURL(fileURLWithPath:classString)
+//                reconstructedClassURL.URLByAppendingPathComponent(pathComponent: String)
+//                let reconstructedInstanceURL = reconstructedClassURL.URLByAppendingPathComponent(instanceId!)
+                
+//                print(reconstructedInstanceURL)
+                
+                let ganInstanceURL = NSURL(string: instanceURLStr)
+
+                let objectID = managedContext.persistentStoreCoordinator?.managedObjectIDForURIRepresentation(ganInstanceURL!)
+
+                print(objectID!)
+                let reconstructedInstance = managedContext.objectWithID(objectID!)
+                
                 
                 managedContext.deleteObject(diaryToRemove)
+                
+//                NSURL *reconstructedClassURL = [NSURL URLWithString:classString];
+//                NSURL *reconstructedInstanceURL = [reconstructedClassURL
+//                    URLByAppendingPathComponent:instanceId];
+//                NSManagedObjectID *objectID = [moc.persistentStoreCoordinator
+//                    managedObjectIDForURIRepresentation:reconstructedInstanceURL];
+//                NSManagedObject *reconstructedInstance = [moc objectWithID:objectID];
                 
                 do {
                     try managedContext.save()
@@ -253,9 +282,11 @@ extension ViewController: UIScrollViewDelegate {
     }
    
     func animationForScroll(offset:CGFloat){
-        //print("\(offset)")
+
         var topViewTransform:CATransform3D  = CATransform3DIdentity
         if offset <= 0 { // DOWN
+            // print("down \(offset)")
+            
             let headerScaleFactor:CGFloat = -(offset) / self.topView.bounds.size.height
             let statusScaleFactor:CGFloat = -(offset) / self.statusView.bounds.size.height
             let headerSizevariation:CGFloat  = ((self.topView.bounds.size.height * (1.0 + headerScaleFactor)) - self.topView.bounds.size.height)/2.0
@@ -268,6 +299,8 @@ extension ViewController: UIScrollViewDelegate {
             self.statusView.layer.transform = statusViewTransform
             clearTopViewShadow()
         } else { // UP
+            
+            // print("up \(offset)")
             
             if offset > 10 {
                 shadowTopView()
@@ -310,6 +343,7 @@ extension ViewController {
                 
                 let diary = Diary(entity: entity!, insertIntoManagedObjectContext: managedContext)
                 
+                print(diary.objectID)
                 diary.time = diaryEntryContainer.time
                 diary.content = diaryEntryContainer.content
                 diary.colorEntryIndex = diaryEntryContainer.colorEntryIndex
@@ -325,7 +359,62 @@ extension ViewController {
                 }
                 
                 self.diaryTable.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: UITableViewRowAnimation.Top)
+                
+//                let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+//                dispatch_async(dispatch_get_global_queue(priority, 0)) {
+//                    _ in
+//                    
+                    self.saveToCloud(){
+                        success in
+                        diary.baked = success
+
+                        func inner() {
+                            do {
+                                try self.managedContext.save()
+                            } catch let error as NSError {
+                                print("Could not save \(error), \(error.userInfo)")
+                            }
+                            
+                            let diaryIndex = self.diarys.indexOf(diary)
+                            let indexPath = NSIndexPath(forRow: diaryIndex!, inSection: 0)
+                            // print(diaryIndex)
+                            self.diaryTable.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+                        }
+                        dispatch_async(dispatch_get_main_queue()) {
+                            _ in
+                            inner()
+                        }
+                }
+
+        }
+    }
+    
+    func saveToCloud(callback: (success: Bool?) -> Void) {
+        let url: String = "http://\(host)/api/diary/save"
         
+        MyHTTPHandler.post(url, params: ["a":"b"]) {
+            
+            data, response, err in
+                
+            let jsonParsed: AnyObject!
+            var success: Bool?
+            if err != nil {
+                callback(success: success)
+                return  
+            }
+//            let strData = NSString(data: data!, encoding: NSUTF8StringEncoding)
+//                                print("Body: \(strData)")
+            do {
+                jsonParsed = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions())
+            }catch _ {
+                print("err")
+                callback(success: success)
+                return
+            }
+            
+            let jsonResult = JSONValue.fromObject(jsonParsed)!
+            success = jsonResult["success"]?.bool
+            callback(success: success)
         }
     }
     

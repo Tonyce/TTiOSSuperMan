@@ -134,7 +134,7 @@
                                                     </variation>
                                                 </label>
                                                 <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="去掉UITextView的pading和Margin的方法有些在iOS7并不是用了，现在记下适用于iOS7之后的方法" translatesAutoresizingMaskIntoConstraints="NO" id="rfW-Ja-ZZf">
-                                                    <rect key="frame" x="31" y="15" width="279" height="67"/>
+                                                    <rect key="frame" x="33" y="15" width="272" height="67"/>
                                                     <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="67" id="B4s-RC-Dl1"/>
@@ -152,8 +152,8 @@
                                                 <constraint firstItem="Yj6-26-9iW" firstAttribute="top" secondItem="WFo-dM-VLH" secondAttribute="topMargin" constant="-10" id="V4S-XL-AK2"/>
                                                 <constraint firstItem="rfW-Ja-ZZf" firstAttribute="top" secondItem="c61-bq-3ux" secondAttribute="bottom" id="WHw-sh-PBm"/>
                                                 <constraint firstItem="rfW-Ja-ZZf" firstAttribute="trailing" secondItem="WFo-dM-VLH" secondAttribute="trailingMargin" constant="15" id="bcv-rV-yhS"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="rfW-Ja-ZZf" secondAttribute="trailing" constant="10" id="ggI-yH-9T6"/>
-                                                <constraint firstItem="rfW-Ja-ZZf" firstAttribute="leading" secondItem="WFo-dM-VLH" secondAttribute="leadingMargin" constant="23" id="nQg-dQ-OTo"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="rfW-Ja-ZZf" secondAttribute="trailing" constant="15" id="ggI-yH-9T6"/>
+                                                <constraint firstItem="rfW-Ja-ZZf" firstAttribute="leading" secondItem="WFo-dM-VLH" secondAttribute="leadingMargin" constant="25" id="nQg-dQ-OTo"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">

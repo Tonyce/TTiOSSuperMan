@@ -6,6 +6,7 @@
 //  Copyright © 2015年 D_ttang. All rights reserved.
 //
 
+/*
 import Foundation
 import UIKit
 
@@ -55,6 +56,5 @@ class DiaryEntry: NSObject, NSCoding {
         // Must call designated initializer.
         self.init(time: time, content: content, colorEntryIndex: colorEntryIndex, baked: baked)
     }
-    
-    
 }
+*/
