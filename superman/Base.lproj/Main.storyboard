@@ -663,57 +663,6 @@
             </objects>
             <point key="canvasLocation" x="264" y="-794"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="alA-ED-hRz">
-            <objects>
-                <viewController id="jSj-Tm-Pvo" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="bEe-ba-oAq"/>
-                        <viewControllerLayoutGuide type="bottom" id="L0G-ja-G8T"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="dlH-94-mAO">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aR8-BC-ab5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-124" y="3046"/>
-        </scene>
-        <!--Super More View Controller-->
-        <scene sceneID="pUW-py-s3V">
-            <objects>
-                <viewController id="evs-a2-fUk" customClass="SuperMoreViewController" customModule="superman" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="aJ2-Vz-I4F"/>
-                        <viewControllerLayoutGuide type="bottom" id="ZXI-hc-rt8"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="CSf-SR-n9G">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RCa-kl-08y">
-                                <rect key="frame" x="59" y="438" width="46" height="30"/>
-                                <animations/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="jSj-Tm-Pvo" kind="show" id="bFC-mL-14X"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" systemItem="more" id="3JI-fY-3YY"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QXL-KN-0Ea" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-646" y="2622"/>
-        </scene>
         <!--Web View Controller-->
         <scene sceneID="msI-ki-xWB">
             <objects>
