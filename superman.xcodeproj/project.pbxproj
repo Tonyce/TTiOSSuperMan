@@ -17,6 +17,7 @@
 		BE42ACA41B7CBFCB000F2449 /* SupermansViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE42ACA31B7CBFCB000F2449 /* SupermansViewController.swift */; };
 		BE4B93981B54ADA0008CAA67 /* SelfCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4B93971B54ADA0008CAA67 /* SelfCenterViewController.swift */; };
 		BE4F64D41B57D1E9008251E7 /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4F64D31B57D1E9008251E7 /* ImageExtension.swift */; };
+		BE57D93E1B8C55630092872D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE57D93D1B8C55630092872D /* LaunchScreen.storyboard */; };
 		BE768EEE1B4D2BF20032B5CE /* MyCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE768EED1B4D2BF20032B5CE /* MyCustomView.swift */; };
 		BE768EF21B4D768C0032B5CE /* GoogleIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE768EF11B4D768C0032B5CE /* GoogleIcon.swift */; };
 		BE768EF41B4D77A30032B5CE /* googleicon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BE768EF31B4D77A30032B5CE /* googleicon.ttf */; };
@@ -58,7 +59,6 @@
 		BED614531B8347D1008881E2 /* SimplePresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED614521B8347D1008881E2 /* SimplePresentationController.swift */; };
 		BED70FDC1B7DC09C00620C8B /* SuperInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED70FDB1B7DC09C00620C8B /* SuperInfoViewController.swift */; };
 		BEDAA20A1B7A2063007E6102 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDAA2091B7A2063007E6102 /* WelcomeViewController.swift */; };
-		BEE0ACC51B7CCE240010E075 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEE0ACC31B7CCE240010E075 /* LaunchScreen.storyboard */; };
 		BEE321CB1B6CF28800E964AE /* test.js in Resources */ = {isa = PBXBuildFile; fileRef = BEE321CA1B6CF28800E964AE /* test.js */; };
 		BEEC67221B6A81E6004EF713 /* LoginLogoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEC67211B6A81E6004EF713 /* LoginLogoutCell.swift */; };
 		BEEE07641B4CCEDC0015E752 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEE07631B4CCEDC0015E752 /* AppDelegate.swift */; };
@@ -84,6 +84,7 @@
 		BE42ACA31B7CBFCB000F2449 /* SupermansViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupermansViewController.swift; sourceTree = "<group>"; };
 		BE4B93971B54ADA0008CAA67 /* SelfCenterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfCenterViewController.swift; sourceTree = "<group>"; };
 		BE4F64D31B57D1E9008251E7 /* ImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
+		BE57D93D1B8C55630092872D /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ../LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BE768EED1B4D2BF20032B5CE /* MyCustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCustomView.swift; sourceTree = "<group>"; };
 		BE768EF11B4D768C0032B5CE /* GoogleIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GoogleIcon.swift; path = GoogleSource/GoogleIcon.swift; sourceTree = "<group>"; };
 		BE768EF31B4D77A30032B5CE /* googleicon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = googleicon.ttf; path = GoogleSource/googleicon.ttf; sourceTree = "<group>"; };
@@ -126,7 +127,6 @@
 		BED614521B8347D1008881E2 /* SimplePresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimplePresentationController.swift; sourceTree = "<group>"; };
 		BED70FDB1B7DC09C00620C8B /* SuperInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperInfoViewController.swift; sourceTree = "<group>"; };
 		BEDAA2091B7A2063007E6102 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
-		BEE0ACC41B7CCE240010E075 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = superman/Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BEE321CA1B6CF28800E964AE /* test.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = test.js; sourceTree = "<group>"; };
 		BEEC67211B6A81E6004EF713 /* LoginLogoutCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginLogoutCell.swift; sourceTree = "<group>"; };
 		BEEE07601B4CCEDC0015E752 /* superman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = superman.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -285,8 +285,8 @@
 				BEEE07631B4CCEDC0015E752 /* AppDelegate.swift */,
 				BEEE07651B4CCEDC0015E752 /* ViewController.swift */,
 				BEEE07671B4CCEDC0015E752 /* Main.storyboard */,
+				BE57D93D1B8C55630092872D /* LaunchScreen.storyboard */,
 				BEEE076A1B4CCEDC0015E752 /* Assets.xcassets */,
-				BEE0ACC31B7CCE240010E075 /* LaunchScreen.storyboard */,
 				BEEE076F1B4CCEDC0015E752 /* Info.plist */,
 				BE3A1F5B1B52DACA00569CB8 /* MyPlayground.playground */,
 			);
@@ -382,8 +382,8 @@
 				BEE321CB1B6CF28800E964AE /* test.js in Resources */,
 				BED6143F1B832515008881E2 /* CountryData.plist in Resources */,
 				BE768EF41B4D77A30032B5CE /* googleicon.ttf in Resources */,
+				BE57D93E1B8C55630092872D /* LaunchScreen.storyboard in Resources */,
 				BEEE076B1B4CCEDC0015E752 /* Assets.xcassets in Resources */,
-				BEE0ACC51B7CCE240010E075 /* LaunchScreen.storyboard in Resources */,
 				BEEE07691B4CCEDC0015E752 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -458,15 +458,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		BEE0ACC31B7CCE240010E075 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BEE0ACC41B7CCE240010E075 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			path = ..;
-			sourceTree = "<group>";
-		};
 		BEEE07671B4CCEDC0015E752 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

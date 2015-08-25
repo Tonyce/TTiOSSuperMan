@@ -10,7 +10,7 @@ import UIKit
 
 class SelfCenterViewController: UIViewController , UIImagePickerControllerDelegate, UINavigationControllerDelegate{
 
-    @IBOutlet weak var saveBtn: UIButton!
+
     @IBOutlet weak var selfScrollViewContainer: UIScrollView!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var selfImage: UIImageView!
@@ -37,20 +37,13 @@ class SelfCenterViewController: UIViewController , UIImagePickerControllerDelega
         alphaView.alpha = 0.3
         
         
-        // Do any additional setup after loading the view.
-//        saveBtn.setTitle(GoogleIcon.ebc4, forState: UIControlState.Normal)
-//        saveBtn.tintColor = UIColor.whiteColor()
-//        saveBtn.layer.cornerRadius = CGRectGetHeight(saveBtn.frame) / 2
-        
         selfScrollViewContainer.frame = view.frame
 
-        selfScrollViewContainer.contentSize = CGSize(width: view.bounds.width, height:  view.bounds.height )
-        // selfScrollViewContainer.contentInset = selfScrollViewContainerDefaultContentInset
+        selfScrollViewContainer.contentSize = CGSize(width: view.bounds.width, height:  view.bounds.height - 60)
         
         selfImage.image = selfConfig.image
         textView.text = selfConfig.word
-//        textView.layer.borderWidth = 0.5
-//        textView.layer.borderColor = UIColor.MKColor.Grey.CGColor
+
     }
     
 
