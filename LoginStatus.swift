@@ -85,7 +85,7 @@ class LoginStatus: NSObject {
     
     
     func updateKeyChain(name: String, value: String) -> OSStatus? {
-        print("update")
+        // print("update")
         var status:OSStatus?
         
         let keyChainItem = createKeyChainItemDic(name)
@@ -94,10 +94,10 @@ class LoginStatus: NSObject {
             updateDictionary.setObject(value.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion:true)!, forKey:kSecValueData as String)
             status = SecItemUpdate(keyChainItem, updateDictionary)
             
-            print("update \(name) status : \(status)")
+            // print("update \(name) status : \(status)")
         }else{
             
-            print("\(name) key chain doesnot exit")
+            // print("\(name) key chain doesnot exit")
         }
         return status
     }

@@ -26,7 +26,8 @@ class SettingViewController: UIViewController {
         
         ["color", "friends"],
         
-        [["img":GoogleIcon.e985 , "word":"精选美文", "href":"http://\(host)/about/me.html", "colorIndex": 0]],
+//        [["img":GoogleIcon.e985 , "word":"精选美文", "href":"http://\(host)/about/me.html", "colorIndex": 0]],
+        [["img":GoogleIcon.e985 , "word":"我的记录", "colorIndex": 0]],
         
         [
             // ["img": GoogleIcon.e70c,"word":"赞一下", "href":"https://itunes.apple.com/cn/app/liu-li-xue-yuan/id978249810?mt=8", "colorIndex": 0 ],
@@ -37,8 +38,6 @@ class SettingViewController: UIViewController {
         
         [ [ "logined":false] ]
     ]
-    
-    var selfConfig: SelfConfig?
 
     var colorEntry: [String:AnyObject]!
     
@@ -53,9 +52,7 @@ class SettingViewController: UIViewController {
         model[3] = SystemConfig.sharedInstance.settingEntrys!
         // SystemConfig.sharedInstance.settingEntrys = model[3] as? [[String: AnyObject]]
         // SystemConfig.sharedInstance.saveSystemConfig("settingEntrys", value: SystemConfig.sharedInstance.settingEntrys!)
-        if let _ = SelfConfig.sharedInstance.userName {
-            model[model.count - 1] = [["logined": true]]
-        }
+        
         
         // Do any additional setup after loading the view.
         closeBtn.setTitle(GoogleIcon.ebd0, forState: UIControlState.Normal)
@@ -75,7 +72,10 @@ class SettingViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         
-        selfConfig = SelfConfig.sharedInstance
+        if let _ = SelfConfig.sharedInstance.userName {
+            model[model.count - 1] = [["logined": true]]
+        }
+        
         colorEntry = SystemConfig.sharedInstance.systemColorEntry
 
         navigationController?.navigationBar.barTintColor = colorEntry["color"] as? UIColor
@@ -91,33 +91,22 @@ class SettingViewController: UIViewController {
     }
     
     @IBAction func unwindSet(sender: UIStoryboardSegue) {
-//        if let sourceViewController = sender.sourceViewController as? SelfCenterViewController {
-//            selfConfig = sourceViewController.selfConfig {
-//                self.selfConfig = selfConfig
-//                SelfConfig.sharedInstance.image = selfConfig.image
-//                SelfConfig.sharedInstance.word  = selfConfig.word
-                SelfConfig.sharedInstance.isDefault = false
-                
-                SelfConfig.sharedInstance.saveSelfConfigs(SelfConfig.sharedInstance)
-                self.tableView.reloadData()
-//        }
+
+        SelfConfig.sharedInstance.isDefault = false
+        
+        SelfConfig.sharedInstance.saveSelfConfigs(SelfConfig.sharedInstance)
+        self.tableView.reloadData()
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "dismissSetting" {
-            // let mainView = segue.destinationViewController as! ViewController
-            // mainView.selfConfig = self.selfConfig
+
             SystemConfig.sharedInstance.systemColorEntry = self.colorEntry
             
         }else if segue.identifier == "colorSetSegue"{
             let setColorView = segue.destinationViewController as! SelectColorViewController
             setColorView.delegate = self
             setColorView.nowColorEntry = self.colorEntry
-//            setColorView.selectColorEntry = SystemConfig.sharedInstance.systemColorEntry
-            
-//        }else if segue.identifier == "selfSetSegue"{
-//            let selfCenterView = segue.destinationViewController as! SelfCenterViewController
-//            selfCenterView.selfConfig = self.selfConfig
             
         }else if segue.identifier == "openWebSegue" {
             let tmpCell = self.tableView.cellForRowAtIndexPath(self.tableView.indexPathForSelectedRow!) as! AuthorArticleTableViewCell
@@ -136,7 +125,6 @@ class SettingViewController: UIViewController {
         }
         
         if segue.identifier == "supermanSegue"{
-//            self.navigationItem.backBarButtonItem?.title = ""
             self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
         }else {
             self.navigationItem.backBarButtonItem = UIBarButtonItem(title: self.title, style: .Plain, target: nil, action: nil)
@@ -198,8 +186,10 @@ class SettingViewController: UIViewController {
                             let token = jsonResult["token"]?.string
                             
                             self.model[self.model.count-1] = [["logined": false]]
-                            self.selfConfig?.userName = nil
-                            SelfConfig.sharedInstance.saveSelfConfigs(self.selfConfig!)
+                            SelfConfig.sharedInstance.userName = nil
+                            SelfConfig.sharedInstance.allowBak = nil
+                            
+                            SelfConfig.sharedInstance.saveSelfConfigs(SelfConfig.sharedInstance)
                             
                             LoginStatus.sharedInstance.authorizationToken = token
                             LoginStatus.sharedInstance.updateKeyChain(LoginStatus.sharedInstance.authorizationName, value: token!)
@@ -226,18 +216,18 @@ class SettingViewController: UIViewController {
             
             if let selectedIndexPath = self.tableView.indexPathForSelectedRow {
                     
-                    let tmpCell = self.tableView.cellForRowAtIndexPath(selectedIndexPath) as! AuthorArticleTableViewCell
-                    willLoadUrl = tmpCell.entry["href"] as? String
-                    let word = tmpCell.entry["word"] as? String
+                let tmpCell = self.tableView.cellForRowAtIndexPath(selectedIndexPath) as! AuthorArticleTableViewCell
+                willLoadUrl = tmpCell.entry["href"] as? String
+                let word = tmpCell.entry["word"] as? String
+                
+                if word == "赞一下" {
+                
+                    UIApplication.sharedApplication().openURL(NSURL(string: willLoadUrl!)!)
                     
-                    if word == "赞一下" {
+                    self.tableView.deselectRowAtIndexPath(selectedIndexPath, animated: true)
                     
-                        UIApplication.sharedApplication().openURL(NSURL(string: willLoadUrl!)!)
-                        
-                        self.tableView.deselectRowAtIndexPath(selectedIndexPath, animated: true)
-                        
-                        return false
-                    }
+                    return false
+                }
 
             }
         }
@@ -279,7 +269,7 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
 
         case 0:
             let meCell = self.tableView.dequeueReusableCellWithIdentifier("meCell") as! meTableViewCell
-            meCell.selfConfig = self.selfConfig
+            meCell.selfConfig = SelfConfig.sharedInstance
             return meCell
 
         case 1:
@@ -297,10 +287,10 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
             
         case 2:
             let m = model[2][indexPath.row] as? [String: AnyObject]
-            let authorArticleCell = self.tableView.dequeueReusableCellWithIdentifier("authorArticleCell") as! AuthorArticleTableViewCell
-            authorArticleCell.entry = m
-            authorArticleCell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
-            return authorArticleCell
+            let noteManageCell = self.tableView.dequeueReusableCellWithIdentifier("myNoteManageCell") as! MyNoteManageViewCell
+            noteManageCell.entry = m
+            noteManageCell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+            return noteManageCell
             
         case model.count-2:
             let m = model[model.count-2][indexPath.row] as? [String: AnyObject]
@@ -352,8 +342,9 @@ extension SettingViewController: SelectColorViewControllerDelegate {
 extension SettingViewController: LoginViewControllerDelegate {
     func writeLoginStatus(loginStatus: [String : Bool], name: String) {
         self.model[model.count-1][0] = loginStatus
-        selfConfig?.userName = name
-        SelfConfig.sharedInstance.saveSelfConfigs(selfConfig!)
+
+        SelfConfig.sharedInstance.userName = name
+        SelfConfig.sharedInstance.saveSelfConfigs(SelfConfig.sharedInstance)
         self.tableView.reloadData()
         dismissViewControllerAnimated(true, completion: nil)
     }

@@ -21,7 +21,7 @@ var b = ["b": "a"]
 a == b
 
 NSDate().description
-NSDate().getMirror()
+//NSDate().getMirror()
 NSDate()
 
 var dateFormatter1 = NSDateFormatter()
@@ -101,3 +101,20 @@ if let weekday = getDayOfWeek("2014-08-27") {
 } else {
     print("bad input")
 }
+
+func greet(person: [String: String]){
+    guard let name = person["name"] else {
+        return
+    }
+
+    guard let location = person["location"] else {
+        return
+    }
+    
+    print("hello \(name)")
+    
+    print("location \(location)")
+}
+
+greet(["name": "Json"])
+

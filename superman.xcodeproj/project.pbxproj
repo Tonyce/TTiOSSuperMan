@@ -15,6 +15,8 @@
 		BE3342F61B57B05A003F06BC /* SelectColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3342F51B57B05A003F06BC /* SelectColorViewController.swift */; };
 		BE42ACA21B7C7F85000F2449 /* RefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE42ACA11B7C7F85000F2449 /* RefreshView.swift */; };
 		BE42ACA41B7CBFCB000F2449 /* SupermansViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE42ACA31B7CBFCB000F2449 /* SupermansViewController.swift */; };
+		BE4761961B8E23FD002D9ACE /* MyNoteManageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4761951B8E23FD002D9ACE /* MyNoteManageViewCell.swift */; };
+		BE4761981B8E2556002D9ACE /* DiaryManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4761971B8E2556002D9ACE /* DiaryManageViewController.swift */; };
 		BE4B93981B54ADA0008CAA67 /* SelfCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4B93971B54ADA0008CAA67 /* SelfCenterViewController.swift */; };
 		BE4F64D41B57D1E9008251E7 /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4F64D31B57D1E9008251E7 /* ImageExtension.swift */; };
 		BE57D93E1B8C55630092872D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE57D93D1B8C55630092872D /* LaunchScreen.storyboard */; };
@@ -82,6 +84,8 @@
 		BE3A1F5B1B52DACA00569CB8 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 		BE42ACA11B7C7F85000F2449 /* RefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshView.swift; sourceTree = "<group>"; };
 		BE42ACA31B7CBFCB000F2449 /* SupermansViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupermansViewController.swift; sourceTree = "<group>"; };
+		BE4761951B8E23FD002D9ACE /* MyNoteManageViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNoteManageViewCell.swift; sourceTree = "<group>"; };
+		BE4761971B8E2556002D9ACE /* DiaryManageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryManageViewController.swift; sourceTree = "<group>"; };
 		BE4B93971B54ADA0008CAA67 /* SelfCenterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfCenterViewController.swift; sourceTree = "<group>"; };
 		BE4F64D31B57D1E9008251E7 /* ImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
 		BE57D93D1B8C55630092872D /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ../LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -180,6 +184,7 @@
 				BEAEC6491B72778E00C3CF7A /* BakIntroViewController.swift */,
 				BEAEC64D1B72833A00C3CF7A /* LastSectionFootView.swift */,
 				BE0E9D3C1B738F6F0027DF86 /* FriendsCell.swift */,
+				BE4761951B8E23FD002D9ACE /* MyNoteManageViewCell.swift */,
 			);
 			name = Setting;
 			sourceTree = "<group>";
@@ -304,6 +309,7 @@
 				BEEE07761B4CD0E00015E752 /* DiaryEntry.swift */,
 				BE8C7CC31B61479C009A8C4D /* AddDiaryViewController.swift */,
 				BED6143C1B831EB9008881E2 /* TestDiaryViewController.swift */,
+				BE4761971B8E2556002D9ACE /* DiaryManageViewController.swift */,
 			);
 			name = diaryEntry;
 			sourceTree = "<group>";
@@ -431,6 +437,8 @@
 				BE2E63511B68F63100FB8468 /* Diary.xcdatamodeld in Sources */,
 				BE42ACA41B7CBFCB000F2449 /* SupermansViewController.swift in Sources */,
 				BE8517001B58FE2800C65D5D /* SettingViewColorCell.swift in Sources */,
+				BE4761961B8E23FD002D9ACE /* MyNoteManageViewCell.swift in Sources */,
+				BE4761981B8E2556002D9ACE /* DiaryManageViewController.swift in Sources */,
 				BEEC67221B6A81E6004EF713 /* LoginLogoutCell.swift in Sources */,
 				BE26DEC81B5816C30018528B /* ColorViewCell.swift in Sources */,
 				BED614491B8325BB008881E2 /* CollectionViewCell.swift in Sources */,

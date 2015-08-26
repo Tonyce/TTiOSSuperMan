@@ -71,4 +71,29 @@ class MyHTTPHandler {
         })
         task.resume()
     }
+    
+    class func post( url: String, paramsArr: [AnyObject], callback: (data: NSData?, response: NSHTTPURLResponse?, err: NSError?) -> Void ){
+        
+        let request = NSMutableURLRequest(URL: NSURL(string: url)!)
+        let session = NSURLSession.sharedSession()
+        request.HTTPMethod = "POST"
+
+        let params = paramsArr
+        do{
+            request.HTTPBody = try NSJSONSerialization.dataWithJSONObject(params, options: NSJSONWritingOptions(rawValue: 0))
+        }catch _ {
+            print("err")
+            return
+        }
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        request.addValue(LoginStatus.sharedInstance.authorizationToken!, forHTTPHeaderField: "Authorization")
+        let task = session.dataTaskWithRequest(request, completionHandler: {
+            data, response, error -> Void in
+            
+            callback(data: data, response: response as? NSHTTPURLResponse, err: error)
+        })
+        task.resume()
+    }
 }

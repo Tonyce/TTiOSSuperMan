@@ -156,7 +156,9 @@ class LoginViewController: UIViewController {
                 dispatch_async(dispatch_get_main_queue(), {
 
                     let jsonParsed: AnyObject!
+
                     if err != nil {
+                        print(err)
                         self.displayAlert("client goes wrong")
                         return
                     }

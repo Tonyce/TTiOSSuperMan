@@ -14,12 +14,15 @@ class SelfConfig: NSObject {
     var word: String?
     var userName: String?
     
+    var allowBak: Bool?
+    
     var isDefault = true
     
     struct PropertyKey {
         static let imageKey = "image"
         static let userNameKey = "name"
         static let wordKey = "word"
+        static let allowBakKey = "allowBak"
     }
     
 //    var instance:
@@ -44,21 +47,22 @@ class SelfConfig: NSObject {
         aCoder.encodeObject(image, forKey: PropertyKey.imageKey)
         aCoder.encodeObject(word, forKey: PropertyKey.wordKey)
         aCoder.encodeObject(userName, forKey: PropertyKey.userNameKey)
+        aCoder.encodeObject(allowBak, forKey: PropertyKey.allowBakKey)
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
         // Because photo is an optional property of Meal, use conditional cast.
         let image = aDecoder.decodeObjectForKey(PropertyKey.imageKey) as? UIImage
+        let word = aDecoder.decodeObjectForKey(PropertyKey.wordKey) as! String
+        let userName = aDecoder.decodeObjectForKey(PropertyKey.userNameKey) as? String
         
-        let  word = aDecoder.decodeObjectForKey(PropertyKey.wordKey) as! String
-        
-        let userName = aDecoder.decodeObjectForKey(PropertyKey.userNameKey)  as? String
+        let allowBak = aDecoder.decodeObjectForKey(PropertyKey.allowBakKey) as? Bool
         
         // Must call designated initializer.
-        self.init(image: image, word: word, userName: userName)
+        self.init(image: image, word: word, userName: userName, allowBak: allowBak)
     }
     
-    init(image: UIImage?, word: String, userName: String?){
+    init(image: UIImage?, word: String, userName: String?, allowBak: Bool?){
         super.init()
         
         if let image = image {
@@ -68,6 +72,7 @@ class SelfConfig: NSObject {
         }
         self.word = word
         self.userName = userName
+        self.allowBak = allowBak
     }
     
     func saveSelfConfigs(selfConfig: SelfConfig) {
@@ -87,7 +92,7 @@ class SelfConfig: NSObject {
         if instance != nil {
             return instance!
         }else {
-            return SelfConfig(image: nil, word: "是时候应该做点什么了", userName: "")
+            return SelfConfig(image: nil, word: "", userName: nil, allowBak: nil)
         }
     }
     

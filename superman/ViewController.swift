@@ -40,20 +40,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         topViewInitFrame = topView.frame
-        // initSelfConfig
-        // selfConfig = SelfConfig(image: UIImage(named: "defaultImage")!, word: "路漫漫其修远兮\n吾将上下而求索")
-
         
-        // initTable
-//        let entry1 = DiaryEntry(time: "11.02", content:"name: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", photo: photo1, rating: 4", colorEntryIndex: 2)
-//        let entry2 = DiaryEntry(time: "12.04", content: "UIImage(named:meal2.jpglet meal2 = Meal(name: \"Chicken and Potatoes\", photo: photo2, rating: 5", colorEntryIndex: 5)
-//        let entry3 = DiaryEntry(time: "11.04", content: "String(name: \"Pasta with Meatballs\", photo: photo3, rating: 3", colorEntryIndex: 3)
-        let entry1 = ["time": "11.02", "content":"name: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", photo: photo1, rating: 4", "colorEntryIndex": 2]
-        let entry2 = ["time": "12.04", "content": "UIImage(named:meal2.jpglet meal2 = Meal(name: \"Chicken and Potatoes\", photo: photo2, rating: 5", "colorEntryIndex": 5]
-        let entry3 = ["time": "11.04", "content": "String(name: \"Pasta with Meatballs\", photo: photo3, rating: 3", "colorEntryIndex": 3]
-
-        
-        diarysArr += [entry1, entry2, entry3]
+        diarysArr += []
 
         insertSampleData()
         
@@ -194,42 +182,9 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
             if editingStyle == .Delete {
                 
                 let diaryToRemove = diarys[indexPath.row]
-                print(diaryToRemove.objectID)
-                let instanceURL = diaryToRemove.objectID.URIRepresentation()
-                print(instanceURL)
-                print(instanceURL.absoluteString)
-                let instanceURLStr = instanceURL.absoluteString
-//                let classURL = instanceURL().URLByDeletingLastPathComponent
-//                
-//                let classString = classURL!.absoluteString
-//                let instanceId = instanceURL().lastPathComponent
-//                
-//                print(classString)
-//                print(instanceId)
-                
-
-//                let reconstructedClassURL = NSURL(fileURLWithPath:classString)
-//                reconstructedClassURL.URLByAppendingPathComponent(pathComponent: String)
-//                let reconstructedInstanceURL = reconstructedClassURL.URLByAppendingPathComponent(instanceId!)
-                
-//                print(reconstructedInstanceURL)
-                
-                let ganInstanceURL = NSURL(string: instanceURLStr)
-
-                let objectID = managedContext.persistentStoreCoordinator?.managedObjectIDForURIRepresentation(ganInstanceURL!)
-
-                print(objectID!)
-                let reconstructedInstance = managedContext.objectWithID(objectID!)
-                
+                // print(diaryToRemove.objectID)
                 
                 managedContext.deleteObject(diaryToRemove)
-                
-//                NSURL *reconstructedClassURL = [NSURL URLWithString:classString];
-//                NSURL *reconstructedInstanceURL = [reconstructedClassURL
-//                    URLByAppendingPathComponent:instanceId];
-//                NSManagedObjectID *objectID = [moc.persistentStoreCoordinator
-//                    managedObjectIDForURIRepresentation:reconstructedInstanceURL];
-//                NSManagedObject *reconstructedInstance = [moc objectWithID:objectID];
                 
                 do {
                     try managedContext.save()
@@ -343,7 +298,7 @@ extension ViewController {
                 
                 let diary = Diary(entity: entity!, insertIntoManagedObjectContext: managedContext)
                 
-                print(diary.objectID)
+                // print(diary.objectID)
                 diary.time = diaryEntryContainer.time
                 diary.content = diaryEntryContainer.content
                 diary.colorEntryIndex = diaryEntryContainer.colorEntryIndex
@@ -360,15 +315,14 @@ extension ViewController {
                 
                 self.diaryTable.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: UITableViewRowAnimation.Top)
                 
-//                let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-//                dispatch_async(dispatch_get_global_queue(priority, 0)) {
-//                    _ in
-//                    
-                    self.saveToCloud(){
+                if SelfConfig.sharedInstance.allowBak == true {
+                    
+                    Diary.saveToCloud(diary){
                         success in
+                        
                         diary.baked = success
 
-                        func inner() {
+                        func save() {
                             do {
                                 try self.managedContext.save()
                             } catch let error as NSError {
@@ -382,41 +336,37 @@ extension ViewController {
                         }
                         dispatch_async(dispatch_get_main_queue()) {
                             _ in
-                            inner()
+                            save()
                         }
+                    }
                 }
 
+                /*
+                Diary.saveDiarysToCloud([]){
+                    success in
+                    diary.baked = success
+                    
+                    func inner() {
+                        do {
+                            try self.managedContext.save()
+                        } catch let error as NSError {
+                            print("Could not save \(error), \(error.userInfo)")
+                        }
+                        
+                        let diaryIndex = self.diarys.indexOf(diary)
+                        let indexPath = NSIndexPath(forRow: diaryIndex!, inSection: 0)
+                        // print(diaryIndex)
+                        self.diaryTable.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+                    }
+                    dispatch_async(dispatch_get_main_queue()) {
+                        _ in
+                        inner()
+                    }
+                }
+                */
         }
     }
     
-    func saveToCloud(callback: (success: Bool?) -> Void) {
-        let url: String = "http://\(host)/api/diary/save"
-        
-        MyHTTPHandler.post(url, params: ["a":"b"]) {
-            
-            data, response, err in
-                
-            let jsonParsed: AnyObject!
-            var success: Bool?
-            if err != nil {
-                callback(success: success)
-                return  
-            }
-//            let strData = NSString(data: data!, encoding: NSUTF8StringEncoding)
-//                                print("Body: \(strData)")
-            do {
-                jsonParsed = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions())
-            }catch _ {
-                print("err")
-                callback(success: success)
-                return
-            }
-            
-            let jsonResult = JSONValue.fromObject(jsonParsed)!
-            success = jsonResult["success"]?.bool
-            callback(success: success)
-        }
-    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 
@@ -521,3 +471,68 @@ extension NSUserDefaults {
     }
     
 }
+
+
+//let instanceURL = diaryToRemove.objectID.URIRepresentation()
+//print(instanceURL)
+//print(instanceURL.absoluteString)
+//let instanceURLStr = instanceURL.absoluteString
+//                let classURL = instanceURL().URLByDeletingLastPathComponent
+//
+//                let classString = classURL!.absoluteString
+//                let instanceId = instanceURL().lastPathComponent
+//
+//                print(classString)
+//                print(instanceId)
+
+
+//                let reconstructedClassURL = NSURL(fileURLWithPath:classString)
+//                reconstructedClassURL.URLByAppendingPathComponent(pathComponent: String)
+//                let reconstructedInstanceURL = reconstructedClassURL.URLByAppendingPathComponent(instanceId!)
+
+//                print(reconstructedInstanceURL)
+
+//let ganInstanceURL = NSURL(string: instanceURLStr)
+//
+//let objectID = managedContext.persistentStoreCoordinator?.managedObjectIDForURIRepresentation(ganInstanceURL!)
+//
+//print(objectID!)
+//let reconstructedInstance = managedContext.objectWithID(objectID!)
+
+//                let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+//                dispatch_async(dispatch_get_global_queue(priority, 0)) {
+//                    _ in
+////
+//self.saveToCloud(diary){
+//    success in
+//    diary.baked = success
+//    
+//    func inner() {
+//        do {
+//            try self.managedContext.save()
+//        } catch let error as NSError {
+//            print("Could not save \(error), \(error.userInfo)")
+//        }
+//        
+//        let diaryIndex = self.diarys.indexOf(diary)
+//        let indexPath = NSIndexPath(forRow: diaryIndex!, inSection: 0)
+//        // print(diaryIndex)
+//        self.diaryTable.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+//    }
+//    dispatch_async(dispatch_get_main_queue()) {
+//        _ in
+//        inner()
+//    }
+//}
+
+// initSelfConfig
+// selfConfig = SelfConfig(image: UIImage(named: "defaultImage")!, word: "路漫漫其修远兮\n吾将上下而求索")
+
+
+// initTable
+//        let entry1 = DiaryEntry(time: "11.02", content:"name: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", photo: photo1, rating: 4", colorEntryIndex: 2)
+//        let entry2 = DiaryEntry(time: "12.04", content: "UIImage(named:meal2.jpglet meal2 = Meal(name: \"Chicken and Potatoes\", photo: photo2, rating: 5", colorEntryIndex: 5)
+//        let entry3 = DiaryEntry(time: "11.04", content: "String(name: \"Pasta with Meatballs\", photo: photo3, rating: 3", colorEntryIndex: 3)
+//        let entry1 = ["time": "11.02", "content":"name: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", ame: \"Caprese Salad\", photo: photo1, rating: 4", "colorEntryIndex": 2]
+//        let entry2 = ["time": "12.04", "content": "UIImage(named:meal2.jpglet meal2 = Meal(name: \"Chicken and Potatoes\", photo: photo2, rating: 5", "colorEntryIndex": 5]
+//        let entry3 = ["time": "11.04", "content": "String(name: \"Pasta with Meatballs\", photo: photo3, rating: 3", "colorEntryIndex": 3]

@@ -17,16 +17,12 @@ class SelfCenterViewController: UIViewController , UIImagePickerControllerDelega
     
     @IBOutlet weak var bakSwith: UISwitch!
     
-    var selfConfig: SelfConfig!
     var alphaView : UIView!
     
     let selfScrollViewContainerDefaultContentInset = UIEdgeInsets(top: 120, left: 0, bottom: 0, right: 0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
-        selfConfig = SelfConfig.sharedInstance
         
         selfImage.layer.cornerRadius = CGRectGetHeight(selfImage.frame) / 2
         selfImage.layer.masksToBounds = true
@@ -41,12 +37,51 @@ class SelfCenterViewController: UIViewController , UIImagePickerControllerDelega
 
         selfScrollViewContainer.contentSize = CGSize(width: view.bounds.width, height:  view.bounds.height - 60)
         
-        selfImage.image = selfConfig.image
-        textView.text = selfConfig.word
+        selfImage.image = SelfConfig.sharedInstance.image
+        textView.text = SelfConfig.sharedInstance.word
+        
+        bakSwith.setOn(false, animated: true)
+        if let _ = SelfConfig.sharedInstance.userName{
+            if  SelfConfig.sharedInstance.allowBak == true  {
+                bakSwith.setOn(true, animated: true)
+            }
+        }
 
+        bakSwith.addTarget(self, action: "allowBakAction:", forControlEvents: UIControlEvents.ValueChanged)
     }
     
+    override func viewWillAppear(animated: Bool) {
+       
+    }
+    
+    func allowBakAction(sender: UISwitch){
+        if let _ = SelfConfig.sharedInstance.userName {
+            bakSwith.setOn(bakSwith.on, animated: true)
+        }else {
 
+            let alertController = UIAlertController(
+                title: nil,
+                message: "您还没有登录",
+                preferredStyle: UIAlertControllerStyle.Alert)
+
+            let okAction = UIAlertAction(title: "ok",
+                                       style: UIAlertActionStyle.Cancel,
+                                     handler: { (paramAction:UIAlertAction!) in
+                                        self.bakSwith.setOn(false, animated: true)
+                                    })
+            let loginAction = UIAlertAction(title: "login", style: .Default) {
+                (action) in
+                print("login")
+                self.showLoginView()
+            }
+            alertController.addAction(okAction)
+            alertController.addAction(loginAction)
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
+            
+            bakSwith.setOn(bakSwith.on, animated: true)
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -68,11 +103,7 @@ class SelfCenterViewController: UIViewController , UIImagePickerControllerDelega
             {[unowned self] action -> Void in
                 self.selectFromCamera()
         }
-//        let actionImessage = UIAlertAction(title: "photoLib", style: UIAlertActionStyle.Default,
-//            handler: {(paramAction:UIAlertAction!) in
-//                                self.selectFromLib()
-//                /* Send the photo via iMessage */
-//        })
+
         let actionFromPhoto = UIAlertAction(title: "photoLib", style: UIAlertActionStyle.Default)
             {[unowned self] action -> Void in
                 self.selectFromLib()
@@ -83,9 +114,6 @@ class SelfCenterViewController: UIViewController , UIImagePickerControllerDelega
 
         })
         
-//        alertController.addAction(actionEmail)
-//        alertController.addAction(actionImessage)
-//        alertController.addAction(actionDelete)
         [actionFromCamera, actionFromPhoto, actionCancel].map {
             alertController.addAction($0)
         }
@@ -100,7 +128,7 @@ class SelfCenterViewController: UIViewController , UIImagePickerControllerDelega
             imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
             imagePicker.delegate = self
             imagePicker.allowsEditing = true
-    //        picker.mediaTypes = [kUTTypeImage]
+
             presentViewController(imagePicker, animated: true, completion: nil)
         }else {
             let alert = UIAlertController(title: "No camera", message: "Please allow this app the use of your camera in settings or buy a device that has a camera.", preferredStyle: UIAlertControllerStyle.Alert)
@@ -150,8 +178,14 @@ class SelfCenterViewController: UIViewController , UIImagePickerControllerDelega
             let word: String = textView.text
             SelfConfig.sharedInstance.image = image
             SelfConfig.sharedInstance.word = word
-//            selfConfig = SelfConfig(image: image, word: word, userName: selfConfig.userName)
+            SelfConfig.sharedInstance.allowBak = bakSwith.on
         }
+    }
+    
+    func showLoginView(){
+        let loginView = self.storyboard?.instantiateViewControllerWithIdentifier("loginView") as! LoginViewController
+        loginView.delegate = self
+        presentViewController(loginView, animated: true, completion: nil)
     }
 }
 
@@ -163,6 +197,15 @@ extension SelfCenterViewController: UIScrollViewDelegate {
     }
 }
 
+extension SelfCenterViewController: LoginViewControllerDelegate {
+    func writeLoginStatus(loginStatus: [String : Bool], name: String) {
+
+        SelfConfig.sharedInstance.userName = name
+        SelfConfig.sharedInstance.saveSelfConfigs(SelfConfig.sharedInstance)
+        bakSwith.setOn(true, animated: true)
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+}
 
 //        let selectPhotoView = storyboard!.instantiateViewControllerWithIdentifier("selectPhotoWay") as! SelectPhotoWayViewController
 //        //        print("taped")
