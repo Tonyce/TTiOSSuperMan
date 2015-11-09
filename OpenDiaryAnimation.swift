@@ -29,7 +29,7 @@ class OpenDiaryTransition: NSObject, UIViewControllerAnimatedTransitioning {
     
     let duration    = 0.3
     var presenting  = true
-    var originFrame = CGRect.zeroRect
+    var originFrame = CGRect.zero
     
     var topImageHeight:CGFloat = 0.0
     var dismissCompletion: (()->())?
@@ -78,8 +78,5 @@ class OpenDiaryTransition: NSObject, UIViewControllerAnimatedTransitioning {
                 }
                 transitionContext.completeTransition(true)
         })
-        
-        
     }
-    
 }

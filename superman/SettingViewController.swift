@@ -242,7 +242,7 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var keyArray: Array = model[section] as Array
+        let keyArray: Array = model[section] as Array
         return keyArray.count
     }
     
