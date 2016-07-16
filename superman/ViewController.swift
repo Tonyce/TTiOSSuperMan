@@ -70,7 +70,7 @@ class ViewController: UIViewController {
         statusView.backgroundColor = topViewColor
         // shadowTopView()
         initAddBtn()
-        animateTable()
+        // animateTable()
         initSettingBtn()
 
     }
@@ -82,6 +82,9 @@ class ViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
+        
+        animateTable()
+        
         self.addDiaryBtn.center.x = self.addDiaryInitFrame.origin.x + 300
         
         let savedColorEntry:[String: AnyObject] = SystemConfig.sharedInstance.systemColorEntry!
@@ -207,13 +210,13 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         diaryTable.reloadData()
         
         let cells = diaryTable.visibleCells
-        let tableHeight: CGFloat = diaryTable.bounds.size.height
-        // let tableWidth: CGFloat = diaryTable.bounds.size.width
+//        let tableHeight: CGFloat = diaryTable.bounds.size.height
+         let tableWidth: CGFloat = diaryTable.bounds.size.width
         
         for i in cells {
             let cell: UITableViewCell = i as UITableViewCell
-            cell.transform = CGAffineTransformMakeTranslation(0, tableHeight)
-            //cell.transform = CGAffineTransformMakeTranslation(tableWidth, 0)
+//            cell.transform = CGAffineTransformMakeTranslation(0, tableHeight)
+            cell.transform = CGAffineTransformMakeTranslation(tableWidth, 0)
         }
         
         var index = 0

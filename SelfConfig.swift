@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class SelfConfig: NSObject {
+class SelfConfig: NSObject {//归档
     var image: UIImage?
     var word: String?
     var userName: String?
@@ -78,7 +78,7 @@ class SelfConfig: NSObject {
     func saveSelfConfigs(selfConfig: SelfConfig) {
         let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(selfConfig, toFile: SelfConfig.ArchiveURL.path!)
         if !isSuccessfulSave {
-            print("Failed to save meals...")
+            print("Failed to save...")
         }
     }
     

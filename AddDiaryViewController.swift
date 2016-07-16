@@ -67,6 +67,8 @@ class AddDiaryViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    
     @IBAction func dismissAction(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
     }
